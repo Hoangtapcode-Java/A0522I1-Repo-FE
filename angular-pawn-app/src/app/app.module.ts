@@ -15,6 +15,8 @@ import {StatusModule} from "./modules/status/status.module";
 import {UserModule} from "./modules/user/user.module";
 import {UserHasRoleModule} from "./modules/user-has-role/user-has-role.module";
 import {FinaceModule} from "./modules/finace/finace.module";
+import {HomePageModule} from "./modules/home-page/home-page.module";
+import {ArticlePageModule} from "./modules/article-page/article-page.module";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import {FinaceModule} from "./modules/finace/finace.module";
     StatusModule,
     UserModule,
     UserHasRoleModule,
-    FinaceModule
+    FinaceModule,
+    HomePageModule,
+    ArticlePageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
