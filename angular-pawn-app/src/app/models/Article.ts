@@ -5,5 +5,6 @@ export interface Article {
   content?:string,
   datePublic?:string,
   employeeId?:number,
-  isFlag?:boolean
+  isFlag?:boolean,
+  isFeature?:boolean
 }
