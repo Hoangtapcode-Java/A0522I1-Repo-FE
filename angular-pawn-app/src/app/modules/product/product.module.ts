@@ -7,10 +7,11 @@ import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
 import { UpdateComponent } from './update/update.component';
 import { DeleteComponent } from './delete/delete.component';
+import { DetailComponent } from './detail/detail.component';
 
 
 @NgModule({
-  declarations: [ProductComponent, CreateComponent, ListComponent, UpdateComponent, DeleteComponent],
+  declarations: [ProductComponent, CreateComponent, ListComponent, UpdateComponent, DeleteComponent, DetailComponent],
   imports: [
     CommonModule,
     ProductRoutingModule
