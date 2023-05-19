@@ -1,3 +1,5 @@
+import {Employee} from "../employee/Employee";
+
 export interface Article {
   id?:number,
   title?:string,

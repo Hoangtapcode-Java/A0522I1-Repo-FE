@@ -1,6 +1,8 @@
+import {Employee} from "../employee/Employee";
+
 export interface User{
   username?:string,
   password?:string,
-  employeeId?:number,
+  employeeId?:Employee,
   isFlag?:boolean
 }
