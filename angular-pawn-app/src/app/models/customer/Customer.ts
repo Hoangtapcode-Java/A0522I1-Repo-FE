@@ -1,6 +1,6 @@
 export interface Customer {
-  id:number,
-  name?:string,
+  id: number;
+  name?: string;
   dateOfBirth?:string,
   gender?:number,
   email?:string,
