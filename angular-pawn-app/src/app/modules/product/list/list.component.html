@@ -91,8 +91,8 @@
   </div>
 
   <div class="pagination">
-    <button *ngIf="page > 0" (click)="previousPage()" class="text1">«</button>
-    <button (click)="accessPage(page)" *ngFor="let page of totalPages">{{page+1}}</button>
-    <button *ngIf="page < totalPage - 1" (click)="nextPage()" class="text1">»</button>
+    <a *ngIf="page > 0" (click)="previousPage()" class="text1">«</a>
+    <a class="text"  (click)="accessPage(page)" *ngFor="let page of totalPages">{{page+1}}</a>
+    <a *ngIf="page < totalPage - 1" (click)="nextPage()" class="text1">»</a>
   </div>
 </div>

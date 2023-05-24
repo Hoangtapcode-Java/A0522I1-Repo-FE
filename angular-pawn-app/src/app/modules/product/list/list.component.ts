@@ -20,12 +20,17 @@ export class ListComponent implements OnInit {
   categoryId: string = "";
   isSearchFormActive: boolean = false;
 
-  constructor(private productService: ProductServiceService, private imgService: ImageServiceService, private categoryService: CategoryServiceService) {
+  constructor(private productService: ProductServiceService, private categoryService: CategoryServiceService) {
   }
 
   getAllProduct() {
     this.productService.getContractNotPay("", "", 0).subscribe(next => {
       this.contracts = next.content;
+      this.totalPage = next.totalPages
+      for (let j = 0; j < this.totalPage; j++) {
+        this.totalPages.push(j)
+      } 
+      console.log(next);
       console.log(this.contracts)
       console.log(this.totalPages)
     })
@@ -35,7 +40,6 @@ export class ListComponent implements OnInit {
   ngOnInit(): void {
     this.getAllCategory()
     this.getAllProduct()
-    this.getTotalPage();
   }
 
 
@@ -78,7 +82,6 @@ export class ListComponent implements OnInit {
 
   previousPage() {
     this.page--
-
     this.productService.getContractNotPay(this.nameCustomer, this.categoryId, this.page).subscribe(next => {
       this.contracts = next.content;
     })
@@ -92,18 +95,6 @@ export class ListComponent implements OnInit {
       this.contracts = next.content;
     })
 
-  }
-
-  getTotalPage() {
-    this.productService.getTotalPage("", "").subscribe(next => {
-      // @ts-ignore
-      this.totalPage = next
-      for (let j = 0; j < this.totalPage; j++) {
-        this.totalPages.push(j)
-      }
-      console.log(this.totalPages)
-      console.log(this.totalPage)
-    })
   }
 
   toggleFormSearch($event: MouseEvent) {

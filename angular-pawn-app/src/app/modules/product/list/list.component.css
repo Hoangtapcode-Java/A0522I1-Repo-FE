@@ -458,35 +458,42 @@ select.form-select option {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+  margin: 15px 0;
 }
-
 .pagination .text {
   font-size: 16px;
 }
-
 .pagination .text1 {
-  font-size: 26px;
+  font-size: 16px;
 }
-.pagination button {
-  padding: 5px 10px;
-  margin: 0 5px;
-  border: none;
-  background-color: #fff;
-  color: #333;
+.pagination a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
   cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s;
 }
 
-.pagination button:hover {
-  background: linear-gradient(#ee4d2d, #ff7337);
+.pagination a:hover {
+  background: #ee4d2d !important;
   color: #fff;
-
+  opacity: .8;
 }
-.pagination button.active {
-  background: linear-gradient(#ee4d2d, #ff7337);
+.pagination a.disabled {
+  pointer-events: none;
+  color: mix(var(--nc-primary), white, 50%);
+}
+/* thiết lập style cho class active */
+.pagination a.active {
+  background: var(--nc-primary-gradient);
   color: #fff;
 }
-
+/* thêm màu nền khi người dùng hover vào class không active */
+.pagination a:hover:not(.active) {
+  background-color: var(--nc-primary-bg);
+  opacity: 0.8s;
+}
 
 @media (max-width: 980px) {
   .memu-search .searchBox {
