@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Article} from "../../../models/article/Article";
-import {ActivatedRoute, Router} from "@angular/router";
 import {ArticleServiceService} from "../../../service/article-service.service";
-import Swal from "sweetalert2/dist/sweetalert2.js";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-list',
@@ -12,6 +11,7 @@ import Swal from "sweetalert2/dist/sweetalert2.js";
 export class ListComponent implements OnInit {
   article: Article = {};
   articles: Article[] = [];
+
   nameF: string = '';
   totalPagination: number;
   indexPagination: number = 1;
@@ -33,6 +33,7 @@ export class ListComponent implements OnInit {
       this.indexPagination=1;
     }, error => console.log(error))
   }
+
 
   firtPage() {
     this.indexPagination = 1;
@@ -81,43 +82,4 @@ export class ListComponent implements OnInit {
     }
   }
 
-
-  deleteArticle(deleteArticle: Article) {
-    const swalWithBootstrapButtons = Swal.mixin({
-      customClass: {
-        confirmButton: "btn swal2-confirm btn-customer-switch",
-        cancelButton: "btn swal2-cancel btn-customer-switch"
-      },
-      buttonsStyling: false,
-    });
-
-    swalWithBootstrapButtons.
-    fire({
-      title: 'Xác nhận xóa bài báo: ' + deleteArticle.title,
-      text: 'Bài báo sẽ không được phục hồi sau khi xóa',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonText: 'Xác nhận',
-      cancelButtonText: 'Hủy bỏ',
-      reverseButtons: false,
-    }).then((result) => {
-      if (result.value) {
-        this.articleService.deleteArticle(deleteArticle.id).subscribe(()=>{
-          this.route.navigateByUrl('/article');
-        });
-        swalWithBootstrapButtons.fire(
-          'Đã xóa!',
-          'Đã xóa thành công bài báo',
-          'success'
-        )
-
-      } else if (result.dismiss === Swal.DismissReason.cancel) {
-        swalWithBootstrapButtons.fire(
-          'Đã hủy!',
-          'Đã hủy xóa bài báo',
-          'error'
-        )
-      }
-    })
-  }
 }

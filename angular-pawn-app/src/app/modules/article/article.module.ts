@@ -10,10 +10,13 @@ import { DeleteComponent } from './delete/delete.component';
 
 
 @NgModule({
-  declarations: [ArticleComponent, CreateComponent, UpdateComponent, ListComponent, DeleteComponent],
-  imports: [
-    CommonModule,
-    ArticleRoutingModule
-  ]
+    declarations: [ArticleComponent, CreateComponent, UpdateComponent, ListComponent, DeleteComponent],
+    exports: [
+        ArticleComponent
+    ],
+    imports: [
+        CommonModule,
+        ArticleRoutingModule
+    ]
 })
 export class ArticleModule { }

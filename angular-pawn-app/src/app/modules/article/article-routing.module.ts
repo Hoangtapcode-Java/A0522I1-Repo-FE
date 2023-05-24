@@ -10,7 +10,8 @@ import {ArticleComponent} from "./article.component";
 const routes: Routes = [{
   path:'article', component: ArticleComponent, children: [
     {
-      path: '', component: ListComponent
+      path: '',
+      component: ListComponent
     },
     {
       path: 'create', component: CreateComponent
@@ -19,7 +20,8 @@ const routes: Routes = [{
       path: 'update', component: UpdateComponent
     },
     {
-      path:'delete',component:DeleteComponent
+      path:'delete-article/:id',
+      component:ListComponent
     }
   ]
 }];

@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* CSS cho switch alert */
+.swal2-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-customer-switch {
+  padding: .375rem .95rem;
+  border-radius: 1.25rem;
+}
+
+.swal2-confirm {
+  color: #fff;
+  background: var(--nc-primary);
+}
+
+.swal2-cancel {
+  color: #fff;
+  background: #707070;
+}
+
+.swal2-confirm:hover,
+.swal2-cancel:hover {
+  color: #fff;
+  opacity: .85;
+}
+
+.swal2-confirm:focus,
+.swal2-cancel:focus {
+  box-shadow: 0 0 0 0.25rem rgba(238, 77, 45, .55);
+}

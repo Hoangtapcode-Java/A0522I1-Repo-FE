@@ -1,0 +1,30 @@
+  <!-- ======= Sidebar ======= -->
+  <div class="aside-block">
+    <h3 class="aside-title">Tin nổi bật</h3>
+
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-popular" role="tabpanel" aria-labelledby="pills-popular-tab" *ngFor="let feature of featureArticles" >
+
+        <!-- Tin moi nhat -->
+        <div class="post-entry-1 border-bottom">
+          <div class="post-meta"><span class="date">Ưu đãi</span> <span class="mx-1">-</span> <span>{{feature.publicDate}}</span></div>
+          <h5 class="mb-2"><a [routerLink]="['/article-page/view',feature.id]" class="customlink">{{feature.title}}</a></h5>
+          <span class="author mb-3 d-block">{{feature.employee.name}}</span>
+        </div>
+        <!-- End tin moi nhat -->
+
+
+      </div>
+    </div>
+
+
+    <div class="aside-block">
+      <h3 class="aside-title">Danh mục</h3>
+      <ul class="aside-links list-unstyled">
+        <li><a href="category.html" class="customlink"><i class="bi bi-chevron-right"></i> Ưu đãi</a></li>
+        <li><a href="category.html" class="customlink"><i class="bi bi-chevron-right"></i> Tin tức</a></li>
+        <li><a href="category.html" class="customlink"><i class="bi bi-chevron-right"></i> Blog chia sẻ</a></li>
+        <li><a href="category.html" class="customlink"><i class="bi bi-chevron-right"></i> Tuyển dụng</a></li>
+      </ul>
+    </div><!-- End Categories -->
+  </div>

@@ -25,6 +25,15 @@ a:hover {
   text-decoration: none;
 }
 
+.customlink {
+  color: #eb5d1e;
+  text-decoration: none;
+}
+
+.customlink:hover{
+  color: #ef7f4d;
+  text-decoration: none;
+}
 h1,
 h2,
 h3,
@@ -512,6 +521,7 @@ section {
   margin-top: 10px;
   color: #fff;
   background: #eb5d1e;
+  border-radius: 1.25rem;
 }
 
 #about .btn-see-more:hover {
@@ -1511,18 +1521,35 @@ section {
   --nc-primary-bg: #FEF6F5;
   --nc-primary-gradient: linear-gradient(#EE4D2D,#FF7337);
 }
+.carousel-item img {
+  object-fit: cover;
+  width: 100%;
+  height: 500px; /* Kích thước chiều cao mặc định */
+}
 
 .img-bg {
-  height: 500px;
+  width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
   background-position: center center;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 768px) and (max-width: 991px) {
   .img-bg {
     height: 400px;
+  }
+
+  .carousel-item img {
+    object-fit: cover;
+    height: 400px; /* Kích thước chiều cao mặc định */
+  }
+}
+
+@media (max-width: 767px) {
+  .carousel-item img {
+    object-fit: cover;
+    height: 150px; /* Kích thước chiều cao mặc định */
   }
 }
 
@@ -1734,7 +1761,7 @@ section {
   font-weight: 500;
 }
 
-.trending .trending-post li a:hover h3 {
+.trending .trending-post li a:hover h5 {
   color: rgba(var(--color-black-rgb), 1);
 }
 
@@ -1754,6 +1781,7 @@ section {
   font-family: var(--font-secondary);
   color: rgba(var(--color-black-rgb), 0.4);
   margin-bottom: 10px;
+
 }
 
 .post-entry-2 .author {
@@ -1992,6 +2020,8 @@ section {
 /* custom tab nav on sidebar */
 .aside-block {
   margin-bottom: 30px;
+  margin-left: 20px;
+  margin-top: 40px;
 }
 
 .aside-block .custom-tab-nav .nav-item {
@@ -2230,7 +2260,6 @@ tbody td {
 
 .searchBox i {
   font-size: 22px;
-  color: var(--text-color-light);
   padding: 0 12px;
 }
 
@@ -2469,6 +2498,9 @@ select.form-select option {
   text-shadow: 0px -1px 0px rgba(0,0,0,0.4);
 }
 
+.icon-tooltip .color i {
+  color: #fff;
+}
 
 /* .top-child .search {
   outline: none;
@@ -2671,34 +2703,4 @@ select.form-select option {
   }
 }
 
-/* CSS cho switch alert */
-.swal2-actions {
-  display: flex;
-  gap: 10px;
-}
 
-.btn-customer-switch {
-  padding: .375rem .95rem;
-  border-radius: 1.25rem;
-}
-
-.swal2-confirm {
-  color: #fff;
-  background: var(--nc-primary);
-}
-
-.swal2-cancel {
-  color: #fff;
-  background: #707070;
-}
-
-.swal2-confirm:hover,
-.swal2-cancel:hover {
-  color: #fff;
-  opacity: .85;
-}
-
-.swal2-confirm:focus,
-.swal2-cancel:focus {
-  box-shadow: 0 0 0 0.25rem rgba(238, 77, 45, .55);
-}
