@@ -1,1 +1,30 @@
-<p>get-finace works!</p>
+
+<div class="container">
+  <div class="finance d-flex align-center justify-content-center" style="margin-top: 100px;">
+    <table class="table-sm table table responsive" style="width: 500px;">
+
+
+      <tr >
+        <th>Số tiền trong két :</th>
+        <td>{{finance.totalFinace|currency}}<strong>(VNĐ)</strong></td>
+      </tr>
+      <tr>
+        <th>Vốn hiện tại :</th>
+        <td>{{finance.currentFinace|currency}} <strong>(VNĐ)</strong></td>
+
+      </tr>
+      <tr>
+        <th>Vốn đầu tư :</th>
+        <td>{{finance.investment|currency}} <strong>(VNĐ)</strong></td>
+
+      </tr>
+      <tr>
+        <th>Lãi dự kiến :</th>
+        <td>{{finance.interest|currency}}<strong>(VNĐ)</strong></td>
+
+      </tr>
+
+    </table>
+  </div>
+</div>
+

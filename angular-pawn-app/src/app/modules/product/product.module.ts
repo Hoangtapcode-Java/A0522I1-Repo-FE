@@ -7,13 +7,17 @@ import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
 import { UpdateComponent } from './update/update.component';
 import { DeleteComponent } from './delete/delete.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { DetailComponent } from './detail/detail.component';
 
 
 @NgModule({
-  declarations: [ProductComponent, CreateComponent, ListComponent, UpdateComponent, DeleteComponent],
-  imports: [
-    CommonModule,
-    ProductRoutingModule
-  ]
+  declarations: [ProductComponent, CreateComponent, ListComponent, UpdateComponent, DeleteComponent, DetailComponent],
+    imports: [
+        CommonModule,
+        ProductRoutingModule,
+        ReactiveFormsModule,
+        FormsModule
+    ]
 })
 export class ProductModule { }

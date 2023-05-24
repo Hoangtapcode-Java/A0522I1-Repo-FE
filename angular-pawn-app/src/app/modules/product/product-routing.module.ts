@@ -5,6 +5,7 @@ import {ListComponent} from "./list/list.component";
 import {CreateComponent} from "./create/create.component";
 import {UpdateComponent} from "./update/update.component";
 import {DeleteComponent} from "./delete/delete.component";
+import { DetailComponent } from './detail/detail.component';
 
 
 const routes: Routes = [{path:'product',component:ProductComponent,children:[
@@ -19,6 +20,9 @@ const routes: Routes = [{path:'product',component:ProductComponent,children:[
     },
     {
       path:'delete',component:DeleteComponent
+    },
+    {
+      path:'detail/:id',component:DetailComponent
     }
   ]}];
 
