@@ -51,8 +51,6 @@
         <col style="width: 15%"/>
         <col style="width: 15%"/>
         <col style="width: 10%"/>
-        <col style="width: 15%"/>
-
       </colgroup>
       <thead>
       <tr id="color-bg">
@@ -61,7 +59,7 @@
         <th>Tên đồ</th>
         <th>Loại đồ</th>
         <th>Trạng thái</th>
-        <th>Ảnh chi tiết đồ</th>
+<!--        <th>Ảnh chi tiết đồ</th>-->
         <th>Giá mua</th>
         <th class="text-center">Chức năng</th>
       </tr>
@@ -73,11 +71,11 @@
         <td>{{contract.product.name}}</td>
         <td>{{contract.product.category.nameCategory}}</td>
         <td>{{contract.status.name}}</td>
-        <td>
-         <span  *ngFor="let img of imgs">
-           <img style="width:20px;height: 40px;margin-left: 3px" *ngIf="img.product.id==contract.product.id" [src]="img.img">
-         </span>
-        </td>
+<!--        <td>-->
+<!--         <span  *ngFor="let img of imgs">-->
+<!--           <img style="width:20px;height: 40px;margin-left: 3px" *ngIf="img.product.id==contract.product.id" [src]="img.img">-->
+<!--         </span>-->
+<!--        </td>-->
         <td>{{contract.product.price|currency}}</td>
         <td class="actions">
           <a [routerLink]="['detail',contract.id]" type="button" class="icon">

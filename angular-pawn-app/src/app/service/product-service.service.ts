@@ -13,7 +13,7 @@ export class ProductServiceService {
   constructor(private httpClient : HttpClient) { }
 
   // @ts-ignore
-  getContractNotPay(nameCustomer: string, categoryId: string, page: number) : Observable<Contract[]>{
+  getContractNotPay(nameCustomer: string, categoryId: string, page: number) : Observable<any>{
     // @ts-ignore
     return this.httpClient.get(this.API_KEY_PRODUCT+"?namecustomer="+nameCustomer+"&categoryid="+categoryId+"&page="+page)
   }
@@ -22,7 +22,7 @@ export class ProductServiceService {
     return this.httpClient.get("http://localhost:8080/api/products/"+id)
   }
    // @ts-ignore
-  getTotalPage(nameCustomer: string, categoryId: string) : Observable<Number>{
+  getTotalPage(nameCustomer: string, categoryId: string) : Observable<number>{
    // @ts-ignore
     return this.httpClient.get(this.API_KEY_TOTALPAGE+"?namecustomer="+nameCustomer+"&categoryid="+categoryId)
   }

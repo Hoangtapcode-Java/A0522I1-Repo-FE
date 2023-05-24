@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ProductServiceService} from "../../../service/product-service.service";
 import { Contract } from 'src/app/models/contract/Contract';
+import {ImageServiceService} from "../../../service/image-service.service";
+import {Image} from "../../../models/image/Image";
 
 
 
@@ -13,8 +15,9 @@ import { Contract } from 'src/app/models/contract/Contract';
 export class DetailComponent implements OnInit {
   contract : Contract ;
   contract_id : String;
+  imgs : Image[]
 
-  constructor(private active : ActivatedRoute,private serviceProduct : ProductServiceService) {
+  constructor(private active : ActivatedRoute,private serviceProduct : ProductServiceService,private imgService : ImageServiceService) {
 
   }
 
@@ -30,9 +33,15 @@ export class DetailComponent implements OnInit {
       });
     });
   }
+  getAllImg() {
+    this.imgService.getAllImg().subscribe(next => {
+      this.imgs = next
+    })
+  }
 
   ngOnInit(): void {
-    this.getContractById()
+    this.getContractById();
+    this.getAllImg();
   }
 
 }

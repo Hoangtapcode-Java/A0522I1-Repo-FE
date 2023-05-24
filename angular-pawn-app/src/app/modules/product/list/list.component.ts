@@ -1,12 +1,8 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {ProductServiceService} from "../../../service/product-service.service";
-
 import {ImageServiceService} from "../../../service/image-service.service";
 import {CategoryServiceService} from "../../../service/category-service.service";
-import {FormControl, FormGroup} from "@angular/forms";
-import {Contract} from "../../../models/contract/Contract";
 import {Category} from "../../../models/category/Category";
-import {Image} from "../../../models/image/Image";
 
 
 @Component({
@@ -15,45 +11,33 @@ import {Image} from "../../../models/image/Image";
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  contracts: Contract[] = [];
+  contracts: any
   categorys: Category[] = []
   page: number = 0;
-  imgs: Image[] = [];
   totalPages: number[] = [];
-  totalPage: number;
-  nameCustomer : string = "";
-  categoryId : string = "";
+  totalPage: number = 0;
+  nameCustomer: string = "";
+  categoryId: string = "";
   isSearchFormActive: boolean = false;
-  constructor(private productService: ProductServiceService, private imgService: ImageServiceService, private categoryService: CategoryServiceService) {
 
+  constructor(private productService: ProductServiceService, private imgService: ImageServiceService, private categoryService: CategoryServiceService) {
   }
 
   getAllProduct() {
     this.productService.getContractNotPay("", "", 0).subscribe(next => {
-      this.contracts = next;
+      this.contracts = next.content;
       console.log(this.contracts)
       console.log(this.totalPages)
     })
   }
 
 
-  getAllImg() {
-    this.imgService.getAllImg().subscribe(next => {
-      this.imgs = next
-    })
-  }
-
-
-
   ngOnInit(): void {
-    this.getAllImg()
     this.getAllCategory()
     this.getAllProduct()
     this.getTotalPage();
-
   }
 
- 
 
   getAllCategory() {
     this.categoryService.getAllCategory().subscribe(next => {
@@ -61,13 +45,24 @@ export class ListComponent implements OnInit {
     })
   }
 
-  search(nameCustomer :string,categoryId : string) {
+  search(nameCustomer: string, categoryId: string) {
     this.nameCustomer = nameCustomer;
     this.categoryId = categoryId
-    console.log(nameCustomer,categoryId)
+    console.log(nameCustomer, categoryId)
+    this.page = 0
     // @ts-ignore
-    this.productService.getContractNotPay(this.nameCustomer, this.categoryId, 0).subscribe(next => {
-      this.contracts = next;
+    this.productService.getContractNotPay(this.nameCustomer, this.categoryId, this.page).subscribe(next => {
+      console.log(next)
+      this.contracts = next.content;
+      this.totalPage = next.totalPages;
+      this.totalPages = []
+      console.log(this.totalPage)
+      for (let j = 0; j < this.totalPage; j++) {
+        this.totalPages.push(j)
+      }
+      console.log(this.totalPages)
+      console.log(this.contracts)
+
     })
   }
 
@@ -76,14 +71,16 @@ export class ListComponent implements OnInit {
     this.page++
     // @ts-ignore
     this.productService.getContractNotPay(this.nameCustomer, this.categoryId, this.page).subscribe(next => {
-      this.contracts = next;
+      this.contracts = next.content;
+      console.log(this.page)
     })
   }
 
   previousPage() {
     this.page--
+
     this.productService.getContractNotPay(this.nameCustomer, this.categoryId, this.page).subscribe(next => {
-      this.contracts = next;
+      this.contracts = next.content;
     })
 
   }
@@ -92,12 +89,13 @@ export class ListComponent implements OnInit {
   accessPage(page: number) {
     this.page = page
     this.productService.getContractNotPay(this.nameCustomer, this.categoryId, page).subscribe(next => {
-      this.contracts = next;
+      this.contracts = next.content;
     })
 
   }
+
   getTotalPage() {
-    this.productService.getTotalPage("","").subscribe(next => {
+    this.productService.getTotalPage("", "").subscribe(next => {
       // @ts-ignore
       this.totalPage = next
       for (let j = 0; j < this.totalPage; j++) {
@@ -112,6 +110,7 @@ export class ListComponent implements OnInit {
     event.stopPropagation();
     this.isSearchFormActive = !this.isSearchFormActive;
   };
+
   @HostListener("document:click", ["$event"])
   onDocumentClick(event: MouseEvent): void {
     const formSearchElement = document.querySelector(".form-search");
