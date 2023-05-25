@@ -14,10 +14,13 @@ import {RoleModule} from "./modules/role/role.module";
 import {StatusModule} from "./modules/status/status.module";
 import {UserModule} from "./modules/user/user.module";
 import {UserHasRoleModule} from "./modules/user-has-role/user-has-role.module";
-
+import { HttpClientModule } from '@angular/common/http';
+import {NgxPaginationModule} from "ngx-pagination";
+import {FormsModule} from '@angular/forms';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,10 @@ import {UserHasRoleModule} from "./modules/user-has-role/user-has-role.module";
     ProductModule,
     RoleModule,
     StatusModule,
-    UserModule,UserHasRoleModule
+    UserModule,UserHasRoleModule,
+    HttpClientModule,
+    NgxPaginationModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,9 +6,10 @@ export interface Customer {
   email?:string,
   address?:string,
   phone?:string,
-  idCard?:string,
+  identityCard?:string,
   avatar?:string,
   status?:string,
   note?:string,
-  isFlag?:boolean
+  Flag?:boolean,
+  customerCode?:string,
 }

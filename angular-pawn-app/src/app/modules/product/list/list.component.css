@@ -1,0 +1,374 @@
+/* Style cho các group của form */
+.form-group {
+  margin-bottom: 20px;
+}
+:root{
+  --nc-primary: #EE4D2D;
+  --nc-primary-bg: #FEF6F5;
+  --nc-primary-gradient: linear-gradient(#EE4D2D,#FF7337);
+}
+
+/* Style cho bảng responsive */
+.responstable {
+  margin: 1em 0;
+  width: 100%;
+  overflow: hidden;
+  background: #FFF;
+  color: #024457;
+  border-radius: 10px;
+  border: 1px solid #EE4D2D;
+}
+
+.responstable tr {
+  border: 1px solid #D9E4E6;
+}
+
+.responstable tr:nth-child(odd) {
+  background-color: #EAF3F3;
+}
+
+.responstable th {
+
+  border: 1px solid #FFF;
+  background-color: #EE4D2D;
+  color: #FFF;
+  padding: 1em;
+}
+
+.responstable th:first-child {
+  display: table-cell;
+  text-align: center;
+}
+
+.responstable th:nth-child(2) {
+  display: table-cell;
+}
+
+.responstable th:nth-child(2) span {
+  /*display: none;*/
+}
+
+.responstable th:nth-child(2):after {
+  content: attr(data-th);
+}
+
+/* Media query cho màn hình nhỏ hơn 480px */
+@media (max-width: 480px) {
+  .responstable th:nth-child(2) span {
+    display: block;
+  }
+
+  .responstable th:nth-child(2):after {
+    /*display: none;*/
+  }
+
+  .responstable td {
+    display: block;
+    word-wrap: break-word;
+    max-width: 7em;
+  }
+
+  .responstable td:first-child {
+    display: table-cell;
+    text-align: center;
+    border-right: 1px solid #D9E4E6;
+  }
+}
+@media only screen and (min-width: 375px) and (max-width: 667px) {
+  /* CSS code cho các đối tượng trong phạm vi này */
+}
+
+/* Media query cho màn hình lớn hơn 480px */
+@media (min-width: 480px) {
+  .responstable td {
+    border: 1px solid #D9E4E6;
+  }
+
+  table .responstable th,
+  table .responstable td {
+    text-align: left;
+    margin: .5em 1em;
+    /*display: table-cell;*/
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 1em;
+  }
+}
+
+
+
+/* Style cho body */
+body {
+  padding: 0 2em;
+  font-family: Arial, sans-serif;
+  color: black;
+  background: #f2f2f2;
+}
+
+/* Style cho tiêu đề */
+h1 {
+  font-family: Verdana;
+  font-weight: normal;
+  color: black;
+}
+
+h1 span {
+  color: black;
+}
+
+/* Style cho container */
+.container {
+  color: black;
+}
+
+/* Style cho khoảng cách */
+.space {
+  margin-top: 120px;
+}
+
+/* Style cho phân trang */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination a {
+  color: #333;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
+.pagination a.prev,
+.pagination a.next ,
+
+
+
+.memu-search {
+  position: relative;
+}
+
+.memu-search .searchBox {
+  height: 46px;
+  width: 550px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 0 6px;
+  white-space: nowrap;
+  background: #edf2fc;
+  border: 1px solid transparent;
+  overflow: hidden;
+  --webkit-user-select: none;
+}
+
+.searchBox input {
+  width: 100%;
+  height: 100%;
+  margin-right: 80px;
+  font-size: 16px;
+  border: none;
+  background: transparent;
+  color: var(--nc-text-primary);
+}
+
+.searchBox input:focus,
+.searchBox input:focus-within {
+  border: none;
+  outline: none;
+}
+
+.searchBox i {
+  font-size: 22px;
+  color: var(--text-color-light);
+  padding: 0 12px;
+}
+
+.searchBox .button-search {
+  padding: 10px 10px;
+  cursor: pointer;
+  outline: none;
+  line-height: 0;
+  border: none;
+  border-radius: 50%;
+  background: none;
+}
+
+/*.searchBox .button-search:focus ~ .form-search,*/
+/*.searchBox .button-search:active ~ .form-search,*/
+/*.searchBox .button-search:focus-within ~ .form-search {*/
+/*  display: block;*/
+/*  cursor: pointer;*/
+/*  pointer-events: auto;*/
+/*} */
+
+.searchBox .button-search:hover {
+  background: var(--nc-primary-bg);
+  opacity: 0.5;
+}
+
+.form-search {
+  display: none;
+  width: 50%;
+  position: absolute;
+  top: 52px;
+  left: 10px;
+  padding: 0;
+  margin-bottom: 12px;
+  color: #000;
+  border-radius: 8px;
+  border: solid 1px transparent;
+  box-shadow: var(
+    --box-shadow,
+    0 1px 3px 0 rgba(60, 64, 67, 0.3),
+    0 4px 8px 3px rgba(60, 64, 67, 0.15)
+  );
+  background-color: #fff;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  transition: opacity 0.5s linear;
+  z-index: 99;
+}
+
+.form-search.active {
+  display: block;
+}
+
+.form-search form {
+  padding: 15px;
+}
+
+.form-search .row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-search label {
+  padding-top: 7px;
+}
+
+.form-search .form-submit {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.form-submit .btn-search {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #EE4D2D;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.form-submit .btn-reset {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  color: #EE4D2D;
+  white-space: nowrap;
+  background: transparent;
+  margin-right: 10px;
+}
+
+.form-submit .btn-search:hover {
+  border: none;
+  color: #fff;
+  opacity: 0.85;
+}
+
+.form-search .check-form {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin: 0 10px;
+  font-size: 14px;
+}
+
+.form-search input {
+  padding: 8px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form-search .form-select {
+  width: 250px;
+  padding-right: 50px; /* khoảng cách cho dấu mũi tên */
+  border-radius: 5px;
+  padding: 8px;
+  box-shadow: none;
+}
+
+select.form-select option {
+  width: 100%; /* thiết lập chiều rộng cho các tùy chọn */
+  box-sizing: border-box; /* đảm bảo chiều rộng bao gồm cả padding và border */
+  padding: 0.5rem; /* thêm padding cho các tùy chọn */
+}
+
+/* Thay đổi màu nền của các option */
+.select-form .form-select option {
+  background-color: white;
+}
+
+/* Thay đổi border của select option */
+.select-form .form-select:focus {
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: none;
+}
+
+.form-search .date-text {
+  white-space: nowrap;
+}
+
+.form-search .form-group input[type="date"] {
+  width: 250px;
+  border-radius: 5px;
+}
+
+.form-search .form-group input[type="date"]:focus {
+  border-color: #66afe9;
+  outline: 0;
+  box-shadow: none;
+}
+
+
+/* thiết lập style cho class active */
+.pagination a.active {
+  background: var(--nc-primary-gradient);
+  color: #fff;
+}
+/* thêm màu nền khi người dùng hover vào class không active */
+.pagination a:hover:not(.active) {
+  background-color: var(--nc-primary-bg);
+  opacity: .9;
+  color: #000 !important;
+}
+
+
+.item-seleted{
+  height: 24px;
+  display: block;
+}
+
+/*region responsive*/
+@media (max-width: 576px) {
+  body{
+    padding: 0;
+    font-size: 14px;
+
+  }
+  .btn{
+    font-size: 14px;
+  }
+  .space{
+    margin-top: 15px;
+  }
+}
+/*end*/
+

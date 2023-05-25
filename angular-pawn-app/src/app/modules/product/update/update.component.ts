@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FormGroup} from "@angular/forms";
+import {Contract} from "../../../models/Contract";
 
 @Component({
   selector: 'app-update',

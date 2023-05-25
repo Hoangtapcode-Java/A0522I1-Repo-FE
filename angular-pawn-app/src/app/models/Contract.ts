@@ -1,11 +1,15 @@
+import {Customer} from "./Customer";
+import {Product} from "./Product";
+import {Category} from "./Category";
+
 export interface Contract {
   id?:number,
   beginDate?:string,
   endDate?:string,
-  customerId?:number,
-  statusId?:number,
+  customer?:Customer,
+  category?:Category,
   interest?:number,
   employeeId?:number,
-  productID?:number,
+  product?:Product,
   isFlag?:boolean
 }
