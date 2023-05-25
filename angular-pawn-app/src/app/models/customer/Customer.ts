@@ -1,14 +1,11 @@
+import { Status } from "../status/Status";
+
 export interface Customer {
-  id:number,
-  name?:string,
-  dateOfBirth?:string,
-  gender?:number,
-  email?:string,
   address?:string,
+  id?:number,
   phone?:string,
-  idCard?:string,
-  avatar?:string,
-  status?:string,
-  note?:string,
-  isFlag?:boolean
+  gender?:number,
+  customer_code?: String
+  customer_name?:string,
+  id_card?:string,
 }

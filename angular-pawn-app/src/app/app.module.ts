@@ -17,14 +17,16 @@ import {UserHasRoleModule} from "./modules/user-has-role/user-has-role.module";
 import {FinaceModule} from "./modules/finace/finace.module";
 import {HomePageModule} from "./modules/home-page/home-page.module";
 import {ArticlePageModule} from "./modules/article-page/article-page.module";
-import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
-import {AngularFireStorageModule} from "@angular/fire/storage";
-import {AngularFireDatabaseModule} from "@angular/fire/database";
+import {AngularFireModule } from '@angular/fire';
+import {HomeComponent} from './modules/home/home.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {AuthInterceptor} from './service/auth/auth.interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -44,10 +46,12 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
     HomePageModule,
     ArticlePageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule,
-    AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

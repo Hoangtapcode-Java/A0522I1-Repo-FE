@@ -1,0 +1,206 @@
+/*
+
+RESPONSTABLE 2.0 by jordyvanraaij
+  Designed mobile first!
+
+If you like this solution, you might also want to check out the 1.0 version:
+  https://gist.github.com/jordyvanraaij/9069194
+
+*/
+.responstable {
+    margin: 1em 0;
+    width: 100%;
+    overflow: hidden;
+    background: #FFF;
+    color: #024457;
+    border-radius: 10px;
+    border: 1px solid #167F92;
+  }
+  .responstable tr {
+    border: 1px solid #D9E4E6;
+  }
+  .responstable tr:nth-child(odd) {
+    background-color: #EAF3F3;
+  }
+  .responstable th {
+    display: none;
+    border: 1px solid #FFF;
+    background-color: #167F92;
+    color: #FFF;
+    padding: 1em;
+  }
+  .responstable th:first-child {
+    display: table-cell;
+    text-align: center;
+  }
+  .responstable th:nth-child(2) {
+    display: table-cell;
+  }
+  .responstable th:nth-child(2) span {
+    display: none;
+  }
+  .responstable th:nth-child(2):after {
+    content: attr(data-th);
+  }
+  @media (min-width: 480px) {
+    .responstable th:nth-child(2) span {
+      display: block;
+    }
+    .responstable th:nth-child(2):after {
+      display: none;
+    }
+  }
+  .responstable td {
+    display: block;
+    word-wrap: break-word;
+    max-width: 7em;
+  }
+  .responstable td:first-child {
+    display: table-cell;
+    text-align: center;
+    border-right: 1px solid #D9E4E6;
+  }
+  @media (min-width: 480px) {
+    .responstable td {
+      border: 1px solid #D9E4E6;
+    }
+  }
+  .responstable th, .responstable td {
+    text-align: left;
+    margin: .5em 1em;
+  }
+  @media (min-width: 480px) {
+    .responstable th, .responstable td {
+      display: table-cell;
+      padding: 1em;
+    }
+  }
+  
+  body {
+    padding: 0 2em;
+    font-family: Arial, sans-serif;
+    color: #024457;
+    background: #f2f2f2;
+  }
+  
+  h1 {
+    font-family: Verdana;
+    font-weight: normal;
+    color: #024457;
+  }
+  h1 span {
+    color: #167F92;
+  }
+  
+  /* button css */
+  .custom-btn {
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+     7px 7px 20px 0px rgba(0,0,0,.1),
+     4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+  }
+  
+  .banner-section{
+    margin: 0 0 10px;
+    padding: 80px 0;
+    min-height: 680px;
+        background-color: #98E0CF;
+  }
+  .banner-text h2{
+    font-size: 30px;
+    color: #CD0C0C;
+  }
+  .banner-text h1{
+    font-size: 45px;
+    font-weight: 700;
+  }
+  .banner-text p{
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--red--97);
+  }
+  .banner-section .circular-img-circle{
+    background-color: var(--red-light);
+  }
+  .banner-text a{
+    font-weight: 500;
+  }
+  
+  /*---------------------------  pagination --------------------------- */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0;
+  }
+  
+  .pagination .text {
+    font-size: 16px;
+  }
+  
+  .pagination .text1 {
+    font-size: 26px;
+  }
+  .pagination a {
+    color: black;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  /* thiết lập style cho class active */
+  .pagination a.active {
+    background: var(--nc-primary-gradient);
+    color: #fff;
+  }
+  /* thêm màu nền khi người dùng hover vào class không active */
+  .pagination a:hover:not(.active) {
+    background-color: var(--nc-primary-bg);
+    opacity: 0.8s;
+  }
+  
+  .color:focus,
+  .color:active {
+    color: #fff;
+    outline: none !important;
+    border: none;
+    background: var(--nc-primary-gradient);
+    box-shadow: none;
+  }
+  
+  .form-search.active {
+    display: block;
+  }
+  
+  .square-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background-image: linear-gradient(#EE4D2D,#FF7337);
+    border: none;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .plus-sign {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  

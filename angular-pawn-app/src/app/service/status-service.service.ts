@@ -1,9 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Status } from '../models/status/Status';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StatusServiceService {
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) {}
+
+  getAll(): Observable<Status[]>{
+    return this.httpClient.get<Status[]>("http://localhost:8080/api/status")
+  }
+
+  findById(id: number): Observable<Status>{
+    return this.httpClient.get<Status>("http://localhost:8080/api/status/" + id);
+  }
 }
