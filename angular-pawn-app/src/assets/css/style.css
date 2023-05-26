@@ -1940,7 +1940,7 @@ section {
   letter-spacing: 0.1rem;
   /*font-size: 14px;*/
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   border-bottom: 2px solid #eb5d1e;
 }
 
@@ -2668,7 +2668,8 @@ select.form-select option {
 /* thêm màu nền khi người dùng hover vào class không active */
 .pagination a:hover:not(.active) {
   background-color: var(--nc-primary-bg);
-  opacity: 0.8s;
+  opacity: .8;
+  cursor: pointer;
 }
 
 @media (max-width: 980px) {

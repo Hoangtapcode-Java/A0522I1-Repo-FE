@@ -12,10 +12,11 @@ export class ListComponent implements OnInit {
   article: Article = {};
   articles: Article[] = [];
 
-  nameF: string = '';
-  totalPagination: number;
-  indexPagination: number = 1;
   p : number =1;
+
+  totalPages: number[] = [];
+  totalPage: number = 0;
+  page: number = 0;
 
   constructor(private route: Router,
               private activatedRoute: ActivatedRoute,
@@ -25,61 +26,51 @@ export class ListComponent implements OnInit {
     this.getListArticle(0);
   }
 
-  getListArticle(pageable) {
+  // getListArticle(pageable) {
+  //   this.articleService.getAll(pageable).subscribe((data:any) => {
+  //     this.articles = data.content;
+  //     console.log(data);
+  //     this.totalPagination = data.totalPages;
+  //     this.indexPagination=1;
+  //   }, error => console.log(error))
+  // }
+  featureArticles: any;
+
+  getListArticle(pageable){
     this.articleService.getAll(pageable).subscribe((data:any) => {
       this.articles = data.content;
       console.log(data);
-      this.totalPagination = data.totalPages;
-      this.indexPagination=1;
+      this.totalPage = data.totalPages;
+      this.totalPages=[]
+      console.log(this.totalPage)
+      for (let j=0; j<this.totalPage;j++){
+        this.totalPages.push(j)
+      }
+      console.log(this.totalPages)
     }, error => console.log(error))
   }
 
 
-  firtPage() {
-    this.indexPagination = 1;
-    this.articleService.getAll((this.indexPagination) - 1).subscribe((next:any) => {
-      this.articles = next.content;
-    })
-  }
-
   nextPage() {
-    this.indexPagination = this.indexPagination + 1;
-    if (this.indexPagination > this.totalPagination) {
-      this.indexPagination = this.indexPagination - 1;
-    }
-    this.articleService.getAll((this.indexPagination) - 1).subscribe((next:any) => {
+    this.page++
+    this.articleService.getAll(this.page).subscribe(next => {
       this.articles = next.content;
+      console.log(this.page)
     })
   }
 
   prviousPage() {
-    this.indexPagination = this.indexPagination - 1;
-    if (this.indexPagination == 0) {
-      this.indexPagination = 1;
-      this.ngOnInit();
-    } else {
-      this.articleService.getAll(this.indexPagination - 1).subscribe((next:any) => {
-        this.articles = next.content;
-      })
-    }
-  }
-
-  lastPage() {
-    this.indexPagination = this.totalPagination;
-    this.articleService.getAll(this.indexPagination - 1).subscribe((next:any) => {
+    this.page--
+    this.articleService.getAll(this.page).subscribe(next => {
       this.articles = next.content;
+      console.log(this.page)
     })
   }
 
-  findPaginnation(target: any) {
-    if (parseInt(target.value) > this.totalPagination) {
-      target.value = this.indexPagination;
-    } else {
-      this.articleService.getAll(target.value - 1).subscribe((next: any) => {
-        this.articles = next.content;
-      })
-      this.indexPagination = parseInt(target.value);
-    }
+  accessPage(page: number) {
+    this.page = page
+    this.articleService.getAll(page).subscribe(next => {
+      this.articles = next.content;
+    })
   }
-
 }
