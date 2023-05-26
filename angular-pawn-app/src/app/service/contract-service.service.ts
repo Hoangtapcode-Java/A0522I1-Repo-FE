@@ -13,7 +13,20 @@ export class ContractServiceService {
   }
 
   getAll(page: number, nameCustomer: string, nameProduct: string, dateBegin: string, contractCode: string): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl + '?page=' + page + '&nameCustomer=' + nameCustomer + '&nameProduct=' + nameProduct
-      + '&dateBegin=' + dateBegin + '&contractCode=' + contractCode);
+    return this.httpClient.get<any>(this.baseUrl + '?page=' + page + '&contractCode=' +
+      contractCode + '&nameCustomer=' + nameCustomer + '&nameProduct=' + nameProduct + '&beginDate=' + dateBegin);
+  }
+
+  getById(idContract: number): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + '/' + idContract);
+  }
+
+  updateById(contract, idContract: number): Observable<any> {
+    return this.httpClient.put<any>(this.baseUrl + '/' + idContract, contract);
+  }
+
+  getSearch(nameCustomer: string, nameProduct: string, dateBegin: string, contractCode: string): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + '?contractCode='
+      + contractCode + '&nameCustomer=' + nameCustomer + '&nameProduct=' + nameProduct + '&beginDate=' + dateBegin);
   }
 }

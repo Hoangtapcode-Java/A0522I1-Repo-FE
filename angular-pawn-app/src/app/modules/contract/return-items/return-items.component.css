@@ -50,7 +50,6 @@ label {
   border-radius: 20px;
   /*width: 50%;*/
 }
-
 * {
   font-family: "Roboto Light";
   font-size: 15px;
@@ -60,36 +59,44 @@ label {
   margin: 20px;
 }
 
-
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 15px 0;
 }
-
 .pagination .text {
   font-size: 16px;
 }
-
 .pagination .text1 {
-  font-size: 26px;
+  font-size: 16px;
 }
 .pagination a {
   color: black;
   padding: 8px 16px;
   text-decoration: none;
-  transition: background-color .3s;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+.pagination a:hover {
+  background: #EE4D2D !important;
+  color: #fff;
+  opacity: .8;
+}
+.pagination a.disabled {
+  pointer-events: none;
+  color: var(--nc-primary), white, 50;
 }
 /* thiết lập style cho class active */
 .pagination a.active {
-  background-image: var(--nc-primary-gradient);
+  background: var(--nc-primary-gradient);
   color: #fff;
 }
 /* thêm màu nền khi người dùng hover vào class không active */
 .pagination a:hover:not(.active) {
-  background-color: #FEF6F5;
-  opacity: .9;
-  color: #000 !important;
+  background-color: var(--nc-primary-bg);
+  opacity: 0.8;
 }
 
 /*a:hover{*/
@@ -361,3 +368,45 @@ tbody td {
 .actions a:hover{
   color: white;
 }
+
+.btn-close:focus {
+  box-shadow: none;
+}
+
+@media (max-width: 1000px) {
+  .row .col-sm-6 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .my-container {
+    margin-left: 18%;
+    margin-right: 18%;
+  }
+}
+
+@media (max-width: 750px) {
+  .my-container {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media (max-width: 600px) {
+  .my-container {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
+
+@media (max-width: 450px) {
+  .my-container {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+}
+
+/*Alert*/
+
+

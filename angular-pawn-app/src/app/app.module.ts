@@ -49,7 +49,7 @@ import {FormsModule} from '@angular/forms';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

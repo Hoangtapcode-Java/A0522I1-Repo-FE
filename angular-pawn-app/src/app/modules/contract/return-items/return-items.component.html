@@ -2,40 +2,46 @@
   <div class="form">
     <h2 class="mb-3" style="text-align: center">Trả Đồ Cầm</h2>
     <hr>
-    <form class="form-group">
+    <form class="form-group" id="myForm" [formGroup]="reactiveForm" *ngIf="reactiveForm" (ngSubmit)="update()">
       <div class="mb-3">
         <label for="inputHD" class="form-label">Hợp đồng:</label>
         <div class="d-flex align-items-center">
           <input type="button" value="Chọn hợp đồng" class="my-btn-3" id="inputHD" data-bs-toggle="modal"
                  data-bs-target="#exampleModal">
+<!--          <span style="color: red; margin-left: 20px" class="error" *ngIf="showErrors && reactiveForm.controls.contractCode.hasError('required') && reactiveForm.controls.beginDate.hasError('required')-->
+<!--                     && reactiveForm.controls.endDate.hasError('required') && reactiveForm.controls.customer.hasError('required') && reactiveForm.controls.interest.hasError('required')-->
+<!--                     && reactiveForm.controls.product.hasError('required')">Vui lòng chọn hợp đồng-->
+<!--          </span>-->
         </div>
       </div>
       <div class="row mb-3">
         <div class="col-sm-6">
           <label for="inputId" class="form-label">Mã hợp đồng:</label>
-          <input type="text" class="form-control" id="inputId" placeholder="HD-001" disabled>
+          <input type="text" class="form-control" id="inputId" formControlName="contractCode" [attr.disabled]="true">
         </div>
         <div class="col-sm-6">
           <label for="inputName" class="form-label">Tên khách hàng:</label>
-          <input type="text" class="form-control" id="inputName" placeholder="Nguyễn Văn A" disabled>
+          <input type="text" class="form-control" id="inputName" formControlName="customer" [attr.disabled]="true">
         </div>
       </div>
       <div class="mb-3">
         <label for="inputItems" class="form-label">Đồ cầm:</label>
-        <input type="text" class="form-control" id="inputItems" placeholder="Honda AirBlack" disabled>
+        <input type="text" class="form-control" id="inputItems" formControlName="product" [attr.disabled]="true">
       </div>
       <div class="row mb-3">
         <div class="col-sm-6">
           <label for="inputMoney" class="form-label">Tiền cho vay:</label>
           <div class="input-group">
-            <input type="text" class="form-control" id="inputMoney" placeholder="5,000,000" disabled>
+            <input type="text" class="form-control" id="inputMoney" [value]="price | currency : 'VND'"
+                   [attr.disabled]="true">
             <span class="input-group-text">VND</span>
           </div>
         </div>
         <div class="col-sm-6">
           <label for="inputInterest" class="form-label">Tiền lãi:</label>
           <div class="input-group">
-            <input type="text" class="form-control" id="inputInterest" placeholder="5" disabled>
+            <input type="text" class="form-control" id="inputInterest" formControlName="interest"
+                   [attr.disabled]="true">
             <span class="input-group-text">%</span>
           </div>
         </div>
@@ -43,11 +49,12 @@
       <div class="row mb-3">
         <div class="col-sm-6">
           <label for="inputDateBegin" class="form-label">Ngày làm hợp đồng:</label>
-          <input type="text" class="form-control" id="inputDateBegin" placeholder="25/02/2023" disabled>
+          <input type="text" class="form-control" id="inputDateBegin" formControlName="beginDate"
+                 [attr.disabled]="true">
         </div>
         <div class="col-sm-6">
           <label for="inputDateEnd" class="form-label">Ngày kết thúc:</label>
-          <input type="text" class="form-control" id="inputDateEnd" placeholder="25/04/2023" disabled>
+          <input type="text" class="form-control" id="inputDateEnd" formControlName="endDate" [attr.disabled]="true">
         </div>
       </div>
       <div class="row mb-3">
@@ -58,13 +65,13 @@
         <div class="col-sm-6">
           <label for="inputPay" class="form-label">Số tiền thanh toán:</label>
           <div class="input-group">
-            <input type="text" class="form-control" id="inputPay" disabled placeholder="20,000,000">
+            <input type="text" class="form-control" id="inputPay" disabled [value]="payment | currency :'VND'">
             <span class="input-group-text">VND</span>
           </div>
         </div>
       </div>
-      <div class="col-sm-6">
-        <button class="my-btn" type="reset">Hủy</button>
+      <div class="col-sm-6 submit">
+        <button class="my-btn" type="reset" (click)="getNewForm()">Hủy</button>
         <button class="my-btn-2" type="submit">Thanh toán</button>
       </div>
     </form>
@@ -85,7 +92,9 @@
             <div class="searchBox">
               <form>
                 <i class="uil uil-search navToggle"></i>
-                <input type="text" placeholder="Searching...VD:HD-001" (keydown.enter)="getSearch(nameProduct.value,nameCustomer.value,dateBegin.value,contractCode.value)" #contractCode/>
+                <input type="text" placeholder="Searching...VD:HD-001"
+                       (keydown.enter)="getSearch(nameProduct.value,nameCustomer.value,dateBegin.value,contractCode.value)"
+                       #contractCode/>
               </form>
               <button class="button-search" (click)="toggleFormSearch($event)">
                 <svg width="24" height="24" focusable="false">
@@ -95,8 +104,8 @@
                 </svg>
               </button>
             </div>
-            <div class="form-search" [ngClass]="{active: isSearchFormActive}" >
-<!--              <form (ngSubmit)="getSearch(nameProduct.value,nameCustomer.value,dateBegin.value)">-->
+            <div class="form-search" [ngClass]="{active: isSearchFormActive}">
+              <!--              <form (ngSubmit)="getSearch(nameProduct.value,nameCustomer.value,dateBegin.value,contractCode.value)">-->
               <form>
                 <div class="row">
                   <label for="nameCustomer" class="col-md-3 col-form-label">Tên khách hàng</label>
@@ -121,59 +130,58 @@
 
                 <div class="form-submit">
                   <button type="reset" class="btn-reset">Đặt lại</button>
-                  <button type="submit" class="btn-search" (click)="getSearch(nameProduct.value,nameCustomer.value,dateBegin.value,contractCode.value)">Tìm kiếm</button>
+                  <button type="submit" class="btn-search"
+                          (click)="getSearch(nameProduct.value,nameCustomer.value,dateBegin.value,contractCode.value)">
+                    Tìm kiếm
+                  </button>
+                  <!--                  <button type="submit" class="btn-search">Tìm kiếm</button>-->
                 </div>
               </form>
             </div>
           </div>
         </div>
 
-          <div class="table-responsive">
-            <table class="table table-striped table-hover">
-              <colgroup>
-                <col style="width: 10%"/>
-                <col style="width: 15%"/>
-                <col style="width: 15%"/>
-                <col style="width: 10%"/>
-                <col style="width: 15%"/>
-                <col style="width: 10%"/>
-                <col style="width: 15%"/>
-              </colgroup>
-              <thead>
-              <tr id="color-bg">
-                <th>STT</th>
-                <th>Mã hợp đồng</th>
-                <th>Tên khách hàng</th>
-                <th>Đồ cầm</th>
-                <th>Ngày làm hợp đồng</th>
-                <th>Ngày hết hợp đồng</th>
-                <th class="text-center">Chức năng</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr *ngFor="let c of contract">
-                <td>{{c.id}}</td>
-                <td>{{c.contractCode}}</td>
-                <td>{{c.customer.name}}</td>
-                <td>{{c.product.name}}</td>
-                <td>{{c.beginDate}}</td>
-                <td>{{c.endDate}}</td>
-                <td class="actions" style="text-align: center">
-                  <a class="my-btn-2">Chọn</a>
-                </td>
-              </tr>
-              </tbody>
-            </table>
+        <div class="table-responsive" *ngIf="contract">
+          <table class="table table-striped table-hover">
+            <colgroup>
+              <col style="width: 10%"/>
+              <col style="width: 15%"/>
+              <col style="width: 15%"/>
+              <col style="width: 10%"/>
+              <col style="width: 15%"/>
+              <col style="width: 10%"/>
+              <col style="width: 15%"/>
+            </colgroup>
+            <thead>
+            <tr id="color-bg">
+              <th>STT</th>
+              <th>Mã hợp đồng</th>
+              <th>Tên khách hàng</th>
+              <th>Đồ cầm</th>
+              <th>Ngày làm hợp đồng</th>
+              <th>Ngày hết hợp đồng</th>
+              <th class="text-center">Chức năng</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let c of contract">
+              <td>{{c.id}}</td>
+              <td>{{c.contractCode}}</td>
+              <td>{{c.customer.name}}</td>
+              <td>{{c.product.name}}</td>
+              <td>{{c.beginDate | date : 'MMM d, y'}}</td>
+              <td>{{c.endDate | date : 'MMM d, y'}}</td>
+              <td class="actions" style="text-align: center">
+                <a class="my-btn-2" (click)="selectContract(c.id)" data-bs-dismiss="modal">Chọn</a>
+              </td>
+            </tr>
+            </tbody>
+          </table>
 
           <div class="pagination">
-            <a href="#" class="text1">«</a>
-            <a class="text">1</a>
-            <a class="active" href="#" class="text">2</a>
-            <a href="#" class="text">3</a>
-            <a href="#" class="text">4</a>
-            <a href="#" class="text">5</a>
-            <a href="#" class="text">6</a>
-            <a type="button" class="text1">»</a>
+            <a *ngIf="page > 0" (click)="previousPage()" class="text1">«</a>
+            <a class="text" (click)="accessPage(page)" *ngFor="let page of totalPages">{{page + 1}}</a>
+            <a *ngIf="page < totalPage - 1" (click)="nextPage()" class="text1">»</a>
           </div>
         </div>
       </div>
