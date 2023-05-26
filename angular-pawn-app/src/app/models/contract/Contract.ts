@@ -5,12 +5,13 @@ import {Product} from "../product/Product";
 
 export interface Contract {
   id?:number,
+  contractCode?: string,
   beginDate?:string,
   endDate?:string,
-  customerId?:Customer,
-  statusId?:Status,
+  customer?:Customer,
+  employee?:Employee,
+  status?:Status,
   interest?:number,
-  employeeId?:Employee,
-  productID?:Product,
+  product?:Product,
   isFlag?:boolean
 }
