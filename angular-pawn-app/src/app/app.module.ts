@@ -17,7 +17,14 @@ import {UserHasRoleModule} from "./modules/user-has-role/user-has-role.module";
 import {FinaceModule} from "./modules/finace/finace.module";
 import {HomePageModule} from "./modules/home-page/home-page.module";
 import {ArticlePageModule} from "./modules/article-page/article-page.module";
+<<<<<<< HEAD
 import {HttpClientModule} from "@angular/common/http";
+=======
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import {AngularFireStorageModule} from "@angular/fire/storage";
+import {AngularFireDatabaseModule} from "@angular/fire/database";
+>>>>>>> 5144351cda93f5e5af96c4709874ba6a7f42a0f2
 
 @NgModule({
   declarations: [
@@ -40,7 +47,13 @@ import {HttpClientModule} from "@angular/common/http";
     FinaceModule,
     HomePageModule,
     ArticlePageModule,
+<<<<<<< HEAD
     HttpClientModule
+=======
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
+>>>>>>> 5144351cda93f5e5af96c4709874ba6a7f42a0f2
   ],
   providers: [],
   bootstrap: [AppComponent]
