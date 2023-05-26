@@ -18,6 +18,10 @@ import {FinaceModule} from "./modules/finace/finace.module";
 import {HomePageModule} from "./modules/home-page/home-page.module";
 import {ArticlePageModule} from "./modules/article-page/article-page.module";
 import {HttpClientModule} from "@angular/common/http";
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import {AngularFireStorageModule} from "@angular/fire/storage";
+import {AngularFireDatabaseModule} from "@angular/fire/database";
 
 @NgModule({
   declarations: [
@@ -40,10 +44,13 @@ import {HttpClientModule} from "@angular/common/http";
     FinaceModule,
     HomePageModule,
     ArticlePageModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
+export class AppModule{
 }
