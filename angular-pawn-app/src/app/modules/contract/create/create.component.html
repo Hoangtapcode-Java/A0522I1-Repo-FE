@@ -24,9 +24,9 @@
                                 <button style="margin-bottom: 15px; color: #EE4D2D; background-color: #ffffff; border-color: #EE4D2D; stroke-width: 2px;"
                                     class="btn btn-warning">Thêm khách hàng</button>
                                 <div>
-                                    <input class="form-control me-2" style="width: 200px; float: left;" type="search"
+                                    <input class="form-control me-2" #input style="width: 200px; float: left;" type="search"
                                         placeholder="Nhập tên khách hàng" aria-label="Search">
-                                    <button class="btn btn-outline-success" type="submit">Tìm kiếm</button>
+                                    <button class="btn btn-outline-success" type="submit" (click)="goToPage(0, input.value)">Tìm kiếm</button>
                                 </div>
 
                                 <table class="responstable">
@@ -59,15 +59,9 @@
                                     </tr>
                                 </table>
                                 <div class="pagination">
-                                    <a href="#" class="text1">«</a>
-                                    <a href="#" class="text">1</a>
-                                    <a href="#" class="text">2</a>
-                                    <!-- <a class="active" href="#" class="text">2</a> -->
-                                    <a href="#" class="text">3</a>
-                                    <a href="#" class="text">4</a>
-                                    <a href="#" class="text">5</a>
-                                    <a href="#" class="text">6</a>
-                                    <a href="#" class="text1">»</a>
+                                    <a (click)="goToPage(currentPage-1, input.value)" class="text1">«</a>
+                                    <a *ngFor="let number of pageNumbers" (click)="goToPage(number-1, input.value)" class="text">{{number}}</a>
+                                    <a (click)="goToPage(currentPage+1, input.value)" class="text1">»</a>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -77,7 +71,12 @@
                 </div>
                 <button style="margin-left: 15px; color: #EE4D2D; background-color: #ffffff; border-color: #EE4D2D; stroke-width: 2px;" type="button" class="btn btn-warning" >Thêm khách hàng</button>
             </div>
-            <p style="color: #ffc107;">*Chưa có khách hàng nào được chọn</p>
+            <div *ngIf="flag == false">
+                <p style="color: #ffc107;">*Chưa có khách hàng nào được chọn</p>
+            </div>
+            <div *ngIf="flag == true">
+                <p style="color: #ffc107;">Ông/bà: [{{customer.customer_name}}], [{{customer.phone}}]</p> 
+            </div>
         </div>
 
         <div class="row">
@@ -135,7 +134,8 @@
         <div class="text-center ">
             <button
                 style="margin-right: 15px; padding: 7px 7px; min-width: 100px;  background-image: linear-gradient(#EE4D2D,#FF7337); border: #e26c1a; stroke-width: 2px;"
-                class="btn btn-primary" type="submit" (click)="uploadImg()">Thêm hợp đồng</button>
+                class="btn btn-primary" type="submit">Thêm hợp đồng</button>
+                <!-- class="btn btn-primary" type="submit" (click)="uploadImg()">Thêm hợp đồng</button> -->
             <button
                 style="color: #EE4D2D; padding: 7px 7px; min-width: 100px; background-color: #ffffff; border: #ffffff; stroke-width: 2px;"
                 class="btn btn-primary" type="reset">Đặt lại</button>

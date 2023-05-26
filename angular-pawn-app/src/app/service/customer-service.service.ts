@@ -10,15 +10,7 @@ export class CustomerServiceService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getAll(): Observable<Customer[]>{
-    return this.httpClient.get<Customer[]>("http://localhost:8080/api/customer");
-  }
-
-  findAllCustomersByNameWithPage(page: number, nameCustomer: string): Observable<Customer[]> {
-    const params = new HttpParams()
-      .set('page', page.toString())
-      .set('nameCustomer', nameCustomer);
-
+  getAll(page: number = 0, nameCustomer: string = ''): Observable<Customer[]>{
     return this.httpClient.get<Customer[]>("http://localhost:8080/api/customer?nameCustomer="+nameCustomer+"&page="+page);
   }
 
