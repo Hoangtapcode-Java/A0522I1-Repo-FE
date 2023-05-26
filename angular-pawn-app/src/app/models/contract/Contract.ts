@@ -6,7 +6,7 @@ export interface Contract {
   nameProduct?:string,
   category?:Category,
   status?:Status,
-  img?:string,
+  imgPath?:string,
   price?:number,
   interest?:number,
   beginDate?:string,

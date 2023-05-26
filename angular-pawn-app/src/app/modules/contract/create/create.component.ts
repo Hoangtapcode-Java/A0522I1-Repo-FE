@@ -48,7 +48,7 @@ export class CreateComponent implements OnInit {
     beginDate: new FormControl('', [Validators.required]),
     endDate: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
-    img: new FormControl('', [Validators.required]),
+    imgPath: new FormControl('', [Validators.required]),
     interest: new FormControl('', [Validators.required]),
     category: new FormControl('', [Validators.required]),
     status: new FormControl('', [Validators.required]),
@@ -61,19 +61,21 @@ export class CreateComponent implements OnInit {
   }
 
   async uploadImg(){
-    console.log(this.file)
+    // console.log(this.file)
     const uploadTask = await this.fireStorage.upload("/productImg"+Math.random()+this.file, this.file);
     const url = await uploadTask.ref.getDownloadURL();
-    this.contractForm.controls.img.setValue(url);
+    // console.log(url);
+    this.contractForm.controls.imgPath.setValue(url);
+    this.contractForm.controls.username.setValue("admin1");
+    console.log(this.contractForm.value)
   }
 
   selectCustomer(customer: Customer){
     this.contractForm.controls.customer.setValue(customer);
-    // console.log(this.contractForm.controls.customer.value)
+    console.log(this.contractForm.controls.customer.value)
   }
 
   submit() {
-    console.log(this.contractForm.value)
     if (this.contractForm.valid) {
       this.contractService.saveContract(this.contractForm.value).subscribe(next =>{
         alert("Product saved");
