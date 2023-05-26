@@ -7,7 +7,8 @@ import {UpdateComponent} from './update/update.component';
 import {DeleteComponent} from './delete/delete.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuardService} from '../../service/auth-guard.service';
-import {UserRole} from "../../models/UserRole";
+import {UserRole} from '../../models/UserRole';
+import {ForgotpasswordComponent} from "./forgotpassword/forgotpassword.component";
 
 
 const routes: Routes = [{
@@ -26,6 +27,9 @@ const routes: Routes = [{
     },
     {
       path: 'login', component: LoginComponent
+    },
+    {
+      path: 'forgot', component: ForgotpasswordComponent
     }
   ]
 

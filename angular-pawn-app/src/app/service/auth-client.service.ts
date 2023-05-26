@@ -23,16 +23,20 @@ export class AuthClientService {
   public login(user) {
     try {
       this.connectBEAuth(user.value).subscribe((data: any) => {
-        console.log(user.value);
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('logged', '1');
+        this.jwtClientService.setToken(data.token);
         console.log('token login: ' + data.token);
         this.router.navigateByUrl('/user');
+        localStorage.setItem('username', user.value.username);
+        console.log(data.createdTime);
+        localStorage.setItem('createdTime', data.createdTime);
         data.roles.forEach(role => {
           role.authority === 'ADMIN' ? this.roles.push(UserRole.Admin) : this.roles.push(UserRole.User);
         });
-        localStorage.setItem('roles', this.roles.join(','));
-      });
+        sessionStorage.setItem('roles', this.roles.join(','));
+      }, ((error) => {
+        console.log('login fail');
+        console.log(error);
+      }));
     } catch (e) {
       console.log('login fail');
     }
@@ -46,7 +50,9 @@ export class AuthClientService {
   public logout() {
     this.jwtClientService.removeToken();
     localStorage.removeItem('roles');
-    console.log('da xoa roles');
+    localStorage.removeItem('username');
+    localStorage.removeItem('createdTime');
+
   }
 
 
