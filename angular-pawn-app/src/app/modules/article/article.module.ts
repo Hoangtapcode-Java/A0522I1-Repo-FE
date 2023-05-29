@@ -8,6 +8,10 @@ import { UpdateComponent } from './update/update.component';
 import { ListComponent } from './list/list.component';
 import { DeleteComponent } from './delete/delete.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../../../environments/environment";
+import {AngularFireStorageModule} from "@angular/fire/storage";
+import {AngularFireDatabaseModule} from "@angular/fire/database";
 
 
 @NgModule({
@@ -19,7 +23,10 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     CommonModule,
     ArticleRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
   ]
 })
 export class ArticleModule { }
