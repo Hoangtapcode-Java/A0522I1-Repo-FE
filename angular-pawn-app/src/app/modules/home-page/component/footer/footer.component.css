@@ -1,0 +1,42 @@
+/*.fixed-phone-number {*/
+/*  position: fixed;*/
+/*  bottom: 20px;*/
+/*  left: 20px;*/
+/*  background-color: #fff;*/
+/*  padding: 10px;*/
+/*  border-radius: 5px;*/
+/*  box-shadow: 0 2px 4px rgba(0,0,0,0.3);*/
+/*}*/
+#fixed-phone-number {
+  position: fixed;
+  bottom: 10px;
+  left: 20px;
+  background-color: #e9ecef;
+  font-family: Arial, sans-serif;
+  font-size: 40px;
+  padding: 10px 15px 5px;
+  border-radius: 30%;
+  animation: phone-animation 1s infinite alternate;
+
+}
+#fixed-phone-number i{
+  coler: white;
+}
+
+/* Thiết lập giao diện số điện thoại cho màn hình nhỏ hơn */
+@media screen and (max-width: 480px) {
+  #fixed-phone-number {
+    font-size: 30px;
+    padding: 8px 12px 2px;
+    border-radius: 30%;
+  }
+}
+
+@keyframes phone-animation {
+  from {
+    transform: translateY(5px);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}

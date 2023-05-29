@@ -1,0 +1,99 @@
+<!-- ======= Contact Us Section ======= -->
+<section id="contact" class="contact">
+  <div class="container" data-aos="fade-up">
+
+    <div class="section-title">
+      <h2>Liên Hệ Với Chúng Tôi</h2>
+      <p>Hãy điền thông tin liên lạc của bạn</p>
+    </div>
+
+    <div class="row">
+
+      <div class="col-lg-5 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+        <div class="info">
+          <div class="address">
+            <i class="bi bi-geo-alt"></i>
+            <h4>Địa chỉ:</h4>
+            <p> Số 280 Trần Hưng Đạo, Phường An Hải Tây, Quận Sơn Trà, TP Đà Nẵng.</p>
+          </div>
+
+          <div class="email">
+            <i class="bi bi-envelope"></i>
+            <h4>Email:</h4>
+            <p>abc@gmail.com</p>
+          </div>
+
+          <div class="phone">
+            <i class="bi bi-phone"></i>
+            <h4>Số điện thoại:</h4>
+            <p>02366517021</p>
+          </div>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.208468996348!2d108.22979027505312!3d16.05466828462273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219d6d6355dfd%3A0xab74f1d886dbff0e!2zMjgwIMSQLiBUcuG6p24gSMawbmcgxJDhuqFvLCBBbiBI4bqjaSBC4bqvYywgU8ahbiBUcsOgLCDEkMOgIE7hurVuZyA1NTAwMDAsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1683479270761!5m2!1svi!2s" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+
+        </div>
+
+      </div>
+
+      <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+        <form class="php-email-form" [formGroup]="addNewCustomerReg" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label for="name">Họ Và Tên
+                <span class="error-message-form" style="color: red" *ngIf="addNewCustomerReg.controls.customerName.invalid && (submitted || addNewCustomerReg.controls['customerName'].dirty || addNewCustomerReg.controls['customerName'].touched)">
+                <span *ngIf="addNewCustomerReg.controls.customerName.hasError('required')">Bạn cần nhập tên</span>
+                <span *ngIf="addNewCustomerReg.controls.customerName.hasError('minlength')">Tên bạn nhập quá ngắn</span>
+                <span *ngIf="addNewCustomerReg.controls.customerName.hasError('maxlength')">Tên bạn nhập quá dài</span>
+                <span *ngIf="addNewCustomerReg.controls.customerName.hasError('pattern')">Tên của bạn không đúng</span>
+              </span></label>
+
+              <input type="text" name="name" class="form-control" id="name" placeholder="Họ và tên" formControlName="customerName">
+
+            </div>
+            <div class="form-group col-md-6 mt-3 mt-md-0">
+              <label for="phone">Số điện thoại
+                <span class="error-message-form" style="color: red" *ngIf="(submitted || addNewCustomerReg.get('phone').dirty || addNewCustomerReg.get('phone').touched) && addNewCustomerReg.get('phone').invalid">
+                <span *ngIf="addNewCustomerReg.get('phone').hasError('required')">Bạn cần nhập số điện thoại</span>
+                <span *ngIf="addNewCustomerReg.get('phone').hasError('pattern')">Số điện thoại bị sai</span>
+              </span>
+              </label>
+              <input type="phone" class="form-control" name="email" id="phone" placeholder="Số điện thoại"  formControlName="phone">
+
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <label for="email">Email
+              <span class="error-message-form" style="color: red" *ngIf="addNewCustomerReg.controls.email.invalid && (submitted || addNewCustomerReg.controls['email'].dirty || addNewCustomerReg.controls['email'].touched)">
+              <span *ngIf="addNewCustomerReg.controls.email.hasError('required')">Bạn cần nhập email.</span>
+              <span *ngIf="addNewCustomerReg.controls.email.hasError('pattern')">Bạn nhập không đúng email</span>
+              <span *ngIf="addNewCustomerReg.controls.email.hasError('minlength')">Email của bạn quá ngắn</span>
+              <span *ngIf="addNewCustomerReg.controls.email.hasError('maxlength')">Email của bạn quá dài</span>
+            </span>
+            </label>
+            <input type="text" class="form-control" name="email" id="email" placeholder="Email" formControlName="email">
+
+          </div>
+          <div class="form-group mt-3">
+            <label for="address">Địa chỉ
+              <span class="error-message-form" style="color: red" *ngIf="addNewCustomerReg.controls.address.invalid && ( submitted ||addNewCustomerReg.controls['address'].dirty || addNewCustomerReg.controls['address'].touched)">
+              <span *ngIf="addNewCustomerReg.controls.address.hasError('required')">Nhập địa chỉ của bạn.</span>
+              <span *ngIf="addNewCustomerReg.controls.address.hasError('pattern')">Địa chỉ không chưa các ký tự đặc biêt:@#$!...  </span>
+              <span *ngIf="addNewCustomerReg.controls.address.hasError('minlength')">Địa chỉ cảu bạn quá ngắn</span>
+              <span *ngIf="addNewCustomerReg.controls.address.hasError('maxlength')">Địa chỉ của bạn quá dài</span>
+            </span>
+            </label>
+            <input type="text" class="form-control" name="address" id="address" placeholder="Địa chỉ" formControlName= "address">
+
+          </div>
+          <div class="form-group mt-3">
+            <label for="note">Ghi chú</label>
+            <textarea class="form-control" id="note" name="message" rows="10" formControlName="note"></textarea>
+          </div>
+          <div class="text-center"><button type="submit">Đăng kí ngay</button></div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+</section><!-- End Contact Us Section -->
+
