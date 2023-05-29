@@ -2,6 +2,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {Article} from "../../../models/article/Article";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ArticleServiceService} from "../../../service/article-service.service";
+import {FormControl, FormControlName, FormGroup} from "@angular/forms";
 
 declare const Swal: any;
 @Component({
@@ -11,9 +12,10 @@ declare const Swal: any;
 })
 export class ListComponent implements OnInit {
   isSearchFormActive: boolean=false;
+  searchForm: FormGroup;
   article: Article = {};
   articles: Article[] = [];
-  nameF: string = '';
+  titleSearch: string = '';
   modalOpen = false;
 
   p : number =1;
@@ -21,10 +23,16 @@ export class ListComponent implements OnInit {
   totalPages: number[] = [];
   totalPage: number = 0;
   page: number = 0;
+  currentPage: number = 0;
 
   constructor(private route: Router,
               private activatedRoute: ActivatedRoute,
-              private articleService: ArticleServiceService) { }
+              private articleService: ArticleServiceService) {
+    this.searchForm = new FormGroup({
+        searchName: new FormControl(''),
+        searchDate: new FormControl(null),
+    });
+  }
 
   toggleFormSearch(event: MouseEvent): void {
     event.stopPropagation();
@@ -59,41 +67,44 @@ export class ListComponent implements OnInit {
 
   getListArticle(pageable) {
     this.articleService.getAll(pageable).subscribe((data:any) => {
-      this.articles = data.content;
       console.log(data);
+      this.articles = data.content;
       this.totalPage = data.totalPages;
-      this.totalPages=[]
-      console.log(this.totalPage)
-      for (let j=0; j<this.totalPage;j++){
-        this.totalPages.push(j)
-      }
-      console.log(this.totalPages)
+      this.currentPage = data.number;
+      // this.totalPages=[]
+      // console.log(this.totalPage)
+      // for (let j=0; j<this.totalPage;j++){
+      //   this.totalPages.push(j)
+      // }
+      // console.log(this.totalPages)
     }, error => console.log(error))
   }
 
+  // nextPage() {
+  //   this.page++
+  //   this.articleService.getAll(this.page).subscribe(next => {
+  //     this.articles = next.content;
+  //     console.log(this.page)
+  //   })
+  // }
+  //
+  // prviousPage() {
+  //   this.page--
+  //   this.articleService.getAll(this.page).subscribe(next => {
+  //     this.articles = next.content;
+  //     console.log(this.page)
+  //   })
+  // }
+  //
+  // accessPage(page: number) {
+  //   this.page = page
+  //   this.articleService.getAll(page).subscribe(next => {
+  //     this.articles = next.content;
+  //   })
+  // }
 
-
-  nextPage() {
-    this.page++
-    this.articleService.getAll(this.page).subscribe(next => {
-      this.articles = next.content;
-      console.log(this.page)
-    })
-  }
-
-  prviousPage() {
-    this.page--
-    this.articleService.getAll(this.page).subscribe(next => {
-      this.articles = next.content;
-      console.log(this.page)
-    })
-  }
-
-  accessPage(page: number) {
-    this.page = page
-    this.articleService.getAll(page).subscribe(next => {
-      this.articles = next.content;
-    })
+  gotoNextOrPreviousPage(direction: string): void {
+    this.getSearch(direction === 'forward'? this.currentPage + 1 : this.currentPage - 1);
   }
 
   deleteArticle(deleteArticle: Article) {
@@ -107,13 +118,16 @@ export class ListComponent implements OnInit {
 
     swalWithBootstrapButtons.
     fire({
-      title: 'Xác nhận xóa bài báo: ' + deleteArticle.title,
-      text: 'Bài báo sẽ không được phục hồi sau khi xóa',
+      title: 'Xác nhận xóa bài báo',
+      text: 'Bài báo: ' + deleteArticle.title +' sẽ không được phục hồi sau khi xóa',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Xác nhận',
       cancelButtonText: 'Hủy bỏ',
       reverseButtons: false,
+      customClass: {
+        content: 'custom-swal-content'
+      }
     }).then((result) => {
       if (result.value) {
         this.articleService.deleteArticle(deleteArticle.id).subscribe(()=>{
@@ -135,4 +149,22 @@ export class ListComponent implements OnInit {
     })
   }
 
+
+  getSearch(pageNumber: number = 0) {
+    console.log(this.searchForm.value.searchName);
+      this.articleService.searchArticleByName(this.searchForm.value.searchName, pageNumber).subscribe(data => {
+        if (data === null) {
+          Swal.fire(
+            'Không tìm thấy bài báo',
+            'error'
+          )
+          this.getListArticle(0);
+        }else{
+          this.articles = data.content;
+          this.totalPage = data.totalPages;
+          this.currentPage = pageNumber;
+          // console.log(data);
+        }
+      })
+  }
 }

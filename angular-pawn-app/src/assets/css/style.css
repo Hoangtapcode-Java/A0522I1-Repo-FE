@@ -2159,6 +2159,24 @@ tbody td {
   text-overflow: ellipsis; /* hiển thị dấu ba chấm (...) cho phần vượt quá chiều rộng tối đa */
 }
 
+tbody td {
+  vertical-align: middle;
+}
+
+.iconchecked {
+  color: var(--nc-primary);
+  font-size: 26px;
+  display: flex;
+  gap: 3px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+a.iconchecked {
+  display: block;
+  text-align: center;
+}
+
 .actions {
   display: flex;
   gap: 3px;
@@ -2228,7 +2246,7 @@ tbody td {
 
 .memu-search .searchBox {
   height: 46px;
-  width: 550px;
+  width: 350px;
   max-width: 100%;
   display: flex;
   align-items: center;
@@ -2704,4 +2722,10 @@ select.form-select option {
   }
 }
 
-
+.custom-swal-content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Số dòng hiển thị */
+  -webkit-box-orient: vertical;
+}

@@ -7,6 +7,7 @@ import { CreateComponent } from './create/create.component';
 import { UpdateComponent } from './update/update.component';
 import { ListComponent } from './list/list.component';
 import { DeleteComponent } from './delete/delete.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -14,9 +15,11 @@ import { DeleteComponent } from './delete/delete.component';
     exports: [
         ArticleComponent
     ],
-    imports: [
-        CommonModule,
-        ArticleRoutingModule
-    ]
+  imports: [
+    CommonModule,
+    ArticleRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
+  ]
 })
 export class ArticleModule { }

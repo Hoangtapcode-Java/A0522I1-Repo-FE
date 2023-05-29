@@ -41,4 +41,7 @@ export class ArticleServiceService {
     return this.httpClient.patch<any>('http://localhost:8080/api/delete-article/' + value,this.httpOptions);
   }
 
+  searchArticleByName(name: any, pageNumber: number = 5): Observable<any> {
+    return this.httpClient.get<any>('http://localhost:8080/api/search-article?name='+ name + '&page=' + pageNumber);
+  }
 }

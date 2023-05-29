@@ -1,21 +1,23 @@
 <div class="container">
   <div class="top">
     <div class="memu-search">
-      <div class="searchBox">
-        <i class="uil uil-search navToggle"></i>
-        <input type="text" placeholder="Tìm theo tiêu đề" />
-        <button class="button-search"(click)="toggleFormSearch($event)">
-          <svg width="24" height="24" focusable="false">
-            <path
-              d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"
-            ></path>
-          </svg>
-        </button>
-      </div>
+        <div class="searchBox">
+          <form [formGroup]="searchForm" (ngSubmit)="getSearch(0)">
+            <i class="uil uil-search navToggle"></i>
+    <!--        <input (keydown.enter)="getSearch(0)" [(ngModel)]="titleSearch")] class="form-control" type="text" placeholder="Tìm theo tiêu đề" />-->
+            <input formControlName="searchName" type="text" placeholder="Tìm theo tiêu đề" />
+          </form>
+          <button class="button-search" (click)="toggleFormSearch($event)">
+            <svg width="24" height="24" focusable="false">
+              <path
+                d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"
+              ></path>
+            </svg>
+          </button>
+        </div>
 
       <div class="form-search" [ngClass]="{ active : isSearchFormActive }">
         <form>
-
           <div class="row">
             <label for="dateBegin" class="col-md-3 col-form-label date-text">Ngày đăng</label>
             <div class="col-md-6 form-group">
@@ -62,7 +64,7 @@
         <th>Tiêu đề</th>
         <th>Tác giả</th>
         <th>Ngày đăng bài</th>
-        <th>Tin nổi bật</th>
+        <th class="text-center">Tin nổi bật</th>
         <th class="text-center">Chức năng</th>
       </tr>
       </thead>
@@ -72,7 +74,10 @@
         <td>{{article.title}}</td>
         <td>{{article.employee.name}}</td>
         <td>{{article.publicDate}}</td>
-        <td>{{article.isFeature}}</td>
+        <td>
+          <span *ngIf="article.feature === true"><a type="button" class="iconchecked"><i class="uil uil-bolt"></i></a></span>
+          <span *ngIf="article.feature === false"></span>
+        </td>
         <td class="actions">
           <a type="button" class="icon" [routerLink]="['/article-page/view',article.id]">
             <i class="uil uil-eye"></i>
@@ -95,12 +100,12 @@
 
   <div
     class="pagination">
-    <a *ngIf="page > 0" class="text1" (click)="prviousPage()">«</a>
-    <a class="text"  (click)="accessPage(page)" *ngFor="let page of totalPages">{{page+1}}</a>
-    <a *ngIf="page < totalPage - 1" class="text1" (click)="nextPage()">»</a>
+    <a class="text1" (click)="gotoNextOrPreviousPage('backward')">«</a>
+    <a class="text"  (click)="getSearch(i)" *ngFor="let page of [].constructor(totalPage), index as i">{{ i + 1 }}</a>
+    <a class="text1" (click)="gotoNextOrPreviousPage('forward')">»</a>
   </div>
-
-
+<!--  *ngIf="page > 0"-->
+<!--  *ngIf="page < totalPage - 1"-->
 </div>
 
 

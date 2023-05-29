@@ -22,6 +22,10 @@ const routes: Routes = [{
     {
       path:'delete-article/:id',
       component:ListComponent
+    },
+    {
+      path: 'search-article/:name',
+      component: ListComponent
     }
   ]
 }];
