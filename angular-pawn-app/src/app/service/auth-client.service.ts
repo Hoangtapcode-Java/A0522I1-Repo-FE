@@ -3,7 +3,7 @@ import {HttpClient, HttpResponse} from '@angular/common/http';
 import {UserRole} from '../models/UserRole';
 import {JwtService} from './jwt.service';
 import {Router} from '@angular/router';
-
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -33,9 +33,19 @@ export class AuthClientService {
           role.authority === 'ADMIN' ? this.roles.push(UserRole.Admin) : this.roles.push(UserRole.User);
         });
         sessionStorage.setItem('roles', this.roles.join(','));
+        // Swal.fire({
+        //   title: 'Success!',
+        //   text: 'Login success',
+        //   icon: 'info',
+        //   confirmButtonText: 'OK'
+        // });
       }, ((error) => {
-        console.log('login fail');
-        console.log(error);
+        Swal.fire({
+          title: 'Error!',
+          text: 'User name or password wrong',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        });
       }));
     } catch (e) {
       console.log('login fail');

@@ -1,9 +1,10 @@
 <div class="container" id="container">
   <div class="form-container sign-up-container">
-    <form >
-      <span> Dùng email của bạn để lấy lại mật khẩu</span>
-      <input type="email" placeholder="ngohoangnhan@gmail" />
-      <button (click)="loadForgot()">Gửi</button>
+    <form [formGroup]="emailForm" (ngSubmit)="loadForgot()">
+<!--      <span ></span>-->
+      <span id="loading_send"> Dùng email của bạn để lấy lại mật khẩu</span>
+      <input type="email" placeholder="ngohoangnhan@gmail" formControlName="email" />
+      <button [disabled]="isDisabledButton" type ="submit">Gửi</button>
     </form>
   </div>
   <div class="form-container sign-in-container">

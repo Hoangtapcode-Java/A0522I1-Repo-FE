@@ -14,6 +14,7 @@ import {AuthInterceptor} from '../../service/auth/auth.interceptor';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 
+
 @NgModule({
   declarations: [UserComponent, CreateComponent, ListComponent, UpdateComponent, DeleteComponent, LoginComponent, ForgotpasswordComponent],
   imports: [
@@ -21,7 +22,7 @@ import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.compone
     UserRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     {

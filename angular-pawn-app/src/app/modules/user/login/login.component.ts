@@ -2,20 +2,28 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {AuthClientService} from '../../../service/auth-client.service';
 import {Router} from '@angular/router';
+import {UserServiceService} from '../../../service/user-service.service';
+import Swal from "sweetalert2";
 
+
+// @ts-ignore
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  isDisabledButton = false;
   loginForm: FormGroup = new FormGroup({
     username: new FormControl(''),
     password: new FormControl('')
   });
+  emailForm: FormGroup = new FormGroup({
+    email: new FormControl('')
+  });
 
-  constructor(private authService: AuthClientService, private router: Router) {
+  constructor(private authService: AuthClientService, private router: Router,
+              private userServiceService: UserServiceService) {
   }
 
   ngOnInit(): void {
@@ -25,6 +33,7 @@ export class LoginComponent implements OnInit {
   public login() {
     this.authService.login(this.loginForm);
   }
+
 
   loadFunction(): void {
     const signUpButton: HTMLElement | null = document.getElementById('signUp');
@@ -46,6 +55,32 @@ export class LoginComponent implements OnInit {
   }
 
   loadForgot() {
-    this.router.navigateByUrl('/user/forgot');
+    // console.log('email: ' + this.emailForm.get('email').value);
+    const loading: HTMLElement | null = document.getElementById('loading_send');
+    loading.innerText = '';
+    loading.classList.add('spinner-border');
+    loading.classList.add('text-warning');
+    this.isDisabledButton = true;
+    this.userServiceService.sendOtp(this.emailForm.get('email').value).subscribe(data => {
+      Swal.fire({
+        title: 'Success',
+        text: 'OTP send to email, please check your email" ',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+      console.log(data);
+      this.router.navigateByUrl('user/forgot');
+    }, error => {
+      Swal.fire({
+        title: 'Error',
+        text: 'Email invalid" ',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+      loading.classList.remove('spinner-border');
+      loading.classList.remove('text-warning');
+      loading.innerText = 'Dùng email để lấy lại mật khẩu';
+      this.isDisabledButton = false;
+    });
   }
 }
