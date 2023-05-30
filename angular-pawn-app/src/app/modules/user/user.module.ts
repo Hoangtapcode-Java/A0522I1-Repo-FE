@@ -11,10 +11,11 @@ import { LoginComponent } from './login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthInterceptor} from '../../service/auth/auth.interceptor';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 
 @NgModule({
-  declarations: [UserComponent, CreateComponent, ListComponent, UpdateComponent, DeleteComponent, LoginComponent],
+  declarations: [UserComponent, CreateComponent, ListComponent, UpdateComponent, DeleteComponent, LoginComponent, ForgotpasswordComponent],
   imports: [
     CommonModule,
     UserRoutingModule,

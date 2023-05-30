@@ -24,23 +24,6 @@ export class LoginComponent implements OnInit {
 
   public login() {
     this.authService.login(this.loginForm);
-    // console.log(this.loginForm.value);
-    // this.authService.connectBEAuth(this.loginForm.value).subscribe((data: any) => {
-    //   console.log(data);
-    //   if (null !== data.token) {
-    //     // @ts-ignore
-    //     localStorage.setItem('token', data.token);
-    //     localStorage.setItem('logged', '1');
-    //     console.log('token login: ' + data.token);
-    //     this.authService.isLogged = true;
-    //     this.router.navigateByUrl('/user');
-    //   }
-    // });
-    // console.log(this.authService.getIsLogged());
-    // if (this.authService.getIsLogged()) {
-    //   console.log('login: ' + this.authService.getIsLogged());
-    //   this.router.navigateByUrl('/user');
-    // }
   }
 
   loadFunction(): void {
@@ -62,4 +45,7 @@ export class LoginComponent implements OnInit {
 
   }
 
+  loadForgot() {
+    this.router.navigateByUrl('/user/forgot');
+  }
 }

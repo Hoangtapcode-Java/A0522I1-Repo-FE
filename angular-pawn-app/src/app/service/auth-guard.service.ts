@@ -22,7 +22,7 @@ export class AuthGuardService implements CanActivate {
       return false;
     } else {
       const userRole: UserRole[] = [];
-      const roles = localStorage.getItem('roles').split(',');
+      const roles = this.jwtClientService.getToken().split(',');
       roles.forEach(role => {
         if (role === 'ADMIN') {
           userRole.push(UserRole.Admin);

@@ -1,13 +1,15 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { UserComponent } from './user.component';
-import { ListComponent } from './list/list.component';
-import { CreateComponent } from './create/create.component';
-import { UpdateComponent } from './update/update.component';
-import { DeleteComponent } from './delete/delete.component';
-import { LoginComponent } from './login/login.component';
-import { AuthGuardService } from '../../service/auth-guard.service';
-import { UserRole } from "../../models/UserRole";
+
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {UserComponent} from './user.component';
+import {ListComponent} from './list/list.component';
+import {CreateComponent} from './create/create.component';
+import {UpdateComponent} from './update/update.component';
+import {DeleteComponent} from './delete/delete.component';
+import {LoginComponent} from './login/login.component';
+import {AuthGuardService} from '../../service/auth-guard.service';
+import {UserRole} from '../../models/UserRole';
+import {ForgotpasswordComponent} from "./forgotpassword/forgotpassword.component";
 
 
 const routes: Routes = [{
@@ -26,6 +28,9 @@ const routes: Routes = [{
     },
     {
       path: 'login', component: LoginComponent
+    },
+    {
+      path: 'forgot', component: ForgotpasswordComponent
     }
   ]
 }

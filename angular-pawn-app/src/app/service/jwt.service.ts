@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {AuthClientService} from './auth-client.service';
 
 
 @Injectable({
@@ -34,7 +35,26 @@ export class JwtService {
     //     console.log('fail');
     //     return false;
     //   });
-    const result =  this.getToken() == null ? false : true;
+    let result = this.getToken() == null ? false : true;
+    const date = new Date();
+    const createdTime = localStorage.getItem('createdTime');
+    if (createdTime != null) {
+      const created = new Date(createdTime);
+      date.setDate(created.getDate() + 1);
+      // Thời gian hiện tại
+      const currentTime = new Date();
+      if (date < currentTime) {
+        result = false;
+        localStorage.removeItem('createdTime');
+        localStorage.removeItem('token');
+        localStorage.removeItem('roles');
+      } else {
+        console.log('token con hieu luc');
+      }
+    } else {
+      result = false;
+    }
+
     return result;
   }
 
@@ -42,8 +62,6 @@ export class JwtService {
     const tokenStr = 'Bearer ' + this.getToken();
     return new HttpHeaders().set('Authorization', tokenStr);
   }
-
-
 
 
 }
