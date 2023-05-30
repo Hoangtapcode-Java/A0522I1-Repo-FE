@@ -45,21 +45,4 @@ export class UserServiceService {
     return this.httpClient.post('http://localhost:8080/api/auth/reset-password', change);
   }
 
-  resetPassword(change: any) {
-    this.reset(change).subscribe(success => {
-      Swal.fire({
-        title: 'Success',
-        text: 'Reset password to "abc123" ',
-        icon: 'success',
-        confirmButtonText: 'OK'
-      });
-    }, error => {
-      Swal.fire({
-        title: 'Error!',
-        text: 'OTP wrong',
-        icon: 'error',
-        confirmButtonText: 'Cool'
-      });
-    });
-  }
 }

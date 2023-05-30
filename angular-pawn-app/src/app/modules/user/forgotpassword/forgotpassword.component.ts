@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {UserServiceService} from '../../../service/user-service.service';
 import Swal from 'sweetalert2';
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -17,7 +18,7 @@ export class ForgotpasswordComponent implements OnInit {
   fifthValue = '';
   sixthValue = '';
 
-  constructor(private userServiceService: UserServiceService) {
+  constructor(private userServiceService: UserServiceService, private router: Router) {
   }
 
 
@@ -41,7 +42,22 @@ export class ForgotpasswordComponent implements OnInit {
       otp,
       newPassword
     };
-    this.userServiceService.resetPassword(changeForm);
+    this.userServiceService.reset(changeForm).subscribe(success => {
+      Swal.fire({
+        title: 'Success',
+        text: 'Reset password to "abc123" ',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+      this.router.navigateByUrl('/user');
+    }, error => {
+      Swal.fire({
+        title: 'Error!',
+        text: 'OTP wrong!!',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      });
+    });
     console.log('email OTP: ' + email);
     console.log('OTP ' + otp);
 

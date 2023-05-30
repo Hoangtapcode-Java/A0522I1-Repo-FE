@@ -3,7 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {AuthClientService} from '../../../service/auth-client.service';
 import {Router} from '@angular/router';
 import {UserServiceService} from '../../../service/user-service.service';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 
 // @ts-ignore
@@ -55,11 +55,10 @@ export class LoginComponent implements OnInit {
   }
 
   loadForgot() {
-    // console.log('email: ' + this.emailForm.get('email').value);
-    const loading: HTMLElement | null = document.getElementById('loading_send');
-    loading.innerText = '';
-    loading.classList.add('spinner-border');
-    loading.classList.add('text-warning');
+    const buttonLoad: HTMLElement | null = document.getElementById('submit_button');
+    buttonLoad.innerHTML =
+        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="color: darkseagreen"></span>
+        <span class="visually-hidden">Loading...</span>`;
     this.isDisabledButton = true;
     this.userServiceService.sendOtp(this.emailForm.get('email').value).subscribe(data => {
       Swal.fire({
@@ -77,9 +76,7 @@ export class LoginComponent implements OnInit {
         icon: 'error',
         confirmButtonText: 'OK'
       });
-      loading.classList.remove('spinner-border');
-      loading.classList.remove('text-warning');
-      loading.innerText = 'Dùng email để lấy lại mật khẩu';
+      buttonLoad.innerHTML = 'Gửi';
       this.isDisabledButton = false;
     });
   }
