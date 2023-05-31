@@ -1,5 +1,5 @@
 import {Category} from '../models/category/Category';
-import {Status} from "../models/status/Status";
+import {Status} from '../models/status/Status';
 
 export interface ContractEditDto {
   id?: number;

@@ -1,8 +1,9 @@
-import {Category} from "../category/Category";
+import {Category} from '../category/Category';
 
 export interface Product {
-  id?:number,
-  name?:string,
-  price?:number,
-  category?:Category
+  id?: number;
+  name?: string;
+  price?: number;
+  categoryId?: Category;
+
 }
