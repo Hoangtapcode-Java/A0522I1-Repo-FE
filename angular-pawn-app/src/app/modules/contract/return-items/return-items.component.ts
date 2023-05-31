@@ -1,11 +1,11 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {ContractServiceService} from '../../../service/contract-service.service';
 import {Contract} from '../../../models/contract/Contract';
 import {formatDate} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {convertUpdateArguments} from '@angular/compiler/src/compiler_util/expression_converter';
 import {subscribeOn} from 'rxjs/operators';
+import {ContractService} from '../../../service/contract.service';
 
 declare const Swal: any;
 
@@ -49,7 +49,7 @@ export class ReturnItemsComponent implements OnInit {
     }
   }
 
-  constructor(private contractService: ContractServiceService, private route: Router) {
+  constructor(private contractService: ContractService, private route: Router) {
   }
 
   ngOnInit(): void {

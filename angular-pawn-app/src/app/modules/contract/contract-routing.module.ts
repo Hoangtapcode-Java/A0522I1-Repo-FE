@@ -4,8 +4,9 @@ import {ContractComponent} from './contract.component';
 import {ListComponent} from './list/list.component';
 import {CreateComponent} from './create/create.component';
 import {UpdateComponent} from './update/update.component';
-import {DeleteComponent} from './delete/delete.component';
 import {ReturnItemsComponent} from './return-items/return-items.component';
+// @ts-ignore
+
 
 
 const routes: Routes = [{
@@ -20,14 +21,15 @@ const routes: Routes = [{
       path: 'update', component: UpdateComponent
     },
     {
-      path: 'delete', component: DeleteComponent
+      path: 'return', component: ReturnItemsComponent
     },
     {
-      path: 'return', component: ReturnItemsComponent
+      path: 'update/:id', component: UpdateComponent
     }
   ]
 }];
 
+// @ts-ignore
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

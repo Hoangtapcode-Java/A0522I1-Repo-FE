@@ -1,1 +1,55 @@
-<p>update works!</p>
+<div class="container" *ngIf="statuses">
+  <div class="row justify-content-center mt-4">
+    <h2 style="text-align: center; color: #EE4D2D; margin-top: 10px">SỬA THÔNG TIN HỢP ĐỒNG</h2>
+    <div class="col-lg-12">
+      <form [formGroup]="editContractForm" (ngSubmit)="editContract()" CLASS="row" *ngIf="editContractForm">
+        <div class="form-group col-md-6" style="margin-top: 10px">
+          <label for="contractCode">Mã hợp đồng</label><span>*</span>
+          <input formControlName="contractCode" type="text" class="form-control" id="contractCode" disabled>
+        </div>
+        <div class="form-group col-md-6" style="margin-top: 10px">
+          <label for="customerName">Tên khách hàng</label><span>*</span>
+          <input formControlName="customerName" type="text" class="form-control" id="customerName">
+          <span style="color: red" *ngIf="editContractForm.controls.customerName.hasError('required')")>
+            Tên khách hàng không được để trống</span>
+          <span style="color: red" *ngIf="editContractForm.controls.customerName.hasError('minlength')">
+            Tên không được quá ngắn</span>
+          <span style="color: red" *ngIf="editContractForm.controls.customerName.hasError('pattern')">
+            Tên không đúng định dạng</span>
+        </div>
+        <div class="form-group col-md-6" style="margin-top: 10px">
+          <label for="productName">Tên đồ</label><span>*</span>
+          <input formControlName="productName" type="text" class="form-control" id="productName">
+          <span style="color: red" *ngIf="editContractForm.controls.productName.hasError('required')"
+                && editContractForm.controls.productName)>Tên sản phẩm không được để trống</span>
+<!--          <span style="color: red" *ngIf="editContractForm.controls.productName.hasError('pattern')">-->
+<!--            Tên không đúng định dạng</span>-->
+        </div>
+        <div class="form-group col-md-6">
+          <label>Loại đồ</label><span>*</span><br>
+          <select class="form-select" formControlName="category" [compareWith]="compareFn">
+            <option *ngFor="let category of categories" [ngValue]="category">{{category.nameCategory}}</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="beginDate">Ngày làm hợp đồng</label><span>*</span><br>
+          <input formControlName="beginDate" type="date" class="form-control" id="beginDate">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="endDate">Ngày kết thúc</label><span>*</span>
+          <input formControlName="endDate" type="date" class="form-control" id="endDate">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="status">Trạng thái hợp đồng</label><span>*</span><br>
+          <select class="form-select" formControlName="status" id="status" [compareWith]="compareFn">
+            <option *ngFor="let status of statuses" [ngValue]="status">{{status.name}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button routerLink="/contract" class="btn btn-secondary">Hủy</button>
+          <button type="submit" class="btn btn-primary mx-2">Lưu</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

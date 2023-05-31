@@ -45,6 +45,7 @@ import {FormsModule} from '@angular/forms';
     FinaceModule,
     HomePageModule,
     ArticlePageModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     AngularFireDatabaseModule,
