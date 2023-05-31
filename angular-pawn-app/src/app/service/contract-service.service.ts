@@ -7,26 +7,26 @@ import {Contract} from '../models/contract/Contract';
   providedIn: 'root'
 })
 export class ContractServiceService {
-  private baseUrl = 'http://localhost:8080/api/contract';
+  private baseUrl = 'http://localhost:8080/api/contracts';
 
   constructor(private httpClient: HttpClient) {
   }
 
-  getAll(page: number, nameCustomer: string, nameProduct: string, dateBegin: string, contractCode: string): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl + '?page=' + page + '&contractCode=' +
+  getAll(page: number = 0, nameCustomer: string = '', nameProduct: string = '', dateBegin: string = '', contractCode: string = ''): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + '/listSelect' + '?page=' + page + '&contractCode=' +
       contractCode + '&nameCustomer=' + nameCustomer + '&nameProduct=' + nameProduct + '&beginDate=' + dateBegin);
   }
 
   getById(idContract: number): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl + '/' + idContract);
+    return this.httpClient.get<any>(this.baseUrl + '/select/' + idContract);
   }
 
   updateById(contract, idContract: number): Observable<any> {
-    return this.httpClient.put<any>(this.baseUrl + '/' + idContract, contract);
+    return this.httpClient.put<any>(this.baseUrl + '/update/' + idContract, contract);
   }
 
-  getSearch(nameCustomer: string, nameProduct: string, dateBegin: string, contractCode: string): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl + '?contractCode='
-      + contractCode + '&nameCustomer=' + nameCustomer + '&nameProduct=' + nameProduct + '&beginDate=' + dateBegin);
-  }
+  // getSearch(nameCustomer: string, nameProduct: string, dateBegin: string, contractCode: string): Observable<any> {
+  //   return this.httpClient.get<any>(this.baseUrl + '?contractCode='
+  //     + contractCode + '&nameCustomer=' + nameCustomer + '&nameProduct=' + nameProduct + '&beginDate=' + dateBegin);
+  // }
 }

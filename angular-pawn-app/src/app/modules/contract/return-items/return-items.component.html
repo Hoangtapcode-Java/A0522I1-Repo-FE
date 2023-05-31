@@ -7,7 +7,7 @@
         <label for="inputHD" class="form-label">Hợp đồng:</label>
         <div class="d-flex align-items-center">
           <input type="button" value="Chọn hợp đồng" class="my-btn-3" id="inputHD" data-bs-toggle="modal"
-                 data-bs-target="#exampleModal">
+                 data-bs-target="#exampleModal" (click)="reset()">
 <!--          <span style="color: red; margin-left: 20px" class="error" *ngIf="showErrors && reactiveForm.controls.contractCode.hasError('required') && reactiveForm.controls.beginDate.hasError('required')-->
 <!--                     && reactiveForm.controls.endDate.hasError('required') && reactiveForm.controls.customer.hasError('required') && reactiveForm.controls.interest.hasError('required')-->
 <!--                     && reactiveForm.controls.product.hasError('required')">Vui lòng chọn hợp đồng-->
@@ -70,7 +70,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-6 submit">
+      <div class=" submit d-flex justify-content-end">
         <button class="my-btn" type="reset" (click)="getNewForm()">Hủy</button>
         <button class="my-btn-2" type="submit">Thanh toán</button>
       </div>
@@ -92,7 +92,7 @@
             <div class="searchBox">
               <form>
                 <i class="uil uil-search navToggle"></i>
-                <input type="text" placeholder="Searching...VD:HD-001"
+                <input type="text" placeholder="Searching...VD:HD-001" maxlength="256"
                        (keydown.enter)="getSearch(nameProduct.value,nameCustomer.value,dateBegin.value,contractCode.value)"
                        #contractCode/>
               </form>
@@ -110,14 +110,14 @@
                 <div class="row">
                   <label for="nameCustomer" class="col-md-3 col-form-label">Tên khách hàng</label>
                   <div class="col-md-6 select-form">
-                    <input type="text" class="form-control" id="nameCustomer" #nameCustomer>
+                    <input type="text" class="form-control" id="nameCustomer" #nameCustomer maxlength="256">
                   </div>
                 </div>
 
                 <div class="row">
                   <label for="nameProduct" class="col-md-3 col-form-label date-text">Đồ cầm</label>
                   <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" id="nameProduct" #nameProduct>
+                    <input type="text" class="form-control" id="nameProduct" #nameProduct maxlength="256">
                   </div>
                 </div>
 
@@ -127,7 +127,6 @@
                     <input type="date" class="form-control" id="dateBegin" #dateBegin/>
                   </div>
                 </div>
-
                 <div class="form-submit">
                   <button type="reset" class="btn-reset">Đặt lại</button>
                   <button type="submit" class="btn-search"
@@ -175,13 +174,20 @@
                 <a class="my-btn-2" (click)="selectContract(c.id)" data-bs-dismiss="modal">Chọn</a>
               </td>
             </tr>
+            <tr style="text-align: center" *ngIf="contract.length == 0">
+               <td colspan="7">Không có dữ liệu</td>
+            </tr>
             </tbody>
           </table>
 
           <div class="pagination">
-            <a *ngIf="page > 0" (click)="previousPage()" class="text1">«</a>
-            <a class="text" (click)="accessPage(page)" *ngFor="let page of totalPages">{{page + 1}}</a>
-            <a *ngIf="page < totalPage - 1" (click)="nextPage()" class="text1">»</a>
+<!--            *ngIf="page > 0"-->
+            <a  (click)="goToNextOrPreviousPage(nameProduct.value, nameCustomer.value, dateBegin.value, contractCode.value, 'forward')" *ngIf="currentPage > 0" class="text1">«</a>
+
+            <a class="text" (click)="getSearch(nameProduct.value, nameCustomer.value, dateBegin.value, contractCode.value, i)" *ngFor="let page of [].constructor(totalPage), index as i ">{{ i+1 }}</a>
+
+            <a  (click)="goToNextOrPreviousPage(nameProduct.value, nameCustomer.value, dateBegin.value, contractCode.value, 'backward')" *ngIf="currentPage < totalPage - 1" class="text1">»</a>
+<!--            *ngIf="page < totalPage - 1"-->
           </div>
         </div>
       </div>

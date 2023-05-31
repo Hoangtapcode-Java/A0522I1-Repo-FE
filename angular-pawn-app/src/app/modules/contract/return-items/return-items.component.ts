@@ -5,6 +5,7 @@ import {formatDate} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {convertUpdateArguments} from '@angular/compiler/src/compiler_util/expression_converter';
+import {subscribeOn} from 'rxjs/operators';
 
 declare const Swal: any;
 
@@ -19,8 +20,6 @@ export class ReturnItemsComponent implements OnInit {
   contracts: Contract;
   payment: number;
   price: number;
-  page = 0;
-  totalPages: number[] = [];
   totalPage = 0;
   nameCustomer = '';
   nameProduct = '';
@@ -28,6 +27,7 @@ export class ReturnItemsComponent implements OnInit {
   dateBegin = '';
   showErrors = false;
   reactiveForm: FormGroup;
+  currentPage: number;
 
   toggleFormSearch(event: MouseEvent): void {
     event.stopPropagation();
@@ -50,43 +50,28 @@ export class ReturnItemsComponent implements OnInit {
   }
 
   constructor(private contractService: ContractServiceService, private route: Router) {
-    this.contractService.getAll(this.page, this.nameCustomer, this.nameProduct, this.dateBegin, this.contractCode).subscribe(next => {
+  }
+
+  ngOnInit(): void {
+    this.contractService.getAll().subscribe(next => {
+      console.log(next);
       if (next.content != null) {
         this.contract = next.content;
+        this.currentPage = next.number;
         this.totalPage = next.totalPages;
-        for (let j = 0; j < this.totalPage; j++) {
-          this.totalPages.push(j);
-        }
+        console.log(this.currentPage);
       }
       this.getNewForm();
     });
   }
 
-  ngOnInit(): void {
-    // this.contractService.getAll(this.page, this.nameCustomer, this.nameProduct, this.dateBegin, this.contractCode).subscribe(next => {
-    //   if (next.content != null) {
-    //     this.contract = next.content;
-    //     this.totalPage = next.totalPages;
-    //     for (let j = 0; j < this.totalPage; j++) {
-    //       this.totalPages.push(j);
-    //     }
-    //   }
-    //   this.getNewForm();
-    // });
-  }
-
-  getSearch(nameProduct: string, nameCustomer: string, dateBegin: string, contractCode: string) {
-    console.log(dateBegin);
-    this.page = 0;
-    this.contractService.getAll(this.page, nameCustomer, nameProduct, dateBegin, contractCode).subscribe(next => {
+  getSearch(nameProduct: string, nameCustomer: string, dateBegin: string, contractCode: string, pageNumber: number = 0) {
+    this.contractService.getAll(pageNumber, nameCustomer, nameProduct, dateBegin, contractCode).subscribe(next => {
       if (next.content != null) {
         this.contract = next.content;
+        this.currentPage = pageNumber;
         this.totalPage = next.totalPages;
-        this.totalPages = [];
-        console.log(this.totalPage);
-        for (let j = 0; j < this.totalPage; j++) {
-          this.totalPages.push(j);
-        }
+        console.log(this.currentPage);
       }
     });
   }
@@ -95,7 +80,7 @@ export class ReturnItemsComponent implements OnInit {
     this.contractService.getById(id).subscribe(next => {
       console.log(next);
       this.contracts = next;
-      if (this.contracts.status.id != 3) {
+      if (this.contracts.status.id !== 3) {
         this.payment = this.contracts.product.price * this.contracts.interest;
         this.price = this.contracts.product.price;
         const dateField = document.getElementById('inputDateReturn') as HTMLInputElement;
@@ -113,13 +98,7 @@ export class ReturnItemsComponent implements OnInit {
           icon: 'error',
           confirmButtonText: 'Đồng ý'
         });
-        // this.page = 0;
-        // this.contractService.getAll(this.page, this.nameCustomer, this.nameProduct, this.dateBegin, this.contractCode).subscribe(next => {
-        //   if (next.content != null) {
-        //     this.contract = next.content;
-        //     // this.totalPage = next.totalPages;
-        //   }
-        // });
+        this.ngOnInit();
       }
     });
   }
@@ -129,8 +108,16 @@ export class ReturnItemsComponent implements OnInit {
     console.log(this.reactiveForm.valid);
     if (this.reactiveForm.valid) {
       this.contractService.updateById(this.reactiveForm.value, this.reactiveForm.value.id).subscribe(next => {
+        const dateField = document.getElementById('inputDateReturn') as HTMLInputElement;
+        const defaultDate = new Date('');
+        const year = defaultDate.getFullYear();
+        const month = String(defaultDate.getMonth() + 1).padStart(2, '0');
+        const day = String(defaultDate.getDate()).padStart(2, '0');
+        const formattedDate = `${year}-${month}-${day}`;
+        dateField.value = formattedDate;
         this.getNewForm();
-        this.contractService.getAll(this.page, this.nameCustomer, this.nameProduct, this.dateBegin, this.contractCode).subscribe(next => {
+        // tslint:disable-next-line:max-line-length
+        this.contractService.getAll(this.currentPage, this.nameCustomer, this.nameProduct, this.dateBegin, this.contractCode).subscribe(next => {
           if (next.content != null) {
             this.contract = next.content;
           }
@@ -149,7 +136,6 @@ export class ReturnItemsComponent implements OnInit {
           toast.addEventListener('mouseleave', Swal.resumeTimer);
         }
       });
-
       Toast.fire({
         icon: 'success',
         title: 'Thanh toán thành công! Vui lòng kiểm tra email'
@@ -162,6 +148,7 @@ export class ReturnItemsComponent implements OnInit {
         icon: 'error',
         confirmButtonText: 'Đồng ý'
       });
+      this.ngOnInit();
       console.log(this.showErrors);
     }
   }
@@ -177,6 +164,7 @@ export class ReturnItemsComponent implements OnInit {
       product: new FormControl(this.contracts.product.name)
     });
   }
+
   getNewForm() {
     this.reactiveForm = new FormGroup({
       id: new FormControl(),
@@ -191,27 +179,17 @@ export class ReturnItemsComponent implements OnInit {
     this.payment = null;
   }
 
-  nextPage() {
-    // @ts-ignore
-    this.page++;
-    // @ts-ignore
-    this.contractService.getAll(this.page, this.nameCustomer, this.nameProduct, this.dateBegin, this.contractCode).subscribe(next => {
-      this.contract = next.content;
-      console.log(this.page);
-    });
+  goToNextOrPreviousPage(
+    nameProduct: string, nameCustomer: string, dateBegin: string, contractCode: string, direction?: string,
+  ): void {
+    console.log('currentPage: ' + this.currentPage);
+    this.getSearch(nameProduct, nameCustomer, dateBegin, contractCode,
+      direction === 'backward' ? this.currentPage + 1
+        : this.currentPage - 1
+    );
   }
 
-  previousPage() {
-    this.page--;
-    this.contractService.getAll(this.page, this.nameCustomer, this.nameProduct, this.dateBegin, this.contractCode).subscribe(next => {
-      this.contract = next.content;
-    });
-  }
-
-  accessPage(page: number) {
-    this.page = page;
-    this.contractService.getAll(this.page, this.nameCustomer, this.nameProduct, this.dateBegin, this.contractCode).subscribe(next => {
-      this.contract = next.content;
-    });
+  reset() {
+    this.ngOnInit();
   }
 }
