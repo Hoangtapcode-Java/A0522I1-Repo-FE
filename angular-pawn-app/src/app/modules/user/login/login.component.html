@@ -1,0 +1,39 @@
+<div class="container" id="container">
+  <div class="form-container sign-up-container">
+    <form [formGroup]="emailForm" (ngSubmit)="loadForgot()">
+<!--      <span ></span>-->
+      <span id="loading_send"> Dùng email của bạn để lấy lại mật khẩu</span>
+      <input type="email" placeholder="ngohoangnhan@gmail" formControlName="email" />
+      <button [disabled]="isDisabledButton" type ="submit" id="submit_button">
+        Gửi
+      </button>
+    </form>
+  </div>
+  <div class="form-container sign-in-container">
+    <form action="#" [formGroup]="loginForm" (ngSubmit)="login()">
+      <h1>Đăng nhập</h1>
+
+      <input type="email" placeholder="Email" formControlName="username" />
+      <p class="log-error">loi</p>
+      <input type="password" placeholder="Password" formControlName="password" />
+      <p  class="log-error">loi</p>
+<!--      <input type ="submit" value="Đăng nhập">-->
+      <button type = submit>Đăng nhập</button>
+    </form>
+  </div>
+  <div class="overlay-container">
+    <div class="overlay">
+      <div class="overlay-panel overlay-left">
+        <h1>Chào mừng quay trở lại</h1>
+        <p>Đăng nhập đi :)</p>
+        <button class="ghost" id="signIn">Đăng nhập</button>
+      </div>
+      <div class="overlay-panel overlay-right">
+        <h1>Xin chào ^^</h1>
+        <p>Nếu quên mật khẩu thì ấn button ở phía dưới nhé </p>
+        <button class="ghost" id="signUp">Quên mật khẩu</button>
+      </div>
+    </div>
+  </div>
+</div>
+

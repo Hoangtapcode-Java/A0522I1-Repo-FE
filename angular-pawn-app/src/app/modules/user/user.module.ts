@@ -7,13 +7,29 @@ import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
 import { UpdateComponent } from './update/update.component';
 import { DeleteComponent } from './delete/delete.component';
+import { LoginComponent } from './login/login.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AuthInterceptor} from '../../service/auth/auth.interceptor';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+
 
 
 @NgModule({
-  declarations: [UserComponent, CreateComponent, ListComponent, UpdateComponent, DeleteComponent],
+  declarations: [UserComponent, CreateComponent, ListComponent, UpdateComponent, DeleteComponent, LoginComponent, ForgotpasswordComponent],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ]
 })
 export class UserModule { }
