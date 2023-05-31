@@ -60,20 +60,20 @@
       </colgroup>
       <thead>
       <tr id="color-bg">
-        <th>Mã bài viết</th>
+        <th class="text-center">ID</th>
         <th>Tiêu đề</th>
-        <th>Tác giả</th>
-        <th>Ngày đăng bài</th>
+        <th class="text-center">Tác giả</th>
+        <th class="text-center">Ngày đăng bài</th>
         <th class="text-center">Tin nổi bật</th>
         <th class="text-center">Chức năng</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let article of articles; index as i">
-        <td>{{article.id}}</td>
-        <td>{{article.title}}</td>
-        <td>{{article.employee.name}}</td>
-        <td>{{article.publicDate}}</td>
+        <td class="text-center">{{article.id}}</td>
+        <td style="text-transform: uppercase">{{article.title}}</td>
+        <td class="text-center">{{article.employee.name}}</td>
+        <td class="text-center">{{article.publicDate}}</td>
         <td>
           <span *ngIf="article.feature === true"><a type="button" class="iconchecked"><i class="uil uil-bolt"></i></a></span>
           <span *ngIf="article.feature === false"></span>
