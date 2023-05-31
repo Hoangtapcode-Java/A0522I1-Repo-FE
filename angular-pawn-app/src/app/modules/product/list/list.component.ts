@@ -12,12 +12,12 @@ import Swal from 'sweetalert2';
 })
 export class ListComponent implements OnInit {
   contracts: any
-  categorys: Category[] = []
+  categories: Category[] = []
   page: number = 0;
   totalPages: number[] = [];
   totalPage: number = 0;
   nameCustomer: string = "";
-  categoryId: string = "";
+  categoryName: string = "";
   currentPage: number = 0;
   isSearchFormActive: boolean = false;
 
@@ -48,15 +48,16 @@ export class ListComponent implements OnInit {
 
   getAllCategory() {
     this.categoryService.getAllCategory().subscribe(next => {
-      this.categorys = next
+      this.categories = next
+      console.log(this.categories)
     })
   }
 
-  search(nameCustomer: string, categoryId: string) {
+  search(nameCustomer: string, categoryName: string) {
     const specialCharPattern = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/;
     this.nameCustomer = nameCustomer;
-    this.categoryId = categoryId
-    console.log(nameCustomer, categoryId)
+    this.categoryName = categoryName;
+    console.log(nameCustomer, categoryName)
     this.page = 0
     if (specialCharPattern.test(this.nameCustomer) || this.nameCustomer.length > 24) {
       Swal.fire({
@@ -70,7 +71,7 @@ export class ListComponent implements OnInit {
       });
     } else {
       // @ts-ignore
-      this.productService.getContractNotPay(this.nameCustomer, this.categoryId, this.page).subscribe(next => {
+      this.productService.getContractNotPay(this.nameCustomer, this.categoryName, this.page).subscribe(next => {
         console.log(next)
         this.contracts = next.content;
         this.totalPage = next.totalPages;
@@ -91,7 +92,7 @@ export class ListComponent implements OnInit {
     // @ts-ignore
     this.page++
     // @ts-ignoretự
-    this.productService.getContractNotPay(this.nameCustomer, this.categoryId, this.page).subscribe(next => {
+    this.productService.getContractNotPay(this.nameCustomer, this.categoryName, this.page).subscribe(next => {
       this.contracts = next.content;
       this.currentPage = next.number
       console.log(this.page)
@@ -100,7 +101,7 @@ export class ListComponent implements OnInit {
 
   previousPage() {
     this.page--
-    this.productService.getContractNotPay(this.nameCustomer, this.categoryId, this.page).subscribe(next => {
+    this.productService.getContractNotPay(this.nameCustomer, this.categoryName, this.page).subscribe(next => {
       this.contracts = next.content;
       this.currentPage = next.number
     })
@@ -110,7 +111,7 @@ export class ListComponent implements OnInit {
 
   accessPage(page: number) {
     this.page = page
-    this.productService.getContractNotPay(this.nameCustomer, this.categoryId, page).subscribe(next => {
+    this.productService.getContractNotPay(this.nameCustomer, this.categoryName, page).subscribe(next => {
       this.contracts = next.content;
       this.currentPage = next.number
     })

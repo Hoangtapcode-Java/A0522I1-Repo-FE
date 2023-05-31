@@ -1,8 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
+import {AppComponent} from "./app.component";
+import {HomeComponent} from "./modules/home/home.component";
+import {AppRoutingModule} from "./app-routing.module";
 import {ArticleModule} from "./modules/article/article.module";
 import {CategoryModule} from "./modules/category/category.module";
 import {ContractModule} from "./modules/contract/contract.module";
@@ -14,13 +14,19 @@ import {RoleModule} from "./modules/role/role.module";
 import {StatusModule} from "./modules/status/status.module";
 import {UserModule} from "./modules/user/user.module";
 import {UserHasRoleModule} from "./modules/user-has-role/user-has-role.module";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {AuthInterceptor} from "./service/auth/auth.interceptor";
 import {FinaceModule} from "./modules/finace/finace.module";
 import {HomePageModule} from "./modules/home-page/home-page.module";
 import {ArticlePageModule} from "./modules/article-page/article-page.module";
 
+
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,11 @@ import {ArticlePageModule} from "./modules/article-page/article-page.module";
     ArticlePageModule,
 
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

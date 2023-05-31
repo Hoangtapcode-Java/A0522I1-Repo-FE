@@ -2,9 +2,9 @@
   <div class="top">
     <form
       #searchForm1="ngForm"
-      (ngSubmit)="search(searchForm1.value.nameCustomer,searchForm1.value.categoryId)">
-    <div class="memu-search">
-      <div class="searchBox">
+      (ngSubmit)="search(searchForm1.value.nameCustomer,searchForm1.value.categoryName)">
+      <div class="memu-search">
+        <div class="searchBox">
           <i class="uil uil-search navToggle"></i>
           <input
             type="text"
@@ -12,30 +12,30 @@
             name="nameCustomer"
             [(ngModel)]="nameCustomer"
           />
-        <button class="button-search" (click)="toggleFormSearch($event)">
-          <svg width="24" height="24" focusable="false">
-            <path
-              d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"
-            ></path>
-          </svg>
-        </button>
-      </div>
+          <button class="button-search" (click)="toggleFormSearch($event)">
+            <svg width="24" height="24" focusable="false">
+              <path
+                d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"
+              ></path>
+            </svg>
+          </button>
+        </div>
         <div class="form-search" [ngClass]="{ active: isSearchFormActive }">
           <div class="row">
             <label for="productType" class="col-md-3 col-form-label" style="margin-right: 10px;">Loại đồ</label>
             <div class="col-md-6 select-form">
-              <select name="categoryId" [(ngModel)]="categoryId" class="form-select" id="productType" ngModel>
+              <select name="categoryName" [(ngModel)]="categoryName" class="form-select" id="productType" ngModel>
                 <option selected value="" style="margin-left: 30px;width: 100px;">Mở để chọn loại</option>
-                <option *ngFor="let cate of categorys" [value]="cate.id">{{cate.nameCategory}}</option>
+                <option *ngFor="let cate of categories" [value]="cate.nameCategory">{{cate.nameCategory}}</option>
               </select>
             </div>
           </div>
           <div class="form-submit">
             <button type="reset" class="btn-reset">Đặt lại</button>
-            <button type="submit" class="btn-submit">Tìm </button>
+            <button type="submit" class="btn-submit">Tìm</button>
           </div>
         </div>
-    </div>
+      </div>
     </form>
   </div>
 
@@ -64,7 +64,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let contract of contracts,index as i">
-        <td>{{i+1}}</td>
+        <td>{{i + 1}}</td>
         <td>{{contract.customer.name}}</td>
         <td>{{contract.product.name}}</td>
         <td>{{contract.product.category.nameCategory}}</td>
@@ -74,20 +74,21 @@
           <a [routerLink]="['detail',contract.id]" type="button" class="icon">
             <i class="uil uil-eye"></i>
           </a>
-          <a type="button" [routerLink]="['',contract.id]" class="icon" *ngIf="contract.status.id!=1" disabled >
+          <a type="button" [routerLink]="['',contract.id]" class="icon" *ngIf="contract.status.id!=2" disabled>
             <i class="uil uil-bill"></i>
           </a>
         </td>
       </tr>
       </tbody>
     </table>
-    <img  ngif="contracts==null||contracts.length==0"  src="https://img.freepik.com/free-vector/404-error-with-landscape-concept-illustration_114360-7888.jpg?w=2000">
+    <img *ngIf="contracts.length==0" src="https://thanhbinhpc.com/wp-content/uploads/2019/03/sua-loi-404-tren-may-tinh.3PNG.jpg" style="width: 550px">
 
   </div>
 
   <div class="pagination">
     <a *ngIf="page > 0" (click)="previousPage()" class="text1">«</a>
-    <a class="paginationItem" [class.active]="page===currentPage"  (click)="accessPage(page)" *ngFor="let page of totalPages">{{page+1}}</a>
+    <a class="paginationItem" [class.active]="page===currentPage" (click)="accessPage(page)"
+       *ngFor="let page of totalPages">{{page + 1}}</a>
     <a *ngIf="page < totalPage - 1" (click)="nextPage()" class="text1">»</a>
   </div>
 </div>
