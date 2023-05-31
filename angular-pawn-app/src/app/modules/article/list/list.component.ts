@@ -110,8 +110,8 @@ export class ListComponent implements OnInit {
   deleteArticle(deleteArticle: Article) {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: "btn swal2-confirm btn-customer-switch",
-        cancelButton: "btn swal2-cancel btn-customer-switch"
+        confirmButton: "btn swal2-confirm",
+        cancelButton: "btn swal2-cancel"
       },
       buttonsStyling: false,
     });
