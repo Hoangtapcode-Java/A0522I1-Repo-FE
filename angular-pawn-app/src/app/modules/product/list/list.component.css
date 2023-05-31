@@ -462,6 +462,7 @@ select.form-select option {
 }
 .pagination .text {
   font-size: 16px;
+
 }
 .pagination .text1 {
   font-size: 16px;
@@ -480,24 +481,27 @@ select.form-select option {
   color: #fff;
   opacity: .8;
 }
-.pagination a.disabled {
-  pointer-events: none;
-  color: mix(var(--nc-primary), white, 50%);
-}
+/*.pagination a.disabled {*/
+/*  pointer-events: none;*/
+/*  color: var(--nc-primary), white, 50%;*/
+/*}*/
 /* thiết lập style cho class active */
-.pagination a.active {
-  background: var(--nc-primary-gradient);
+a.paginationItem.active {
+  background: #ee4d2d !important;
   color: #fff;
 }
 /* thêm màu nền khi người dùng hover vào class không active */
 .pagination a:hover:not(.active) {
-  background-color: var(--nc-primary-bg);
-  opacity: 0.8s;
+  background: #ee4d2d !important;
+  opacity: .8;
 }
 
 @media (max-width: 980px) {
   .memu-search .searchBox {
     width: 400px;
+  }
+  .lds-ring{
+    margin: 0 100px;
   }
 }
 
@@ -505,7 +509,9 @@ select.form-select option {
   .memu-search .searchBox {
     width: 300px;
   }
+
 }
+
 
 
 

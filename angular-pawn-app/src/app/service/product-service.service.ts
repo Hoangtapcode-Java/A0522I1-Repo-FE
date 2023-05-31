@@ -8,7 +8,6 @@ import {Contract} from "../models/contract/Contract";
 })
 export class ProductServiceService {
   API_KEY_PRODUCT = 'http://localhost:8080/api/products'
-  API_KEY_TOTALPAGE = 'http://localhost:8080/api/products/totalpages'
 
   constructor(private httpClient : HttpClient) { }
 
@@ -21,10 +20,6 @@ export class ProductServiceService {
   getProductNotPayById(id : Number) : Observable<Contract>{
     return this.httpClient.get("http://localhost:8080/api/products/"+id)
   }
-   // @ts-ignore
-  // getTotalPage(nameCustomer: string, categoryId: string) : Observable<number>{
-  //  // @ts-ignore
-  //   return this.httpClient.get(this.API_KEY_TOTALPAGE+"?namecustomer="+nameCustomer+"&categoryid="+categoryId)
-  // }
+ 
 
 }

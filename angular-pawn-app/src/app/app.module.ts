@@ -38,7 +38,8 @@ import {ArticlePageModule} from "./modules/article-page/article-page.module";
     UserHasRoleModule,
     FinaceModule,
     HomePageModule,
-    ArticlePageModule
+    ArticlePageModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

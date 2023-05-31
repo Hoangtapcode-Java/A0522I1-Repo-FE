@@ -8,11 +8,10 @@
           <i class="uil uil-search navToggle"></i>
           <input
             type="text"
-            placeholder="Tìm Kiếm..."
+            placeholder="Tên KH :VD Phạm Nguyễn Trường Tín..."
             name="nameCustomer"
             [(ngModel)]="nameCustomer"
           />
-
         <button class="button-search" (click)="toggleFormSearch($event)">
           <svg width="24" height="24" focusable="false">
             <path
@@ -75,18 +74,20 @@
           <a [routerLink]="['detail',contract.id]" type="button" class="icon">
             <i class="uil uil-eye"></i>
           </a>
-          <a type="button" class="icon" *ngIf="contract.status.id==2">
+          <a type="button" [routerLink]="['',contract.id]" class="icon" *ngIf="contract.status.id!=1" disabled >
             <i class="uil uil-bill"></i>
           </a>
         </td>
       </tr>
       </tbody>
     </table>
+    <img  ngif="contracts==null||contracts.length==0"  src="https://img.freepik.com/free-vector/404-error-with-landscape-concept-illustration_114360-7888.jpg?w=2000">
+
   </div>
 
   <div class="pagination">
     <a *ngIf="page > 0" (click)="previousPage()" class="text1">«</a>
-    <a class="text"  (click)="accessPage(page)" *ngFor="let page of totalPages">{{page+1}}</a>
+    <a class="paginationItem" [class.active]="page===currentPage"  (click)="accessPage(page)" *ngFor="let page of totalPages">{{page+1}}</a>
     <a *ngIf="page < totalPage - 1" (click)="nextPage()" class="text1">»</a>
   </div>
 </div>

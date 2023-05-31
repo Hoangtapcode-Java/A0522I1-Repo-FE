@@ -1,14 +1,14 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {ProductServiceService} from "../../../service/product-service.service";
-import {ImageServiceService} from "../../../service/image-service.service";
 import {CategoryServiceService} from "../../../service/category-service.service";
 import {Category} from "../../../models/category/Category";
+import Swal from 'sweetalert2';
 
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
   contracts: any
@@ -18,6 +18,7 @@ export class ListComponent implements OnInit {
   totalPage: number = 0;
   nameCustomer: string = "";
   categoryId: string = "";
+  currentPage: number = 0;
   isSearchFormActive: boolean = false;
 
   constructor(private productService: ProductServiceService, private categoryService: CategoryServiceService) {
@@ -27,12 +28,14 @@ export class ListComponent implements OnInit {
     this.productService.getContractNotPay("", "", 0).subscribe(next => {
       this.contracts = next.content;
       this.totalPage = next.totalPages
+      this.currentPage = next.number
       for (let j = 0; j < this.totalPage; j++) {
         this.totalPages.push(j)
-      } 
+      }
       console.log(next);
       console.log(this.contracts)
       console.log(this.totalPages)
+      console.log('currentPage', this.currentPage)
     })
   }
 
@@ -50,32 +53,47 @@ export class ListComponent implements OnInit {
   }
 
   search(nameCustomer: string, categoryId: string) {
+    const specialCharPattern = /[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]+/;
     this.nameCustomer = nameCustomer;
     this.categoryId = categoryId
     console.log(nameCustomer, categoryId)
     this.page = 0
-    // @ts-ignore
-    this.productService.getContractNotPay(this.nameCustomer, this.categoryId, this.page).subscribe(next => {
-      console.log(next)
-      this.contracts = next.content;
-      this.totalPage = next.totalPages;
-      this.totalPages = []
-      console.log(this.totalPage)
-      for (let j = 0; j < this.totalPage; j++) {
-        this.totalPages.push(j)
-      }
-      console.log(this.totalPages)
-      console.log(this.contracts)
+    if (specialCharPattern.test(this.nameCustomer) || this.nameCustomer.length > 24) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Lỗi',
+        text: 'Chuổi không được chứa kí tự đặc biệt và lớn hơn 24 kí',
+        position: 'top-end',
+        toast: true,
+        showConfirmButton: false,
+        timer: 3000  // Adjust the duration of the alert (in milliseconds) as needed
+      });
+    } else {
+      // @ts-ignore
+      this.productService.getContractNotPay(this.nameCustomer, this.categoryId, this.page).subscribe(next => {
+        console.log(next)
+        this.contracts = next.content;
+        this.totalPage = next.totalPages;
+        this.currentPage = next.number
+        this.totalPages = []
+        console.log('currentPage', this.currentPage)
+        for (let j = 0; j < this.totalPage; j++) {
+          this.totalPages.push(j)
+        }
+        console.log(this.totalPages)
+        console.log(this.contracts)
 
-    })
+      })
+    }
   }
 
   nextPage() {
     // @ts-ignore
     this.page++
-    // @ts-ignore
+    // @ts-ignoretự
     this.productService.getContractNotPay(this.nameCustomer, this.categoryId, this.page).subscribe(next => {
       this.contracts = next.content;
+      this.currentPage = next.number
       console.log(this.page)
     })
   }
@@ -84,6 +102,7 @@ export class ListComponent implements OnInit {
     this.page--
     this.productService.getContractNotPay(this.nameCustomer, this.categoryId, this.page).subscribe(next => {
       this.contracts = next.content;
+      this.currentPage = next.number
     })
 
   }
@@ -93,6 +112,7 @@ export class ListComponent implements OnInit {
     this.page = page
     this.productService.getContractNotPay(this.nameCustomer, this.categoryId, page).subscribe(next => {
       this.contracts = next.content;
+      this.currentPage = next.number
     })
 
   }
