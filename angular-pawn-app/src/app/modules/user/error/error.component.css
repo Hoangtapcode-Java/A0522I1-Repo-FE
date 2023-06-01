@@ -364,7 +364,7 @@ button {
 
 .cable {
   width: 8px;
-  height: 248px;
+  height: 178px;
   background-image: linear-gradient(rgb(32 148 218 / 70%), rgb(193 65 25)), linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
 }
 
