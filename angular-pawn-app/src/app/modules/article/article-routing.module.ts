@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {ListComponent} from "./list/list.component";
 import {CreateComponent} from "./create/create.component";
 import {UpdateComponent} from "./update/update.component";
@@ -8,7 +8,7 @@ import {ArticleComponent} from "./article.component";
 
 
 const routes: Routes = [{
-  path:'article', component: ArticleComponent, children: [
+  path: 'article', component: ArticleComponent, children: [
     {
       path: '', component: ListComponent
     },
@@ -19,7 +19,7 @@ const routes: Routes = [{
       path: 'update', component: UpdateComponent
     },
     {
-      path:'delete',component:DeleteComponent
+      path: 'delete', component: DeleteComponent
     }
   ]
 }];
@@ -28,4 +28,5 @@ const routes: Routes = [{
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ArticleRoutingModule { }
+export class ArticleRoutingModule {
+}

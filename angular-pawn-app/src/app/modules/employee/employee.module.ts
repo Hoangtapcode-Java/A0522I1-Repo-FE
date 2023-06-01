@@ -11,16 +11,20 @@ import {AngularFireModule} from "@angular/fire";
 import {environment} from "../../../environments/environment";
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
+import { EditEmployeeInforComponent } from './edit-employee-infor/edit-employee-infor.component';
+import {ReactiveFormsModule} from "@angular/forms";
+
 
 
 @NgModule({
-  declarations: [EmployeeComponent, CreateComponent, ListComponent, UpdateComponent, DeleteComponent],
+  declarations: [EmployeeComponent, CreateComponent, ListComponent, UpdateComponent, DeleteComponent, EditEmployeeInforComponent],
   imports: [
     CommonModule,
     EmployeeRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ReactiveFormsModule,
   ]
 })
 export class EmployeeModule { }
