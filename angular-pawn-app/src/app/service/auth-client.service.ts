@@ -29,10 +29,11 @@ export class AuthClientService {
         localStorage.setItem('username', user.value.username);
         console.log(data.createdTime);
         localStorage.setItem('createdTime', data.createdTime);
+        console.log(data.roles);
         data.roles.forEach(role => {
           role.authority === 'ADMIN' ? this.roles.push(UserRole.Admin) : this.roles.push(UserRole.User);
         });
-        sessionStorage.setItem('roles', this.roles.join(','));
+        localStorage.setItem('roles', this.roles.join(','));
         // Swal.fire({
         //   title: 'Success!',
         //   text: 'Login success',

@@ -8,7 +8,8 @@ import {DeleteComponent} from './delete/delete.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuardService} from '../../service/auth-guard.service';
 import {UserRole} from '../../models/UserRole';
-import {ForgotpasswordComponent} from "./forgotpassword/forgotpassword.component";
+import {ForgotpasswordComponent} from './forgotpassword/forgotpassword.component';
+import {ErrorComponent} from "./error/error.component";
 
 
 const routes: Routes = [{
@@ -30,6 +31,9 @@ const routes: Routes = [{
     },
     {
       path: 'forgot', component: ForgotpasswordComponent
+    }
+    , {
+      path: 'error', component: ErrorComponent
     }
   ]
 

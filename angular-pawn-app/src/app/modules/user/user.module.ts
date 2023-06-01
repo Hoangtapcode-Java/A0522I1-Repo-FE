@@ -12,11 +12,12 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthInterceptor} from '../../service/auth/auth.interceptor';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ErrorComponent } from './error/error.component';
 
 
 
 @NgModule({
-  declarations: [UserComponent, CreateComponent, ListComponent, UpdateComponent, DeleteComponent, LoginComponent, ForgotpasswordComponent],
+  declarations: [UserComponent, CreateComponent, ListComponent, UpdateComponent, DeleteComponent, LoginComponent, ForgotpasswordComponent, ErrorComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
