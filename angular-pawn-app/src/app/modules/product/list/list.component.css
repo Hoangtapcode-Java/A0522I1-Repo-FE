@@ -503,6 +503,7 @@ a.paginationItem.active {
   .lds-ring{
     margin: 0 100px;
   }
+
 }
 
 @media (max-width: 480px) {

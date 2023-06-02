@@ -45,6 +45,7 @@
       <colgroup>
         <col style="width: 10%"/>
         <col style="width: 10%"/>
+        <col style="width: 10%"/>
         <col style="width: 15%"/>
         <col style="width: 10%"/>
         <col style="width: 15%"/>
@@ -55,6 +56,7 @@
       <tr id="color-bg">
         <th>STT</th>
         <th>Tên khách hàng</th>
+        <th>Mã hợp đồng</th>
         <th>Tên đồ</th>
         <th>Loại đồ</th>
         <th>Trạng thái</th>
@@ -66,6 +68,7 @@
       <tr *ngFor="let contract of contracts,index as i">
         <td>{{i + 1}}</td>
         <td>{{contract.customer.name}}</td>
+        <td>{{contract.contractCode}}</td>
         <td>{{contract.product.name}}</td>
         <td>{{contract.product.category.nameCategory}}</td>
         <td>{{contract.status.name}}</td>
@@ -81,8 +84,6 @@
       </tr>
       </tbody>
     </table>
-    <img *ngIf="contracts.length==0" src="https://thanhbinhpc.com/wp-content/uploads/2019/03/sua-loi-404-tren-may-tinh.3PNG.jpg" style="width: 550px">
-
   </div>
 
   <div class="pagination">

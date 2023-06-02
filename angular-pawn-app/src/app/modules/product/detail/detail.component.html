@@ -1,3 +1,117 @@
-<div class="d-flex align-center justify-content-center" style="margin-top: 100px;">
-<img ngif="contract==null" style="width: 560px;" src="https://thanhbinhpc.com/wp-content/uploads/2019/03/sua-loi-404-tren-may-tinh.3PNG.jpg">
+<div class="container">
+  <!--=============== NAVIGATION MENU ===============-->
+  <div class="menu">
+    <a href="#welcome-section"><i class="menu-icon uil uil-home"></i></a>
+    <a href="#about"><i class="menu-icon uil uil-user"></i></a>
+    <a href="#projects"
+    ><i class="menu-icon uil uil-expand-arrows-alt"></i
+    ></a>
+    <a href="#experience"
+    ><i class="menu-icon uil uil-briefcase-alt"></i
+    ></a>
+    <a href="#contact"><i class="menu-icon uil uil-envelope"></i></a>
+  </div>
+  <!--=============== MAIN "WINDOW" ===============-->
+  <div class="portfolio">
+    <!--=============== HEADER SECTION ===============-->
+    <section class="header">
+      <h1 style="margin-top: 110px">{{contract.product.name}}</h1>
+      <div class="header-extra">
+        <h2>{{contract.customer.name}}</h2>
+      </div>
+      <p style="margin-top: 40px">
+          <span *ngFor="let img of imgs">
+            <img style="border-radius: 5px;margin-right: 10px; margin-top: 10px" height="80px" width="75px"
+                 src="{{img.img}}" *ngIf="img.product.id==contract.product.id">
+          </span>
+      </p>
+      <span class="cta">
+        <a routerLink="/product">Danh sách đồ trong kho</a>
+        </span>
+    </section>
+  </div>
+  <!--=============== CONTENT SECTION ===============-->
+  <div class="content">
+    <!--=============== HOME ===============-->
+    <section class="content-card home" id="welcome-section">
+      <h1>Thông tin chi tiết</h1>
+      <div class="box-flex">
+        <div class="dbox">
+          <div class="icon">
+            <i class="uil uil-italic" title="Mã hợp đồng"></i>
+          </div>
+          <div class="text">
+            <p>
+              {{contract.contractCode}}
+            </p>
+          </div>
+        </div>
+        <div class="dbox">
+          <div class="icon">
+            <i class="uil uil-archive" title="Loại hàng"></i>
+          </div>
+          <div class="text">
+            <p>{{contract.product.category.nameCategory}}
+
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="box-flex">
+        <div class="dbox">
+          <div class="icon">
+            <i class="uil uil-clipboard-notes" title="Trạng thái hợp đồng"></i>
+          </div>
+          <div class="text">
+            <p>
+              {{contract.status.name}}
+            </p>
+          </div>
+        </div>
+        <div class="dbox">
+          <div class="icon">
+            <i class="uil uil-usd-circle" title="Giá mua"></i>
+          </div>
+          <div class="text">
+            <p>
+              {{contract.product.price|currency:'VND'}}
+
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="box-flex-2">
+        <div class="dbox-2">
+          <div class="icon">
+            <i class="uil uil-user-circle" title="Nhân viên phụ trách"></i>
+          </div>
+          <div class="text">
+            <p>{{contract.employee.name}}</p>
+          </div>
+        </div>
+      </div>
+      <h1>Liên hệ</h1>
+      <div class="box-flex">
+        <div class="dbox">
+          <div class="icon">
+            <i class="uil uil-phone" title="số điện thoại"></i>
+          </div>
+          <div class="text">
+            <p>
+              {{contract.customer.phone}}
+            </p>
+          </div>
+        </div>
+        <div class="dbox">
+          <div class="icon">
+            <i class="uil uil-envelope" title="email"></i>
+          </div>
+          <div class="text">
+            <p>{{contract.customer.email}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
+
