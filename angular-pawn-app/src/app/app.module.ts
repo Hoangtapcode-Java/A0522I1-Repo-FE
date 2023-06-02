@@ -25,6 +25,7 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
 // import { QuillModule } from 'ngx-quill';
 
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -49,7 +50,8 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

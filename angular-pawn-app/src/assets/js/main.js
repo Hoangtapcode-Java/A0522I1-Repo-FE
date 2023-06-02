@@ -78,18 +78,18 @@
   /**
    * Back to top button
    */
-  let backtotop1 = select('.back-to-top')
-  if (backtotop1) {
-    const toggleBacktotop = () => {
-      if (window.scrollY > 100) {
-        backtotop1.classList.add('active')
-      } else {
-        backtotop1.classList.remove('active')
-      }
-    }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
-  }
+  // let backtotop1 = select('.back-to-top')
+  // if (backtotop1) {
+  //   const toggleBacktotop = () => {
+  //     if (window.scrollY > 100) {
+  //       backtotop1.classList.add('active')
+  //     } else {
+  //       backtotop1.classList.remove('active')
+  //     }
+  //   }
+  //   window.addEventListener('load', toggleBacktotop)
+  //   onscroll(document, toggleBacktotop)
+  // }
 
   /**
    * Mobile nav toggle

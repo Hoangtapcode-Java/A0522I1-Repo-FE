@@ -1,0 +1,16 @@
+
+
+label {
+  display: flex;
+  align-items: center;
+}
+
+.error-message-form {
+  margin-left: 10px;
+  color: red;
+  font-size: 12px;
+  font-style: italic;
+}
+span{
+  margin-right: 5px;
+}

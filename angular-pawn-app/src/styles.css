@@ -1,4 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+a {
+  color: #eb5d1e;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ef7f4d;
+  text-decoration: none;
+}
 
 /* CSS cho switch alert */
 .swal2-actions {
