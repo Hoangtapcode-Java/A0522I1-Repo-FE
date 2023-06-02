@@ -77,7 +77,7 @@ h6,
 --------------------------------------------------------------*/
 @media screen and (max-width: 768px) {
   [data-aos-delay] {
-    transition-delay: 0 !important;
+    /*transition-delay: !important;*/
   }
 }
 
@@ -1435,6 +1435,7 @@ section {
   font-size: 20px;
 }
 
+
 /* trang chủ hoàn thành cơ bản */
 
 /*Trung*/
@@ -2173,8 +2174,6 @@ a.iconchecked {
   display: block;
   text-align: center;
 }
-
-
 .actions {
   display: flex;
   gap: 3px;
@@ -2728,7 +2727,7 @@ select.form-select option {
   -webkit-line-clamp: 2; /* Số dòng hiển thị */
   -webkit-box-orient: vertical;
 }
-/* CSS cho switch alert */
+
 .swal2-actions {
   display: flex;
   gap: 10px;

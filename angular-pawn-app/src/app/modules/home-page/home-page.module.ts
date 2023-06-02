@@ -45,15 +45,15 @@ import {ArticlePageModule} from "../article-page/article-page.module";
         WatchComponent,
         CameraComponent,
         PawnFormCustomerComponent],
-  exports: [
-    HomePageComponent,
-    ScrollToTopComponent
-  ],
-  imports: [
-    CommonModule,
-    HomePageRoutingModule,
-    ReactiveFormsModule,
-    ArticlePageModule
-  ]
+
+    exports: [
+        HomePageComponent
+    ],
+    imports: [
+        CommonModule,
+        HomePageRoutingModule,
+        ReactiveFormsModule,
+        ArticlePageModule
+    ]
 })
 export class HomePageModule { }

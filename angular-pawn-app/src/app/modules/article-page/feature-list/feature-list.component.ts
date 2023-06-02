@@ -3,6 +3,7 @@ import {Article} from "../../../models/article/Article";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ArticleServiceService} from "../../../service/article-service.service";
 
+
 @Component({
   selector: 'app-feature-list',
   templateUrl: './feature-list.component.html',
@@ -17,6 +18,7 @@ export class FeatureListComponent implements OnInit {
   indexPagination: number = 1;
   p : number =1;
 
+
   constructor(private route: Router,
               private activatedRoute: ActivatedRoute,
               private articleService: ArticleServiceService) { }
@@ -30,6 +32,7 @@ export class FeatureListComponent implements OnInit {
       this.featureArticles = r;
       console.log(r);
     })
+
   }
 
 
