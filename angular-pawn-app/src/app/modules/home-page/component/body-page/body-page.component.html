@@ -3,8 +3,8 @@
   <div class="container">
     <div class="row gy-4">
       <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
-        <h1>Cần tiền mặt ngay?</h1>
-        <h2>Hãy mang tài sản của bạn đến với DANA88!</h2>
+        <h1 style="color: #eb5d1e">Bạn đang gặp khó khăn?</h1>
+        <h2>Hãy đến với DANA88!</h2>
         <div>
           <a href="#contact" class="btn-get-started scrollto">Đăng kí ngay</a>
         </div>
@@ -21,69 +21,8 @@
 
 
   <!-- ======= About Section Tin tức ======= -->
-  <section id="about" class="portfolio">
-    <div class="section-title">
-      <p>Tin tức - Ưu đãi</p>
-    </div>
-    <!--      <section id="feature-slider" class="feature-slider">-->
-    <div class="container-md" data-aos="fade-up">
-      <div class="row">
-        <div class="col-12">
-          <div class="swiper sliderFeaturedPosts">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/post-slide-1.png');">
-                  <!--                      <div class="img-bg-inner">-->
-                  <!--                        <h2>Gói vay mới - cầm đồ online</h2>-->
-                  <!--                      </div>-->
-                </a>
-              </div>
-
-              <div class="swiper-slide">
-                <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/post-landscape-2.jpg');">
-                  <!--                      <div class="img-bg-inner">-->
-                  <!--                        <h2>xe còn đó, vẫn có tiền xài</h2>-->
-                  <!--                      </div>-->
-                </a>
-              </div>
-
-              <div class="swiper-slide">
-                <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/post-slide-3.jpg');">
-                  <!--                      <div class="img-bg-inner">-->
-                  <!--                        <h2>giảm đến 20% lãi suất & chi phí vay từ ngày 03/04/2023</h2>-->
-                  <!--                      </div>-->
-                </a>
-              </div>
-
-              <div class="swiper-slide">
-                <a href="single-post.html" class="img-bg d-flex align-items-end" style="background-image: url('assets/img/post-slide-4.jpg');">
-                  <!--                      <div class="img-bg-inner">-->
-                  <!--                        <h2>giới thiệu thành công, hoa hồng đầy ví</h2>-->
-                  <!--                      </div>-->
-                </a>
-              </div>
-            </div>
-            <div class="custom-swiper-button-next">
-              <span class="bi-chevron-right"></span>
-            </div>
-            <div class="custom-swiper-button-prev">
-              <span class="bi-chevron-left"></span>
-            </div>
-
-            <div class="swiper-pagination"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div  style="display: flex; justify-content: center; align-items: center; height: 10vh;" data-aos="fade-up">
-      <a [routerLink]="['']" class="btn-see-more scrollto">Xem thêm</a>
-    </div>
-
-    <!--      </section>&lt;!&ndash; End Hero Slider Section &ndash;&gt;-->
-
-  </section><!-- End About Section -->
+  <app-feature-list></app-feature-list>
+  <!-- End About Section -->
 
   <!-- ======= Services Section ======= -->
   <section id="services" class="services section-bg">
@@ -152,7 +91,7 @@
 
         <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-app">
           <div class="portfolio-wrap">
-            <a routerLink="/bike"><img src="assets/img/pawn/bike.png" class="img-fluid"  alt="">
+            <a routerLink="bike"><img src="assets/img/pawn/bike.png" class="img-fluid"  alt="">
             </a>
             <div class="portfolio-links">
               <!-- <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bi bi-plus"></i></a>
@@ -167,7 +106,7 @@
 
         <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-web">
           <div class="portfolio-wrap">
-            <a routerLink="/car"><img src="assets/img/pawn/car.png" class="img-fluid" alt="">
+            <a routerLink="car"><img src="assets/img/pawn/car.png" class="img-fluid" alt="">
             </a>
             <div class="portfolio-links">
 
@@ -181,7 +120,7 @@
 
         <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-app">
           <div class="portfolio-wrap">
-            <a routerLink="/camera"><img src="assets/img/pawn/camera.png" class="img-fluid" alt=""></a>
+            <a routerLink="camera"><img src="assets/img/pawn/camera.png" class="img-fluid" alt=""></a>
             <div class="portfolio-links">
 
             </div>
@@ -194,7 +133,7 @@
 
         <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-card">
           <div class="portfolio-wrap">
-            <a routerLink="/bag"><img src="assets/img/pawn/bag.png" class="img-fluid" alt=""></a>
+            <a routerLink="bag"><img src="assets/img/pawn/bag.png" class="img-fluid" alt=""></a>
 
             <div class="portfolio-links">
             </div>
@@ -207,7 +146,7 @@
 
         <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-web">
           <div class="portfolio-wrap">
-            <a routerLink="/estate"><img src="assets/img/pawn/estate.png" class="img-fluid" alt=""></a>
+            <a routerLink="estate"><img src="assets/img/pawn/estate.png" class="img-fluid" alt=""></a>
 
             <div class="portfolio-links">
             </div>
@@ -220,7 +159,7 @@
 
         <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-app">
           <div class="portfolio-wrap">
-            <a routerLink="/diamond"><img src="assets/img/pawn/diamond.png" class="img-fluid" alt=""></a>
+            <a routerLink="diamond"><img src="assets/img/pawn/diamond-home.png" class="img-fluid" alt=""></a>
             <div class="portfolio-links">
 
             </div>
@@ -233,7 +172,7 @@
 
         <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-card">
           <div class="portfolio-wrap">
-            <a routerLink="/phone"><img src="assets/img/pawn/phone.png" class="img-fluid" alt=""></a>
+            <a routerLink="phone"><img src="assets/img/pawn/phone.png" class="img-fluid" alt=""></a>
             <div class="portfolio-links">
             </div>
             <div class="portfolio-info">
@@ -245,7 +184,7 @@
 
         <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-card">
           <div class="portfolio-wrap">
-            <a routerLink="/laptop-computer"><img src="assets/img/pawn/laptop.png" class="img-fluid" alt=""></a>
+            <a routerLink="laptop"><img src="assets/img/pawn/laptop.png" class="img-fluid" alt=""></a>
             <div class="portfolio-links">
             </div>
             <div class="portfolio-info">
@@ -257,7 +196,7 @@
 
         <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-web">
           <div class="portfolio-wrap">
-            <a routerLink="/watch"><img src="assets/img/pawn/watch.png" class="img-fluid" alt=""></a>
+            <a routerLink="watch"><img src="assets/img/pawn/watch.png" class="img-fluid" alt=""></a>
             <div class="portfolio-links">
             </div>
             <div class="portfolio-info">
@@ -268,7 +207,7 @@
 
         <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-web">
           <div class="portfolio-wrap">
-            <a routerLink="/gold"><img src="assets/img/pawn/gold.png" class="img-fluid" alt=""></a>
+            <a routerLink="gold"><img src="assets/img/pawn/gold-home.png" class="img-fluid" alt=""></a>
             <div class="portfolio-links">
             </div>
             <div class="portfolio-info">
@@ -279,7 +218,7 @@
 
         <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-web">
           <div class="portfolio-wrap">
-            <a routerLink="/appliance"><img src="assets/img/pawn/appliance.png" class="img-fluid" alt=""></a>
+            <a routerLink="appliance"><img src="assets/img/pawn/appliance.png" class="img-fluid" alt=""></a>
             <div class="portfolio-links">
             </div>
             <div class="portfolio-info">
@@ -290,7 +229,7 @@
 
         <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item filter-web">
           <div class="portfolio-wrap">
-            <a routerLink="/art"><img src="assets/img/pawn/art.png" class="img-fluid" alt=""></a>
+            <a routerLink="art"><img src="assets/img/pawn/art.png" class="img-fluid" alt=""></a>
             <div class="portfolio-links">
             </div>
             <div class="portfolio-info">

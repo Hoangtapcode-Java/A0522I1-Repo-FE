@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HomePageRoutingModule } from './home-page-routing.module';
 import { HomePageComponent } from './home-page.component';
+import {ArticlePageModule} from '../article-page/article-page.module';
 import {HeaderComponent} from './component/header/header.component';
 import {ScrollToTopComponent} from './component/scroll-to-top/scroll-to-top.component';
 import {FooterComponent} from './component/footer/footer.component';
@@ -50,7 +51,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     imports: [
         CommonModule,
         HomePageRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ArticlePageModule
     ]
 })
 export class HomePageModule { }

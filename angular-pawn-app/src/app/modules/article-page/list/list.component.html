@@ -1,0 +1,47 @@
+<app-header-for-article></app-header-for-article>
+<main id="main">
+  <section>
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-9" data-aos="fade-up">
+          <h2 class="category-title">Tin tức - ưu đãi</h2>
+
+          <!--Bài báo-->
+
+          <div class="d-md-flex post-entry-2 half" *ngFor="let article of articles; index as i">
+            <a [routerLink]="['/article-page/view',article.id]" class="me-4 thumbnail customlink">
+              <img [src]="article.img" alt="Image" class="img-fluid">
+            </a>
+            <div>
+              <div class="post-meta"><span class="date">Tin tức</span> <span class="mx-1">-</span> <span>{{article.publicDate}}</span></div>
+              <h4 style="text-transform: uppercase"><a [routerLink]="['/article-page/view',article.id]" class="customlink text-break">{{article.title}}</a></h4>
+              <div class="content-hide-apart" [innerHTML]="article.content"></div>
+              <div class="d-flex align-items-center author">
+                <div class="name">
+                  <h3 class="m-0 p-0">{{article.employee.name}}</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pagination">
+            <a *ngIf="page > 0" class="text1" (click)="prviousPage()">«</a>
+            <a class="text"  (click)="accessPage(page)" *ngFor="let page of totalPages">{{page+1}}</a>
+            <a *ngIf="page < totalPage - 1" class="text1" (click)="nextPage()">»</a>
+          </div>
+
+        </div>
+
+        <div class="col-md-3">
+          <app-feature-list-sidebar></app-feature-list-sidebar>
+        </div>
+
+      </div>
+    </div>
+
+
+
+  </section>
+</main><!-- End #main -->
+<app-footer-for-article></app-footer-for-article>

@@ -1,0 +1,39 @@
+<app-header-for-article></app-header-for-article>
+
+<main id="main">
+
+  <section class="single-post-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9 post-content" data-aos="fade-up">
+
+          <!-- ======= Single Post Content ======= -->
+          <div class="single-post">
+            <div class="post-meta"><span class="date">Tin tức</span> <span class="mx-1">-</span> <span>{{article.publicDate}}</span></div>
+            <h1 class="mb-5 text-break">{{ article.title }}</h1>
+
+            <figure class="my-4">
+              <img [src]="article.img" alt="Image" class="img-fluid">
+<!--              <figcaption>Dịch vụ cầm đồ online</figcaption>-->
+            </figure>
+            <div [innerHTML]="article.content"></div>
+          </div><!-- End Single Post Content -->
+
+          <div class="d-flex align-items-center author">
+            <div class="name">
+              <h3 class="m-0 p-0">{{article.employee.name}}</h3>
+            </div>
+          </div>
+          <br>
+        </div>
+
+        <div class="col-md-3">
+          <app-feature-list-sidebar></app-feature-list-sidebar>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main><!-- End #main -->
+
+<app-footer-for-article></app-footer-for-article>
