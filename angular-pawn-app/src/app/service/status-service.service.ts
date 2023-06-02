@@ -7,9 +7,10 @@ import { Status } from '../models/status/Status';
   providedIn: 'root'
 })
 export class StatusServiceService {
-
+  
   constructor(private httpClient: HttpClient) {}
-
+  
+  // ThuongVTH
   getAll(): Observable<Status[]>{
     return this.httpClient.get<Status[]>("http://localhost:8080/api/status")
   }

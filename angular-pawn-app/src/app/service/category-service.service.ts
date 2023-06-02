@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CategoryServiceService {
-
+// ThuongVTH
   constructor(private httpClient: HttpClient) {}
 
   getAll(): Observable<Category[]>{

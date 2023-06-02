@@ -1,3 +1,4 @@
+// ThuongVTH
 export interface Customer {
   address?:string,
   id?:number,

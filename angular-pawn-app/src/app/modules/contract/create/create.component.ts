@@ -17,6 +17,7 @@ import { ValidationErrors } from '@angular/forms';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
+// ThuongVTH
 export class CreateComponent implements OnInit {
 
   page: any;

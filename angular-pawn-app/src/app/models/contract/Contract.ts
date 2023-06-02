@@ -2,6 +2,7 @@ import {Status} from "../status/Status";
 import { Category } from "../category/Category";
 import { Customer } from "../customer/Customer";
 
+// ThuongVTH
 export interface Contract {
   nameProduct?:string,
   category?:Category,
