@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
   loadForgot() {
     const buttonLoad: HTMLElement | null = document.getElementById('submit_button');
     buttonLoad.innerHTML =
-        `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="color: darkseagreen"></span>
+       `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="color: darkseagreen"></span>
         <span class="visually-hidden">Loading...</span>`;
     this.isDisabledButton = true;
     this.userServiceService.sendOtp(this.emailForm.get('email').value).subscribe(data => {
