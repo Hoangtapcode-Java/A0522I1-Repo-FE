@@ -16,7 +16,7 @@
             <div>
               <div class="post-meta"><span class="date">Tin tức</span> <span class="mx-1">-</span> <span>{{article.publicDate}}</span></div>
               <h4 style="text-transform: uppercase"><a [routerLink]="['/article-page/view',article.id]" class="customlink text-break">{{article.title}}</a></h4>
-              <div class="content-hide-apart" [innerHTML]="article.content"></div>
+              <div class="content-hide-apart text-break" [innerHTML]="article.content"></div>
               <div class="d-flex align-items-center author">
                 <div class="name">
                   <h3 class="m-0 p-0">{{article.employee.name}}</h3>

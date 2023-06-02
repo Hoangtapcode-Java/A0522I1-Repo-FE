@@ -156,7 +156,7 @@ export class ListComponent implements OnInit {
         if (data === null) {
           Swal.fire(
             'Không tìm thấy bài báo',
-            'error'
+            'Vui lòng thử lại!!!'
           )
           this.getListArticle(0);
         }else{
