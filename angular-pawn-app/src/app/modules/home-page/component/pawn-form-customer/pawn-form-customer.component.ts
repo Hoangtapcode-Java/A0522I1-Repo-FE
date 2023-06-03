@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import validate = WebAssembly.validate;
 import {CustomerRegHomeService} from '../../../../service/customer-reg-home.service';
 
+declare const Swal: any;
 @Component({
   selector: 'app-pawn-form-customer',
   templateUrl: './pawn-form-customer.component.html',
@@ -40,14 +41,16 @@ export class PawnFormCustomerComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.addNewCustomerReg.valid) {
-      console.log(this.addNewCustomerReg.value);
-      alert('thêm mới thành công');
-      this.router.navigateByUrl('');
-      // this.customerService.saveCustomerReg(this.addNewCustomerReg.value).subscribe(next => {
-      //   alert('thêm mới thành công');
-      //   this.router.navigateByUrl('');
-      // });
+      this.customerService.saveCustomerReg(this.addNewCustomerReg.value).subscribe(next => {
+        Swal.fire(
+          'Đăng ký thành công!!',
+          'Nhân viên của DANA88 sẽ liên hệ với bạn để sắp xếp lịch hẹn!!!'
+        );
+        this.router.navigateByUrl('/home', { skipLocationChange: true }).then(() => {
+          this.addNewCustomerReg.reset();
+          this.submitted = false;
+        });
+      });
     }
-
   }
 }

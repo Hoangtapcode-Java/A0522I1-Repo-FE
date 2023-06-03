@@ -11,6 +11,6 @@ export class CustomerRegHomeService {
   constructor(private httpClient: HttpClient) { }
 
   saveCustomerReg(event: any): Observable<any> {
-    return this.httpClient.post<any>('http://localhost:8080/customer', event);
+    return this.httpClient.post<any>('http://localhost:8080/api/dangkynhanh', event);
   }
 }
