@@ -10,10 +10,14 @@ import {Customer} from "../models/Customer";
 export class ProductServiceService {
   products : Product []=[];
   constructor(private httpClient : HttpClient) { }
-  getAllProduct(): Observable<any>{
-    return this.httpClient.get<GetReponse>("http://localhost:8080/api/products")
-  }
 
+
+  getProductByCustomer(id: number): Observable<any>{
+    return this.httpClient.get<any>("http://localhost:8080/api/products/customer/" + id);
+  }
+  getSearch1(idCustomer: number = 0,name : string ='',price : number = 0,nameCategory : string=''): Observable<any>{
+    return this.httpClient.get<any>('http://localhost:8080/api/products' + '?name='+ name +'&price='+price+'&nameCategory='+ nameCategory);
+  }
 }
 interface GetReponse {
   content: Customer[];

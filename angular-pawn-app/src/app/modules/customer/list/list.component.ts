@@ -18,13 +18,13 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.customerServiceService.getAllCustomer().subscribe(next =>{
-      console.log(next)
-      this.customers = next.content;
-      this.page = next.number;
-      this.totalPage= next.totalPage;
-      this.totalElement = next.totalElement;
-    });
+    // this.customerServiceService.getAllCustomer().subscribe(next =>{
+    //   console.log(next)
+    //   this.customers = next.content;
+    //   this.page = next.number;
+    //   this.totalPage= next.totalPage;
+    //   this.totalElement = next.totalElement;
+    // });
   }
   selectItem(item: any) {
     this.selectedName = item.name;

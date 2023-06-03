@@ -1,6 +1,7 @@
 import {Customer} from "./Customer";
 import {Product} from "./Product";
 import {Category} from "./Category";
+import {Status} from "./Status";
 
 export interface Contract {
   id?:number,
@@ -11,5 +12,6 @@ export interface Contract {
   interest?:number,
   employeeId?:number,
   product?:Product,
-  isFlag?:boolean
+  isFlag?:boolean,
+  status : Status,
 }

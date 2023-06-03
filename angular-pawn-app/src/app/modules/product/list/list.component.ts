@@ -18,18 +18,14 @@ export class ListComponent implements OnInit {
   constructor(private productServiceService : ProductServiceService) {
 
   }
-
-
-
-
   ngOnInit(): void {
-    this.productServiceService.getAllProduct().subscribe(next =>{
-      console.log(next)
-      this.products = next.content;
-      this.page = next.number;
-      this.totalPage= next.totalPage;
-      this.totalElement = next.totalElement;
-    });
+    // this.productServiceService.getAllProduct().subscribe(next =>{
+    //   console.log(next)
+    //   this.products = next.content;
+    //   this.page = next.number;
+    //   this.totalPage= next.totalPage;
+    //   this.totalElement = next.totalElement;
+    // });
   }
 
 

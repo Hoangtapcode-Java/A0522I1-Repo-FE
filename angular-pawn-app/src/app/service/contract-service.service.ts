@@ -9,18 +9,18 @@ import {Customer} from "../models/Customer";
 })
 export class ContractServiceService {
   contracts : Contract []=[];
+  private flag: boolean;
   constructor(private httpClient : HttpClient) { }
   getAllContract(): Observable<any>{
     return this.httpClient.get<GetReponse>("http://localhost:8080/api/contracts")
   }
-  updateById(contract, idContract: number): Observable<any> {
-    return this.httpClient.put<any>("http://localhost:8080/api/contracts" + idContract, contract);
+
+  updateContract(contract: Contract,idContract: number): Observable<any> {
+    return this.httpClient.put<any>('http://localhost:8080/api/contract/'+ idContract,contract);
   }
-  findContractById(id : string) : Observable<Contract>{
+
+  findContractById(id : number) : Observable<any>{
    return this.httpClient.get("http://localhost:8080/api/contracts/"+id);
-  }
-  resetContracts(): void {
-    this.contracts = [];
   }
 
 }

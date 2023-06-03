@@ -8,6 +8,7 @@ import { ListComponent } from './list/list.component';
 import { UpdateComponent } from './update/update.component';
 import { DeleteComponent } from './delete/delete.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import {ReactiveFormsModule} from "@angular/forms";
     imports: [
         CommonModule,
         ContractRoutingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgxPaginationModule,
+
     ]
 })
 export class ContractModule { }

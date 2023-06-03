@@ -1,114 +1,114 @@
 
-<!-- MODAL ĐỒ Thanh Lý -->
-<div class="form-group row">
-  <div class="col-sm-8 col-xs-12">
-    <button style="background : linear-gradient(#EE4D2D,#FF7337) ;color:white " type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#doThanhLy"><i class="bi bi-cart3 me-1"></i>Chọn Đồ Thanh Lý</button>
-  </div>
-</div>
-<div class="modal fade" id="doThanhLy" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Chọn Đồ Thanh Toán</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+<!--&lt;!&ndash; MODAL ĐỒ Thanh Lý &ndash;&gt;-->
+<!--<div class="form-group row">-->
+<!--  <div class="col-sm-8 col-xs-12">-->
+<!--    <button style="background : linear-gradient(#EE4D2D,#FF7337) ;color:white " type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#doThanhLy"><i class="bi bi-cart3 me-1"></i>Chọn Đồ Thanh Lý</button>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<div class="modal fade" id="doThanhLy" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-xl">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalLabel">Chọn Đồ Thanh Toán</h5>-->
+<!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
 
-      <div class="memu-search" >
-        <div class="searchBox">
-          <i class="uil uil-search navToggle"></i>
-          <input type="text" placeholder="Searching...">
-          <button  class="button-search" (click)="toggleFormSearch($event)"  >
-            <svg width="24" height="24" focusable="false" >
-              <path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"></path>
-            </svg>
-          </button>
-        </div>
+<!--      <div class="memu-search" >-->
+<!--        <div class="searchBox">-->
+<!--          <i class="uil uil-search navToggle"></i>-->
+<!--          <input type="text" placeholder="Searching...">-->
+<!--          <button  class="button-search" (click)="toggleFormSearch($event)"  >-->
+<!--            <svg width="24" height="24" focusable="false" >-->
+<!--              <path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"></path>-->
+<!--            </svg>-->
+<!--          </button>-->
+<!--        </div>-->
 
-        <div class="form-search" >
-          <form>
+<!--        <div class="form-search" >-->
+<!--          <form>-->
 
-            <div class="row">
-              <label for="ten-do" class="col-md-2 col-form-label date-text">Tên Đồ:</label>
-              <div class="col-md-6 form-group">
-                <input type="text" id="ten-do" class="form-control" aria-describedby="ten-do-help" aria-label="Tên Đồ">
-              </div>
-            </div>
+<!--            <div class="row">-->
+<!--              <label for="ten-do" class="col-md-2 col-form-label date-text">Tên Đồ:</label>-->
+<!--              <div class="col-md-6 form-group">-->
+<!--                <input type="text" id="ten-do" class="form-control" aria-describedby="ten-do-help" aria-label="Tên Đồ">-->
+<!--              </div>-->
+<!--            </div>-->
 
-            <div class="row">
-              <label for="khach-hang" class="col-md-2 col-form-label date-text">Loại Đồ:</label>
-              <div class="col-md-6 form-group">
-                <div class="input-group">
-                  <select id="khach-hang" class="form-select" aria-label="Khách Hàng">
-                    &lt; option selected=""&gt;Chọn
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <label for="gia" class="col-md-2 col-form-label date-text">Giá:</label>
-              <div class="col-md-6 form-group">
-                <input type="text" id="gia" class="form-control" aria-describedby="gia-help">
-              </div>
-            </div>
+<!--            <div class="row">-->
+<!--              <label for="khach-hang" class="col-md-2 col-form-label date-text">Loại Đồ:</label>-->
+<!--              <div class="col-md-6 form-group">-->
+<!--                <div class="input-group">-->
+<!--                  <select id="khach-hang" class="form-select" aria-label="Khách Hàng">-->
+<!--                    &lt; option selected=""&gt;Chọn-->
+<!--                    <option value="1">1</option>-->
+<!--                    <option value="2">2</option>-->
+<!--                    <option value="3">3</option>-->
+<!--                    <option value="4">4</option>-->
+<!--                  </select>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="row">-->
+<!--              <label for="gia" class="col-md-2 col-form-label date-text">Giá:</label>-->
+<!--              <div class="col-md-6 form-group">-->
+<!--                <input type="text" id="gia" class="form-control" aria-describedby="gia-help">-->
+<!--              </div>-->
+<!--            </div>-->
 
-            <div class="form-submit">
-              <button type="submit" class="btn-reset">Đặt lại</button>
-              <button type="submit" class="btn-search">Tìm kiếm</button>
+<!--            <div class="form-submit">-->
+<!--              <button type="submit" class="btn-reset">Đặt lại</button>-->
+<!--              <button type="submit" class="btn-search">Tìm kiếm</button>-->
 
 
-            </div></form>
-        </div>
-        <div>
-        </div>
-        <div class="container">
-          <table class="table table-striped">
-            <thead>
-            <tr>
-              <th style="background: linear-gradient(#EE4D2D,#FF7337);color: white">Tên Đồ</th>
-              <th style="background: linear-gradient(#EE4D2D,#FF7337);color: white">Loại Đồ</th>
-              <th style="background: linear-gradient(#EE4D2D,#FF7337);color: white">Giá</th>
-              <th style="background: linear-gradient(#EE4D2D,#FF7337);color: white">Chọn</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr class="bg-white" *ngFor="let product of products">
-              <td>{{product.name}}</td>
-              <td>{{product.category.nameCategory}}</td>
-              <td>{{product.price}}</td>
-              <td>
-                <button (click)="toggleName(product.name)" [ngClass]="{'active': selectedNames.includes(product.name)}" style="background: linear-gradient(#EE4D2D, #FF7337); color: white" class="btn btn-outline-primary">
-                  <i class="bi bi-plus"></i>
-                </button>
-                <a class="checkbox-icon-nam" *ngIf="selectedNames.includes(product.name)">&#10003;</a>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Hiển thị các tên đã chọn -->
-<tr>
-  <td colspan="4">
-    <div class="selectedNames">
-      <button class="checkbox-icon" *ngFor="let selectedName of selectedNames">&#10003;{{selectedName}}</button>
-    </div>
-  </td>
-</tr>
-<!-- Hiển thị tổng tiền -->
-<tr>
-  <button>
-    <td colspan="4" disabled>
-      Tổng tiền: {{ calculateTotal() }}  VND
-    </td>
-  </button>
-</tr>
+<!--            </div></form>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--        </div>-->
+<!--        <div class="container">-->
+<!--          <table class="table table-striped">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--              <th style="background: linear-gradient(#EE4D2D,#FF7337);color: white">Tên Đồ</th>-->
+<!--              <th style="background: linear-gradient(#EE4D2D,#FF7337);color: white">Loại Đồ</th>-->
+<!--              <th style="background: linear-gradient(#EE4D2D,#FF7337);color: white">Giá</th>-->
+<!--              <th style="background: linear-gradient(#EE4D2D,#FF7337);color: white">Chọn</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr class="bg-white" *ngFor="let product of products">-->
+<!--              <td>{{product.name}}</td>-->
+<!--              <td>{{product.category.nameCategory}}</td>-->
+<!--              <td>{{product.price}}</td>-->
+<!--              <td>-->
+<!--                <button (click)="toggleName(product.name)" [ngClass]="{'active': selectedNames.includes(product.name)}" style="background: linear-gradient(#EE4D2D, #FF7337); color: white" class="btn btn-outline-primary">-->
+<!--                  <i class="bi bi-plus"></i>-->
+<!--                </button>-->
+<!--                <a class="checkbox-icon-nam" *ngIf="selectedNames.includes(product.name)">&#10003;</a>-->
+<!--              </td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--          </table>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; Hiển thị các tên đã chọn &ndash;&gt;-->
+<!--<tr>-->
+<!--  <td colspan="4">-->
+<!--    <div class="selectedNames">-->
+<!--      <button class="checkbox-icon" *ngFor="let selectedName of selectedNames">&#10003;{{selectedName}}</button>-->
+<!--    </div>-->
+<!--  </td>-->
+<!--</tr>-->
+<!--&lt;!&ndash; Hiển thị tổng tiền &ndash;&gt;-->
+<!--<tr>-->
+<!--  <button>-->
+<!--    <td colspan="4" disabled>-->
+<!--      Tổng tiền: {{ calculateTotal() }}  VND-->
+<!--    </td>-->
+<!--  </button>-->
+<!--</tr>-->
 
 
 

@@ -15,7 +15,7 @@ const routes: Routes = [{path:'contract',component:ContractComponent,children:[
       path: 'create', component: CreateComponent
     },
     {
-      path: 'update', component: UpdateComponent
+      path: 'contract/:idContract', component: ListComponent
     },
     {
       path:'delete',component:DeleteComponent
