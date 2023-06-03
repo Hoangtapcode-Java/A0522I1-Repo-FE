@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {StatusService} from '../../../service/status.service';
 import {ContractService} from '../../../service/contract.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -11,7 +11,7 @@ import {Product} from '../../../models/product/Product';
 import {CategoryServiceService} from '../../../service/category-service.service';
 import {ProductServiceService} from '../../../service/product-service.service';
 import {CustomerServiceService} from '../../../service/customer-service.service';
-import {ContractEditDto} from "../../../dto/ContractEditDto";
+import {ContractEditDto} from '../../../dto/ContractEditDto';
 
 @Component({
   selector: 'app-update',
@@ -19,8 +19,8 @@ import {ContractEditDto} from "../../../dto/ContractEditDto";
   styleUrls: ['./update.component.css']
 })
 export class UpdateComponent implements OnInit {
-  regexNameProduct: string = "^([a-z]+)((\\s{1}[a-z]+){1,})$";
-  regexName: string = "";
+  regexNameProduct: string = '^([a-z]+)((\\s{1}[a-z]+){1,})$';
+  regexName = '';
   contract: ContractEditDto;
   contractEdit: ContractEditDto;
   editContractForm: FormGroup;
@@ -29,13 +29,15 @@ export class UpdateComponent implements OnInit {
 
   constructor(private statusService: StatusService, private contractService: ContractService,
               private categoryService: CategoryServiceService, private productService: ProductServiceService,
-              private customerService: CustomerServiceService, private activatedRoute: ActivatedRoute, private router: Router ) {
+              private customerService: CustomerServiceService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.activatedRoute.paramMap.subscribe(next => {
       const id = next.get('id');
       if (id != null) {
         this.contractService.findById(parseInt(id)).subscribe(next => {
           this.contract = next;
-        },error => {},() => {
+          this.ngOnInit();
+        }, error => {
+        }, () => {
 
           this.getFormEdit();
         });
@@ -65,9 +67,8 @@ export class UpdateComponent implements OnInit {
       beginDate: new FormControl(this.contract.beginDate, [Validators.required]),
       endDate: new FormControl(this.contract.endDate, [Validators.required]),
       status: new FormControl(this.contract.status)
-    }, {validators:this.checkEndDate});
+    }, {validators: this.checkEndDate});
   }
-
 
 
   editContract() {
@@ -84,19 +85,21 @@ export class UpdateComponent implements OnInit {
 
   private findAllCategory() {
     this.categoryService.findAll().subscribe(next => {
+      console.log(next);
       this.categories = next;
     });
   }
 
   private findAllStatus() {
     this.statusService.findAll().subscribe(next => {
+      console.log(next);
       this.statuses = next;
     });
   }
 
   checkEndDate(control: any): any {
-    let beginDate = control.controls.beginDate.value;
-    let endDate = control.controls.endDate.value;
-    return endDate > beginDate ? null : {invalid: true}
+    const beginDate = control.controls.beginDate.value;
+    const endDate = control.controls.endDate.value;
+    return endDate > beginDate ? null : {invalid: true};
   }
 }

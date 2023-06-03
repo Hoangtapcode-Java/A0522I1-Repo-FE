@@ -59,7 +59,6 @@ label {
   color: #545b62;
 }
 
-
 .form-group span {
   /*color: var(--nc-primary);*/
   margin-left: 2px;
@@ -87,7 +86,7 @@ select {
   max-width: 200px;
   max-height: 200px;
   object-fit: cover;
-  /*border-radius: 50%;*/
+  border-radius: 50%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   margin: 10px auto 0;
 

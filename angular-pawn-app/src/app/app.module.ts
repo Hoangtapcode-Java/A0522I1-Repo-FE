@@ -22,9 +22,8 @@ import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
+import {FormsModule} from '@angular/forms';
 // import { QuillModule } from 'ngx-quill';
-
-
 
 
 @NgModule({
@@ -52,10 +51,11 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     AngularFireDatabaseModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule{
+export class AppModule {
 }
