@@ -20,10 +20,13 @@ export class ListComponent implements OnInit {
 
   constructor(private route: Router,
               private activatedRoute: ActivatedRoute,
-              private articleService: ArticleServiceService) { }
+              private articleService: ArticleServiceService) {
+    this.getListArticle(0);
+
+  }
 
   ngOnInit(): void {
-    this.getListArticle(0);
+    // this.getListArticle(0);
   }
 
   // getListArticle(pageable) {
