@@ -28,7 +28,7 @@ export class PawnFormCustomerComponent implements OnInit {
         Validators.minLength(7), Validators.maxLength(254)]),
       phone: new FormControl('', [ Validators.required, Validators.pattern(this.regexPhone)]),
       address: new FormControl('',  [Validators.required, Validators.pattern(this.regexAddress),
-        Validators.minLength(30), Validators.maxLength(200)]),
+        Validators.minLength(20), Validators.maxLength(200)]),
       note: new FormControl(''),
       customerName: new FormControl('', [ Validators.required,
         Validators.minLength(5), Validators.maxLength(50),
