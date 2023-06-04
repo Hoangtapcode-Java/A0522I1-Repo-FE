@@ -24,6 +24,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -50,7 +51,7 @@ import {FormsModule} from '@angular/forms';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

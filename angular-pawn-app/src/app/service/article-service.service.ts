@@ -12,9 +12,9 @@ export class ArticleServiceService {
   }
 
   saveArticle(article: ArticleDTO): Observable<any> {
-    return this.httpClient.post("http://localhost:8080/api/article/save", article, {
+    return this.httpClient.post("http://localhost:8080/api/articles/save", article, {
       headers: {
-        Authorization: "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDb25ndGFuMjEiLCJpYXQiOjE2ODU2NDI2MDAsImV4cCI6MTY4NTcyOTAwMH0.lhzGPiGitOHt2RotLFrSDci2lBSlVClOKUI8FaCyjYI8JJq3Svj_ZpnF0zj6wuijmWkrYnO08eTwuhm7jzzt-Q",
+        Authorization: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDb25ndGFuMjEiLCJpYXQiOjE2ODU5MDk4MDQsImV4cCI6MTY4NTk5NjIwNH0.Obk9nU_dhjDuT6cvM_jn1EZbJAJT00nBdf3QkxyyD2eqwJzWT99rFNjn2SwuPg-2N3dHGLEoiK6CnoubVsGyuQ",
       }
     });
   }
