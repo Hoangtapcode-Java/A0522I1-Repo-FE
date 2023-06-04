@@ -15,19 +15,29 @@
   <div class="portfolio">
     <!--=============== HEADER SECTION ===============-->
     <section class="header">
-      <h1 style="margin-top: 110px">{{contract.product.name}}</h1>
+      <img
+        class="header-img"
+       src="{{contract.customer.avatar}}"
+        alt="Ảnh đại diện"
+      />
+      <h1 >{{contract.customer.name}}</h1>
       <div class="header-extra">
-        <h2>{{contract.customer.name}}</h2>
+        <h2>{{contract.product.name}}</h2>
       </div>
-      <p style="margin-top: 40px">
+      <p>
           <span *ngFor="let img of imgs">
-            <img style="border-radius: 5px;margin-right: 10px; margin-top: 10px" height="80px" width="75px"
+            <img style="border-radius: 5px;margin-left: 25px; margin-top: 10px" height="100px" width="100px"
                  src="{{img.img}}" *ngIf="img.product.id==contract.product.id">
           </span>
       </p>
+      <div class="flex-cta">
       <span class="cta">
-        <a routerLink="/product">Danh sách đồ trong kho</a>
+        <a routerLink="/product">Kho đồ</a>
         </span>
+      <span class="cta">
+        <a [routerLink]="['/',contract_id]">Thanh lý</a>
+        </span>
+      </div>
     </section>
   </div>
   <!--=============== CONTENT SECTION ===============-->

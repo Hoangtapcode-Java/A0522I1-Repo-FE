@@ -24,7 +24,7 @@ const routes: Routes = [{path:'product',component:ProductComponent,children:[
       path:'delete',component:DeleteComponent,canActivate: [AuthGuardService]
     },
     {
-      path:'detail/:id',component:DetailComponent
+      path:'detail/:id',component:DetailComponent,canActivate: [AuthGuardService]
     }
   ]}];
 

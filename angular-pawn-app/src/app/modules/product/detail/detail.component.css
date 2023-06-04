@@ -60,14 +60,14 @@ h2 {
   margin: 15px;
 }
 .menu-icon:hover {
-  color: #EE4D2D;
+  color: #eb8153;
   opacity: 0.7;
 }
 
 /*=============== PORTFOLIO CONTAINER ===============*/
 .portfolio {
   display: flex;
-  background: #EE4D2D;
+  background: #eb8153;
   height: 80vh;
   width: 85vw;
   max-width: 1200px;
@@ -119,11 +119,23 @@ h2 {
   transition: 0.2s linear;
   transition-property: background-color, color;
 }
+.header-img {
+  width: 150px;
+  height: auto;
+  border-radius: 50%;
+  margin: 35px 10px;
+  box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.5);
+}
+.flex-cta {
+  margin: 15px 0;
+  display: flex;
+  gap: 20px;
+}
+
 .header .cta {
   color: #fff;
   background-color: rgba(255, 255, 255, 0.274);
-  padding: 10px 20px;
-  margin: 45px 0;
+  padding: 8px 16px;
   border-radius: 30px;
   transition: 0.2s linear;
   transition-property: background-color, color;
@@ -219,7 +231,7 @@ h2 {
   left: 0;
   width: 330px;
   height: 3px;
-  background: #EE4D2D;
+  background: #eb8153;
 }
 .home h1:nth-of-type(2)::after {
   content: "";
@@ -228,7 +240,7 @@ h2 {
   left: 0;
   width: 140px;
   height: 3px;
-  background: #EE4D2D;
+  background: #eb8153;
 }
 
 @media screen and (max-width: 1200px) {

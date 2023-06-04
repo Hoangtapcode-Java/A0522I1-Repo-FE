@@ -17,6 +17,6 @@ export class CategoryServiceService {
   // @ts-ignore
   getAllCategory() : Observable<Category[]>{
     // @ts-ignore
-    return this.httpClient.get("http://localhost:8080/api/category")
+    return this.httpClient.get("http://localhost:8080/api/categories")
   }
 }
