@@ -31,8 +31,8 @@ export class CreateComponent implements OnInit {
   file: any;
   paginationArray: number[];
   flag: boolean = false;
-  errorMessage: string;
-  
+  errorMessage: string;  
+  interest: any;
 
   customers: any[]; // Danh sách khách hàng
   currentPage: number = 0; // Trang hiện tại
@@ -68,15 +68,14 @@ export class CreateComponent implements OnInit {
     nameProduct: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
     beginDate: new FormControl('', [Validators.required, this.validatePastDate]),
     endDate: new FormControl('', [Validators.required, this.validatePastDate]),
-    price: new FormControl('', [Validators.required, Validators.min(500000), Validators.max(1000000000)]),
+    price: new FormControl('', [Validators.required, Validators.min(500000), Validators.max(1000000000), Validators.pattern("[0-9]+")]),
     imgPath: new FormControl(),
-    interest: new FormControl('', [Validators.required, Validators.min(50000), Validators.max(100000000)]),
+    interest: new FormControl(),
     category: new FormControl('', [Validators.required]),
     status: new FormControl('', [Validators.required]),
     username: new FormControl(localStorage.getItem('username')),
     customer: new FormControl()
   }, [this.validateDateRange]);
-  // [this.validateDateRange]
   
 
   onFileChange($event){
@@ -94,6 +93,7 @@ export class CreateComponent implements OnInit {
     const uploadTask = await this.fireStorage.upload("/productImg"+Math.random()+this.file, this.file);
     const url = await uploadTask.ref.getDownloadURL();
     this.contractForm.controls.imgPath.setValue(url);
+    this.contractForm.controls.interest.setValue(this.interest);
     console.log(this.contractForm.value)
     if (this.contractForm.valid) {
       console.log("okkkkkk")
@@ -102,10 +102,6 @@ export class CreateComponent implements OnInit {
                 this.router.navigateByUrl('/contract')})
 }
   }
-
-  // ,
-  //       error => {console.log(error);
-  //                   this.errorMessage = error.message})
 
   validatePastDate(control: FormControl) {
     const selectedDate = new Date(control.value);
@@ -128,14 +124,7 @@ export class CreateComponent implements OnInit {
   
     return null;
   }
-
-  // validateDateRange(formGroup: FormGroup) {
-  //   const beginDateValue = formGroup.get('beginDate').value;
-  //   const endDateValue = formGroup.get('endDate').value;
-
-  //   if (beginDateValue > endDateValue) {
-  //     return { dateRange: true};
-  //   } 
-  //     return null;
-  //   }
+  setInterestValue(value: any){
+    this.interest = value*0.1;
+  }
   }
