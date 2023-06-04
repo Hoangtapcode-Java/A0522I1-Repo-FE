@@ -12,10 +12,10 @@ export class StatusServiceService {
   
   // ThuongVTH
   getAll(): Observable<Status[]>{
-    return this.httpClient.get<Status[]>("http://localhost:8080/api/status")
+    return this.httpClient.get<Status[]>("http://localhost:8080/api/statuses")
   }
 
   findById(id: number): Observable<Status>{
-    return this.httpClient.get<Status>("http://localhost:8080/api/status/" + id);
+    return this.httpClient.get<Status>("http://localhost:8080/api/statuses/" + id);
   }
 }

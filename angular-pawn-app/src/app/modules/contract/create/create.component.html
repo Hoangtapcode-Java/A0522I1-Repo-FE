@@ -1,6 +1,6 @@
 <!-- ThuongVTH -->
 <div class="bg-img" style="display: flex; justify-content: center; align-items: center; background-image: url(https://www.vietmoney.vn/wp-content/themes/vietmoney/assets/images/cam-do/background.jpg)">
-    <form [formGroup]="contractForm" (ngSubmit)="submit()" style="width: 600px; background-color: rgba(0, 0, 0, 0.4);" class="m-5  border: 0px; p-3 rounded">
+    <form [formGroup]="contractForm"  style="width: 600px; background-color: rgba(0, 0, 0, 0.4);" class="m-5  border: 0px; p-3 rounded">
         <div>
             <h1 class="text-center" style="color: white;">Hợp đồng cầm đồ</h1>
             <div style="margin-bottom: 10px;">
@@ -49,7 +49,7 @@
                                         }
                                     </style>
 
-                                    <tr *ngFor="let customer of page.content">
+                                    <tr *ngFor="let customer of page?.content">
                                         <td class="row-number"></td>
                                         <td class="text-center">KH-{{customer.id}}</td>
                                         <td>{{customer.customer_name}}</td>
@@ -57,12 +57,12 @@
                                         <td>{{customer.phone}}</td>
                                         <td>{{customer.id_card}}</td>
                                         <td><button (click)="selectCustomer(customer)" class="square-button" data-bs-dismiss="modal"
-                                            aria-label="Close"><span class="plus-sign">+</span></button></td>
+                                            ><span class="plus-sign">+</span></button></td>
                                     </tr>
                                 </table>
                                 <div class="pagination">
                                     <a (click)="goToPage(currentPage-1, input.value)" class="text1">«</a>
-                                    <a *ngFor="let number of pageNumbers" (click)="goToPage(number-1, input.value)" class="text">{{number}}</a>
+                                    <a [ngClass]="currentPage+1 === number ? 'active' : ''" *ngFor="let number of pageNumbers" (click)="goToPage(number-1, input.value)" class="text">{{number}}</a>
                                     <a (click)="goToPage(currentPage+1, input.value)" class="text1">»</a>
                                 </div>
                             </div>
@@ -73,10 +73,10 @@
                 </div>
                 <button style="margin-left: 15px; color: #EE4D2D; background-color: #ffffff; border-color: #EE4D2D; stroke-width: 2px;" type="button" class="btn btn-warning" >Thêm khách hàng</button>
             </div>
-            <div *ngIf="flag == false">
+            <div *ngIf="checkCustomer == false">
                 <p style="color: #ffc107;">*Chưa có khách hàng nào được chọn</p>
             </div>
-            <div *ngIf="flag == true">
+            <div *ngIf="checkCustomer == true">
                 <p style="color: #ffc107;">[{{customer.customer_name}}], [{{customer.phone}}]</p> 
             </div>
         </div>
@@ -113,17 +113,18 @@
             </label>
         </div>
         <div style="color: red;" *ngIf="!contractForm.controls.status.valid && (contractForm.controls.status.dirty || contractForm.controls.status.touched)">
-            <div *ngIf="contractForm.controls.status.errors.required"><p>*Vui lòng chọn trạng thái hợp đồng</p></div> 
+            <div *ngIf="contractForm.controls.status.errors.required"></div> 
         </div>
 
         <div style="margin-top: 20px;">
             <label for="file" style="color: white;">Tình trạng đồ:</label>
             <input (change)="onFileChange($event)" accept=".png, .jpg, .jpeg, .gif" style="color: white;" type="file" id="file"><br>
+            <img *ngIf="filePath" src="{{filePath}}" width="200" height="150" alt="Image">
+            <div *ngIf="checkImg == false" style="color: red;"><p>*Vui lòng upload ảnh</p></div>
         </div>
-
-        <div style="color: red;" *ngIf="!contractForm.controls.imgPath.valid && (contractForm.controls.imgPath.dirty || contractForm.controls.imgPath.touched)">
+        <!-- <div style="color: red;" *ngIf="!contractForm.controls.imgPath.valid && (contractForm.controls.imgPath.dirty || contractForm.controls.imgPath.touched)">
             <div *ngIf="contractForm.controls.imgPath.errors.required"><p>*Vui lòng upload ảnh</p></div> 
-        </div>
+        </div> -->
 
         <div class="row">
             <div class="col">
@@ -181,7 +182,7 @@
         <div class="text-center ">
             <button [disabled]="contractForm.invalid"
                 style="margin-right: 15px; padding: 7px 7px; min-width: 100px;  background-image: linear-gradient(#EE4D2D,#FF7337); border: #e26c1a; stroke-width: 2px;"
-                class="btn btn-primary" type="submit">Thêm hợp đồng</button>
+                class="btn btn-primary" (click)="submit()" type="submit">Thêm hợp đồng</button>
             <button
                 style="color: #EE4D2D; padding: 7px 7px; min-width: 100px; background-color: #ffffff; border: #ffffff; stroke-width: 2px;"
                 class="btn btn-primary" type="reset">Đặt lại</button>

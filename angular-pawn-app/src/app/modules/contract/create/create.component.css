@@ -162,7 +162,7 @@ If you like this solution, you might also want to check out the 1.0 version:
   }
   /* thiết lập style cho class active */
   .pagination a.active {
-    background: var(--nc-primary-gradient);
+    background-image: linear-gradient(#EE4D2D,#FF7337);
     color: #fff;
   }
   /* thêm màu nền khi người dùng hover vào class không active */

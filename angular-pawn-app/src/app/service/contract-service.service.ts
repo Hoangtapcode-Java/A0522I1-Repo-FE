@@ -12,7 +12,7 @@ export class ContractServiceService {
   constructor(private httpClient: HttpClient) { }
 
   saveContract(contract: Contract): Observable<any> {
-    return this.httpClient.post<any>("http://localhost:8080/api/contract", contract); 
+    return this.httpClient.post<any>("http://localhost:8080/api/contracts", contract); 
   }
 
   handleError(error: HttpErrorResponse) {

@@ -30,9 +30,11 @@ export class CreateComponent implements OnInit {
   percentage: any;
   file: any;
   paginationArray: number[];
-  flag: boolean = false;
   errorMessage: string;  
   interest: any;
+  filePath: string;
+  checkImg: boolean = false;
+  checkCustomer: boolean = false;
 
   customers: any[]; // Danh sách khách hàng
   currentPage: number = 0; // Trang hiện tại
@@ -79,28 +81,45 @@ export class CreateComponent implements OnInit {
   
 
   onFileChange($event){
-    this.file = $event.target.files[0]
+    // this.file = $event.target.files[0];
+    this.file = $event.target.files[0];
+      if (this.file != null){
+        this.checkImg = true;
+      }
+      const reader = new FileReader();
+      reader.readAsDataURL(this.file);
+      reader.onload = (e: any) => {
+      this.filePath = e.target.result;
+    }
   }
 
   selectCustomer(customer: Customer){
+    this.checkCustomer = true;
     this.customer = customer;
     this.contractForm.controls.customer.setValue(customer);
+    console.log("CHọn khách hàng")
     console.log(this.contractForm.controls.customer.value);
-    this.flag = true;
   }
 
   async submit() {
+    try {
     const uploadTask = await this.fireStorage.upload("/productImg"+Math.random()+this.file, this.file);
     const url = await uploadTask.ref.getDownloadURL();
-    this.contractForm.controls.imgPath.setValue(url);
+    this.filePath = url;
+    this.contractForm.controls.imgPath.setValue(url);} 
+    catch {
+      alert("Chưa chọn ảnh")
+    }
     this.contractForm.controls.interest.setValue(this.interest);
+    console.log("Summit()")
     console.log(this.contractForm.value)
-    if (this.contractForm.valid) {
+    if (this.contractForm.valid && this.checkCustomer==true && this.checkImg==true) {
       console.log("okkkkkk")
       this.contractService.saveContract(this.contractForm.value).subscribe(
         next => {alert("Product saved");
-                this.router.navigateByUrl('/contract')})
-}
+                this.router.navigateByUrl('/contract')})}else if (this.checkCustomer ==false){
+                  alert("Chưa chọn khách hàng")
+                }
   }
 
   validatePastDate(control: FormControl) {
@@ -124,6 +143,7 @@ export class CreateComponent implements OnInit {
   
     return null;
   }
+
   setInterestValue(value: any){
     this.interest = value*0.1;
   }
