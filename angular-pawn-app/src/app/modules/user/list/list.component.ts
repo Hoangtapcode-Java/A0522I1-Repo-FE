@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {JwtService} from '../../../service/jwt.service';
+import {AuthClientService} from '../../../service/auth-client.service';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private authService: AuthClientService,
+              private jwtService: JwtService, private httpClient: HttpClient) {
+  }
 
   ngOnInit(): void {
   }
 
+  logout() {
+    this.authService.logout();
+    this.router.navigateByUrl('/user/login');
+  }
+
+  getEmployee() {
+    this.httpClient.get('http://localhost:8080/api/customer').subscribe(data => {
+      console.log('http client');
+      console.log(data);
+    });
+  }
 }

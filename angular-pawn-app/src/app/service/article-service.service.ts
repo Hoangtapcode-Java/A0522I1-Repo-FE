@@ -12,10 +12,6 @@ export class ArticleServiceService {
   }
 
   saveArticle(article: ArticleDTO): Observable<any> {
-    return this.httpClient.post("http://localhost:8080/api/articles/save", article, {
-      headers: {
-        Authorization: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDb25ndGFuMjEiLCJpYXQiOjE2ODU5MDk4MDQsImV4cCI6MTY4NTk5NjIwNH0.Obk9nU_dhjDuT6cvM_jn1EZbJAJT00nBdf3QkxyyD2eqwJzWT99rFNjn2SwuPg-2N3dHGLEoiK6CnoubVsGyuQ",
-      }
-    });
+    return this.httpClient.post("http://localhost:8080/api/articles/save", article);
   }
 }
