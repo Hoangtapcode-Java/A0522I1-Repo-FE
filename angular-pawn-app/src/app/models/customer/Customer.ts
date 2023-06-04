@@ -1,11 +1,19 @@
 // ThuongVTH
 export interface Customer {
-  address?:string,
-  id?:number,
-  phone?:string,
+  id: number;
+  name?: string;
+  dateOfBirth?:string,
   gender?:number,
-  customer_code?: String
-  customer_name?:string,
-  id_card?:string,
-  email?:string
+  email?:string,
+  address?:string,
+  phone?:string,
+  idCard?:string,
+  avatar?:string,
+  status?:string,
+  note?:string,
+  isFlag?:boolean
+
+  customer_name?: string;
+  id_card?:string;
+  customer_code?:string;
 }

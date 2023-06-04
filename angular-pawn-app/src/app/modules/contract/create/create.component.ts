@@ -11,7 +11,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { Customer } from 'src/app/models/customer/Customer';
 import { ValidationErrors } from '@angular/forms';
 
-
+declare const Swal: any;
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -30,7 +30,7 @@ export class CreateComponent implements OnInit {
   percentage: any;
   file: any;
   paginationArray: number[];
-  errorMessage: string;  
+  errorMessage: string;
   interest: any;
   filePath: string;
   checkImg: boolean = false;
@@ -48,24 +48,26 @@ export class CreateComponent implements OnInit {
     private fireStorage: AngularFireStorage,
     private router: Router
   ) {
-    this.customerService.getAll(0, '').subscribe(next => { this.page = next; 
-                this.pageNumbers = Array.from({ length:  this.page.totalPages}, (_, i) => i + 1);
-                console.log(this.page)})    
+    this.customerService.getAll(0, '').subscribe(next => {
+      this.page = next;
+      this.pageNumbers = Array.from({ length: this.page.totalPages }, (_, i) => i + 1);
+      console.log(this.page)
+    })
     console.log(this.pageNumbers)
   }
 
   goToPage(page: number = 0, nameCustomer: string = ''): void {
-    this.customerService.getAll(page, nameCustomer).subscribe(next => { this.page = next; this.totalPages=this.page.totalPages; console.log(this.page)})
+    this.customerService.getAll(page, nameCustomer).subscribe(next => { this.page = next; this.totalPages = this.page.totalPages; console.log(this.page) })
     this.currentPage = page;
     console.log(nameCustomer)
   }
 
   ngOnInit(): void {
-    this.categoryService.getAll().subscribe(next => { this.categories = next;});
-    this.statusService.getAll().subscribe(next => { this.statuses = next;});
-    }
-  
-  
+    this.categoryService.getAll().subscribe(next => { this.categories = next; });
+    this.statusService.getAll().subscribe(next => { this.statuses = next; });
+  }
+
+
   contractForm: FormGroup = new FormGroup({
     nameProduct: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
     beginDate: new FormControl('', [Validators.required, this.validatePastDate]),
@@ -78,22 +80,22 @@ export class CreateComponent implements OnInit {
     username: new FormControl(localStorage.getItem('username')),
     customer: new FormControl()
   }, [this.validateDateRange]);
-  
 
-  onFileChange($event){
+
+  onFileChange($event) {
     // this.file = $event.target.files[0];
     this.file = $event.target.files[0];
-      if (this.file != null){
-        this.checkImg = true;
-      }
-      const reader = new FileReader();
-      reader.readAsDataURL(this.file);
-      reader.onload = (e: any) => {
+    if (this.file != null) {
+      this.checkImg = true;
+    }
+    const reader = new FileReader();
+    reader.readAsDataURL(this.file);
+    reader.onload = (e: any) => {
       this.filePath = e.target.result;
     }
   }
 
-  selectCustomer(customer: Customer){
+  selectCustomer(customer: Customer) {
     this.checkCustomer = true;
     this.customer = customer;
     this.contractForm.controls.customer.setValue(customer);
@@ -103,23 +105,49 @@ export class CreateComponent implements OnInit {
 
   async submit() {
     try {
-    const uploadTask = await this.fireStorage.upload("/productImg"+Math.random()+this.file, this.file);
-    const url = await uploadTask.ref.getDownloadURL();
-    this.filePath = url;
-    this.contractForm.controls.imgPath.setValue(url);} 
+      const uploadTask = await this.fireStorage.upload("/productImg" + Math.random() + this.file, this.file);
+      const url = await uploadTask.ref.getDownloadURL();
+      this.filePath = url;
+      this.contractForm.controls.imgPath.setValue(url);
+    }
     catch {
-      alert("Chưa chọn ảnh")
+      Swal.fire({
+        icon: 'Lỗi!!',
+        title: 'Oops...',
+        text: 'Chưa upload ảnh!',
+      })
     }
     this.contractForm.controls.interest.setValue(this.interest);
     console.log("Summit()")
     console.log(this.contractForm.value)
-    if (this.contractForm.valid && this.checkCustomer==true && this.checkImg==true) {
+    if (this.contractForm.valid && this.checkCustomer == true && this.checkImg == true) {
       console.log("okkkkkk")
       this.contractService.saveContract(this.contractForm.value).subscribe(
-        next => {alert("Product saved");
-                this.router.navigateByUrl('/contract')})}else if (this.checkCustomer ==false){
-                  alert("Chưa chọn khách hàng")
-                }
+        next => {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer);
+              toast.addEventListener('mouseleave', Swal.resumeTimer);
+            }
+          });
+          Toast.fire({
+            icon: 'success',
+            title: 'Thêm mới thành công! Vui lòng kiểm tra email'
+          });;
+          this.router.navigateByUrl('/contract')
+        })
+    } else if (this.checkCustomer == false) {
+      Swal.fire({
+        icon: 'Lỗi',
+        title: 'Oops...',
+        text: 'Chưa chọn khách hàng',
+      })
+    }
   }
 
   validatePastDate(control: FormControl) {
@@ -136,15 +164,15 @@ export class CreateComponent implements OnInit {
   validateDateRange(group: FormGroup): ValidationErrors | null {
     const beginDate = group.get('beginDate')?.value;
     const endDate = group.get('endDate')?.value;
-  
+
     if (beginDate && endDate && beginDate > endDate) {
       return { dateRangeInvalid: true };
     }
-  
+
     return null;
   }
 
-  setInterestValue(value: any){
-    this.interest = value*0.1;
+  setInterestValue(value: any) {
+    this.interest = value * 0.1;
   }
-  }
+}
