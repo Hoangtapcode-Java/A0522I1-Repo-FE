@@ -26,7 +26,9 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ReactiveFormsModule
   ]
+
 })
 export class ArticleModule { }

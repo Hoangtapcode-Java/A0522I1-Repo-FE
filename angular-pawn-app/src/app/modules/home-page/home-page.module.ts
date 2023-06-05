@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { HomePageRoutingModule } from './home-page-routing.module';
 import { HomePageComponent } from './home-page.component';
-import {ArticlePageModule} from '../article-page/article-page.module';
 import {HeaderComponent} from './component/header/header.component';
 import {ScrollToTopComponent} from './component/scroll-to-top/scroll-to-top.component';
 import {FooterComponent} from './component/footer/footer.component';
@@ -23,6 +22,7 @@ import {WatchComponent} from './component/category-pawn/watch/watch.component';
 import {CameraComponent} from './component/category-pawn/camera/camera.component';
 import {PawnFormCustomerComponent} from './component/pawn-form-customer/pawn-form-customer.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {ArticlePageModule} from "../article-page/article-page.module";
 
 
 @NgModule({
@@ -45,6 +45,7 @@ import {ReactiveFormsModule} from '@angular/forms';
         WatchComponent,
         CameraComponent,
         PawnFormCustomerComponent],
+
     exports: [
         HomePageComponent
     ],

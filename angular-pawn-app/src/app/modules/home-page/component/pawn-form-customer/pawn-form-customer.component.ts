@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import validate = WebAssembly.validate;
 import {CustomerRegHomeService} from '../../../../service/customer-reg-home.service';
+declare const Swal: any;
 
 declare const Swal: any;
 @Component({

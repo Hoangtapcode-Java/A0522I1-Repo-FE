@@ -1,1 +1,49 @@
+
 /* You can add global styles to this file, and also import other style files */
+a {
+  color: #eb5d1e;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ef7f4d;
+  text-decoration: none;
+}
+
+/* CSS cho switch alert */
+.swal2-actions {
+  display: flex !important;
+  gap: 10px !important;
+}
+.swal2-styled {
+  border-radius: 1.25rem !important;
+}
+.btn-customer-switch {
+  padding: 0.375rem 0.95rem !important;
+  border-radius: 1.25rem !important;
+}
+.swal2-confirm {
+  color: #fff !important;
+  background: #EE4D2D !important;
+  padding: 0.375rem 0.95rem !important;
+  border-radius: 1.25rem !important;
+}
+.swal2-cancel {
+  color: #fff !important;
+  background: #707070 !important;
+  padding: 0.375rem 0.95rem !important;
+  border-radius: 1.25rem !important;
+}
+.swal2-confirm:hover,
+.swal2-cancel:hover {
+  color: #fff !important;
+  opacity: 0.85 !important;
+}
+.swal2-confirm:focus,
+.swal2-cancel:focus {
+  box-shadow: 0 0 0 0.25rem rgba(238, 77, 45, 0.55) !important;
+}
+
+.swal2-styled {
+  font-size: 14px !important;
+}

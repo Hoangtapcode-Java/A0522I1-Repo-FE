@@ -7,8 +7,8 @@ export interface Contract {
   id?: number;
   contractCode?: string;
   beginDate?: string;
-  endDate?: string;
   customer?: Customer;
+  endDate?: string;
   employee?: Employee;
   status?: Status;
   interest?: number;
