@@ -9,6 +9,7 @@ import {Router} from "@angular/router";
 
 declare const Swal: any;
 import Quill from 'quill';
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-create',
@@ -20,16 +21,14 @@ export class CreateComponent implements OnInit {
   currentDate: string;
   inputImage: any = null;
   articleDTO: FormGroup;
-
-
   text: any = null;
-
   imgLink: any = null;
   maxSize: boolean = false;
 
   constructor(private articleService: ArticleServiceService,
               private storage: AngularFireStorage,
-              private route: Router) {
+              private route: Router,
+              private title:Title) {
     this.articleDTO = new FormGroup({
       id: new FormControl(""),
       title: new FormControl("", [Validators.required, Validators.maxLength(100), Validators.minLength(5)]),
@@ -46,12 +45,12 @@ export class CreateComponent implements OnInit {
     const editor = new Quill('#editor', {
       theme: 'snow'
     });
+    this.title.setTitle("Thêm mới tin tức")
   }
 
 
   submit(articleDTO: FormGroup) {
     const divData = document.getElementById('editor').innerHTML;
-
     this.flag = true;
     this.maxSize = false;
     if (this.articleDTO.valid && this.inputImage != null) {
@@ -76,14 +75,16 @@ export class CreateComponent implements OnInit {
       }, () => {
         // Swal.fire('Thêm tin thành công');
       })
-      Swal.fire('Done', 'Thêm tin thành công!', 'success');
+      Swal.fire('Xong', 'Thêm tin thành công', 'success');
       this.route.navigateByUrl("/article");
+    }else if (this.articleDTO.invalid) {
+      Swal.fire('Lỗi', 'Thêm tin thất bại', 'error');
     }
   }
 
   selectImage(event: any) {
     this.inputImage = event.target.files[0];
-    if (this.inputImage.size > 1048576 && this.inputImage) {
+    if (this.inputImage.size > 1048576 && this.inputImage!=null) {
       this.maxSize = true;
       event.target.value = null;
       this.articleDTO.value.img = null;
