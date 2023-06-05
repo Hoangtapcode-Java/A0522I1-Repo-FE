@@ -53,7 +53,15 @@
                                         <td class="row-number"></td>
                                         <td class="text-center">KH-{{customer.id}}</td>
                                         <td>{{customer.customer_name}}</td>
-                                        <td>{{customer.gender}}</td>
+                                        <!-- <td>{{customer.gender}}</td> -->
+                                        <td>
+                                            <ng-container *ngIf="customer.gender === 1; else female">
+                                                Nam
+                                            </ng-container>
+                                            <ng-template #female>
+                                                Nữ
+                                            </ng-template>
+                                        </td>
                                         <td>{{customer.phone}}</td>
                                         <td>{{customer.id_card}}</td>
                                         <td><button (click)="selectCustomer(customer)" class="square-button" data-bs-dismiss="modal"
@@ -113,7 +121,7 @@
             </label>
         </div>
         <div style="color: red;" *ngIf="!contractForm.controls.status.valid && (contractForm.controls.status.dirty || contractForm.controls.status.touched)">
-            <div *ngIf="contractForm.controls.status.errors.required"></div> 
+            <div *ngIf="contractForm.controls.status.errors.required"><p>*Vui lòng chọn trạng thái hợp đồng</p></div> 
         </div>
 
         <div style="margin-top: 20px;">
@@ -182,7 +190,7 @@
         <div class="text-center ">
             <button [disabled]="contractForm.invalid"
                 style="margin-right: 15px; padding: 7px 7px; min-width: 100px;  background-image: linear-gradient(#EE4D2D,#FF7337); border: #e26c1a; stroke-width: 2px;"
-                class="btn btn-primary" (click)="submit()" type="submit">Thêm hợp đồng</button>
+                class="btn btn-primary" (click)="submit()" type="submit" id="submit_button">Thêm hợp đồng</button>
             <button
                 style="color: #EE4D2D; padding: 7px 7px; min-width: 100px; background-color: #ffffff; border: #ffffff; stroke-width: 2px;"
                 class="btn btn-primary" type="reset">Đặt lại</button>

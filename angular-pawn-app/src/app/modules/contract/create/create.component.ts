@@ -104,6 +104,10 @@ export class CreateComponent implements OnInit {
   }
 
   async submit() {
+    const buttonLoad: HTMLElement | null = document.getElementById('submit_button');
+      buttonLoad.innerHTML =
+     `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="color: darkseagreen"></span>
+      <span class="visually-hidden">Loading...</span>`;
     try {
       const uploadTask = await this.fireStorage.upload("/productImg" + Math.random() + this.file, this.file);
       const url = await uploadTask.ref.getDownloadURL();
@@ -115,8 +119,9 @@ export class CreateComponent implements OnInit {
         icon: 'Lỗi!!',
         title: 'Oops...',
         text: 'Chưa upload ảnh!',
-      })
+      }); buttonLoad.innerHTML = 'Gửi'
     }
+    
     this.contractForm.controls.interest.setValue(this.interest);
     console.log("Summit()")
     console.log(this.contractForm.value)
@@ -140,13 +145,13 @@ export class CreateComponent implements OnInit {
             title: 'Thêm mới thành công! Vui lòng kiểm tra email'
           });;
           this.router.navigateByUrl('/contract')
-        })
+        }, err => {buttonLoad.innerHTML = 'Gửi';})
     } else if (this.checkCustomer == false) {
       Swal.fire({
         icon: 'Lỗi',
         title: 'Oops...',
         text: 'Chưa chọn khách hàng',
-      })
+      }); buttonLoad.innerHTML = 'Gửi';
     }
   }
 
