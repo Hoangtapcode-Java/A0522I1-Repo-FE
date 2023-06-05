@@ -76,7 +76,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let article of articles; index as i">
-          <td class="text-center">{{article.id}}</td>
+          <td class="text-center">{{startIndex + i + 1}}</td>
         <td style="text-transform: uppercase">{{article.title}}</td>
         <td class="text-center">{{article.employee.name}}</td>
         <td class="text-center">{{article.publicDate}}</td>
@@ -106,9 +106,9 @@
 
   <div
     class="pagination">
-    <a class="text1" (click)="gotoNextOrPreviousPage('backward')">«</a>
+    <a class="text1" (click)="gotoNextOrPreviousPage('backward')" *ngIf="page > 0">«</a>
     <a class="text"  (click)="getSearch(i)" *ngFor="let page of [].constructor(totalPage), index as i">{{ i + 1 }}</a>
-    <a class="text1" (click)="gotoNextOrPreviousPage('forward')">»</a>
+    <a class="text1" (click)="gotoNextOrPreviousPage('forward')" *ngIf="page < totalPage - 1">»</a>
   </div>
 <!--  *ngIf="page > 0"-->
 <!--  *ngIf="page < totalPage - 1"-->
