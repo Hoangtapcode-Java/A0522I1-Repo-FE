@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import {FinaceService} from "../../../service/finace.service";
 import {Finace} from "../../../models/finace/Finace";
 
+
 @Component({
   selector: 'app-get-finace',
   templateUrl: './get-finace.component.html',

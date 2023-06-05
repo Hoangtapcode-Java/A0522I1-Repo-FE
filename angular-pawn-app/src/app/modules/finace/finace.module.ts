@@ -12,7 +12,7 @@ import {HttpClientModule} from "@angular/common/http";
   imports: [
     CommonModule,
     FinaceRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ]
 })
 export class FinaceModule { }
