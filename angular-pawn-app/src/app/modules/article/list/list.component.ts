@@ -3,7 +3,6 @@ import {Article} from "../../../models/article/Article";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ArticleServiceService} from "../../../service/article-service.service";
 import {FormControl, FormControlName, FormGroup} from "@angular/forms";
-
 declare const Swal: any;
 
 @Component({
