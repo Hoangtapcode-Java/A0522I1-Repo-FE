@@ -14,7 +14,9 @@ html, body {
   height: 100%;
   overflow: hidden;
 }
-
+section {
+  margin-top: 0;
+}
 body {
   padding: 0;
   margin: 0;
@@ -383,7 +385,8 @@ button {
   max-width: 200px;
   height: 20px;
   border-radius: 100%;
-  background: #08ffff;
+  /*background: #08ffff;*/
+  background: #aedcdc;
   position: absolute;
   left: 0px;
   right: 0px;
@@ -395,7 +398,8 @@ button {
 .in-cover .bulb {
   width: 50px;
   height: 50px;
-  background-color: #08fffa;
+  /*background-color: #08fffa;*/
+  background-color: #c9e2e0;
   border-radius: 50%;
   position: absolute;
   left: 0px;

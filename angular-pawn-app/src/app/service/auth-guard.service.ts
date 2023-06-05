@@ -19,6 +19,12 @@ export class AuthGuardService implements CanActivate {
     // const logged = this.authService.getIsLogged();
     const logged = this.jwtClientService.verifyToken();
     if (!logged) {
+      Swal.fire({
+        title: 'Thông báo',
+        text: 'Bạn phải đăng nhập để sử dụng chức năng này',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
       this.router.navigateByUrl('/user/login');
       return false;
     } else {
