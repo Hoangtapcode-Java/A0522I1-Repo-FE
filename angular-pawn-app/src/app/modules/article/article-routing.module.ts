@@ -5,6 +5,7 @@ import {CreateComponent} from "./create/create.component";
 import {UpdateComponent} from "./update/update.component";
 import {DeleteComponent} from "./delete/delete.component";
 import {ArticleComponent} from "./article.component";
+import {AuthGuardService} from "../../service/auth-guard.service";
 
 
 const routes: Routes = [{
@@ -13,7 +14,7 @@ const routes: Routes = [{
       path: '', component: ListComponent
     },
     {
-      path: 'create', component: CreateComponent
+      path: 'create', component: CreateComponent,canActivate: [AuthGuardService]
     },
     {
       path: 'update', component: UpdateComponent
