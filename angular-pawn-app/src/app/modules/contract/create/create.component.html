@@ -130,9 +130,6 @@
             <img *ngIf="filePath" src="{{filePath}}" width="200" height="150" alt="Image">
             <div *ngIf="checkImg == false" style="color: red;"><p>*Vui lòng upload ảnh</p></div>
         </div>
-        <!-- <div style="color: red;" *ngIf="!contractForm.controls.imgPath.valid && (contractForm.controls.imgPath.dirty || contractForm.controls.imgPath.touched)">
-            <div *ngIf="contractForm.controls.imgPath.errors.required"><p>*Vui lòng upload ảnh</p></div> 
-        </div> -->
 
         <div class="row">
             <div class="col">
@@ -179,13 +176,9 @@
             <div *ngIf="contractForm.controls.endDate.errors.required"><p>*Vui lòng chọn ngày kết thúc</p></div> 
             <div *ngIf="contractForm.controls.endDate.hasError('pastDate')"><p>*Ngày kết thúc không chọn quá khứ</p></div>
         </div>
-        <!-- <div style="color: red;" *ngIf="!contractForm.hasError('dateRange')">*Ngày bắt đầu không được vược quá ngày kết thúc</div> -->
         <div style="color: red;" *ngIf="contractForm.hasError('dateRangeInvalid')">
             <p>Ngày kết thúc không được nhỏ hơn ngày bắt đầu.</p>
           </div>
-        <!-- <div style="color: red;" *ngIf="errorMessage" class="error-message">
-            {{errorMessage}}
-        </div> -->
 
         <div class="text-center ">
             <button [disabled]="contractForm.invalid"

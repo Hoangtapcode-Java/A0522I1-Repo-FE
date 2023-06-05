@@ -83,7 +83,6 @@ export class CreateComponent implements OnInit {
 
 
   onFileChange($event) {
-    // this.file = $event.target.files[0];
     this.file = $event.target.files[0];
     if (this.file != null) {
       this.checkImg = true;
