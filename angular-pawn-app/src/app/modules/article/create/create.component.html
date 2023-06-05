@@ -33,12 +33,7 @@
           <span *ngIf="articleDTO.controls.content.hasError('minlength')&&flag==true">(Nội dung phải có tối thiểu 50 kí tự)</span>
           <span *ngIf="articleDTO.controls.content.hasError('maxlength')&&flag==true">(Nội dung chỉ được phép tối đa 50000 kí tự)</span>
 
-<!--          <span *ngIf="quillFormControl.hasError('required')&&quillFormControl.touched">(Nội dung phải có tối thiểu 50 kí tự)</span>-->
-
-          <!--          <span *ngIf="divDataControl.hasError('minlength')&&divDataControl.touched">(Nội dung phải có tối thiểu 50 kí tự)</span>-->
-<!--          <span *ngIf="divDataControl.hasError('maxlength')&&divDataControl.touched">(Nội dung chỉ được phép tối đa 50000 kí tự)</span>-->
           <div id="editor" class="form-control" (input)="checkContent($event)" ></div>
-<!--          <textarea rows="5" class="form-control" id="content" formControlName="content" placeholder="Nhập nội dung"></textarea>-->
         </div>
 
         <div class="form-group" style="margin-top: 65px">

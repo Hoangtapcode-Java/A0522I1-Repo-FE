@@ -2152,7 +2152,7 @@ Trung - delete article
 }
 
 .table-responsive {
-  max-height: 400px;
+  max-height: 410px;
   overflow: auto;
   border-radius: 5px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.175);
@@ -2168,6 +2168,7 @@ tbody td {
   white-space: nowrap !important; /* không cho phép chữ bị xuống dòng */
   overflow: hidden; /* ẩn phần vượt quá chiều rộng tối đa */
   text-overflow: ellipsis; /* hiển thị dấu ba chấm (...) cho phần vượt quá chiều rộng tối đa */
+  border: #ffffff !important;
 }
 
 tbody td {
@@ -2181,6 +2182,10 @@ tbody td {
   gap: 3px;
   padding: 6px 12px;
   cursor: pointer;
+}
+
+.iconchecked:hover {
+  color: var(--nc-primary);
 }
 
 a.iconchecked {

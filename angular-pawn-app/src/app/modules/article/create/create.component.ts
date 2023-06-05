@@ -85,7 +85,7 @@ export class CreateComponent implements OnInit {
 
   selectImage(event: any) {
     this.inputImage = event.target.files[0];
-    if (this.inputImage.size > 1048576 && this.inputImage) {
+    if (this.inputImage.size > 10485760 && this.inputImage) {
       this.maxSize = true;
       event.target.value = null;
       this.articleDTO.value.img = null;
