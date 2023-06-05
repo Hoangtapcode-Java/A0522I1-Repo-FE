@@ -1,10 +1,11 @@
+// @ts-ignore
 import { NgModule } from '@angular/core';
+// @ts-ignore
 import { Routes, RouterModule } from '@angular/router';
 import {ContractComponent} from "./contract.component";
 import {ListComponent} from "./list/list.component";
 import {CreateComponent} from "./create/create.component";
 import {UpdateComponent} from "./update/update.component";
-import {DeleteComponent} from "./delete/delete.component";
 
 
 const routes: Routes = [{path:'contract',component:ContractComponent,children:[
@@ -15,13 +16,11 @@ const routes: Routes = [{path:'contract',component:ContractComponent,children:[
       path: 'create', component: CreateComponent
     },
     {
-      path: 'update', component: UpdateComponent
-    },
-    {
-      path:'delete',component:DeleteComponent
+      path: 'update/:id', component: UpdateComponent
     }
   ]}];
 
+// @ts-ignore
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

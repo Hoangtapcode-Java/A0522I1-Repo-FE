@@ -19,6 +19,11 @@ import {AuthInterceptor} from "./service/auth/auth.interceptor";
 import {FinaceModule} from "./modules/finace/finace.module";
 import {HomePageModule} from "./modules/home-page/home-page.module";
 import {ArticlePageModule} from "./modules/article-page/article-page.module";
+import {HttpClientModule} from "@angular/common/http";
+import {AngularFireModule} from '@angular/fire';
+import {environment} from "../environments/environment";
+import {AngularFireStorageModule} from "@angular/fire/storage";
+import {AngularFireDatabaseModule} from "@angular/fire/database";
 
 
 
@@ -45,7 +50,10 @@ import {ArticlePageModule} from "./modules/article-page/article-page.module";
     FinaceModule,
     HomePageModule,
     ArticlePageModule,
-
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
@@ -54,5 +62,5 @@ import {ArticlePageModule} from "./modules/article-page/article-page.module";
   }],
   bootstrap: [AppComponent]
 })
-export class AppModule {
+export class AppModule{
 }

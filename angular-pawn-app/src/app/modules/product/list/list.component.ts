@@ -47,7 +47,7 @@ export class ListComponent implements OnInit {
 
 
   getAllCategory() {
-    this.categoryService.getAllCategory().subscribe(next => {
+    this.categoryService.findAll().subscribe(next => {
       this.categories = next
       console.log(this.categories)
     })
