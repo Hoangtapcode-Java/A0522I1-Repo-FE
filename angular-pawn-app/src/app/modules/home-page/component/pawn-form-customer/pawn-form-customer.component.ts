@@ -5,6 +5,7 @@ import validate = WebAssembly.validate;
 import {CustomerRegHomeService} from '../../../../service/customer-reg-home.service';
 declare const Swal: any;
 
+declare const Swal: any;
 @Component({
   selector: 'app-pawn-form-customer',
   templateUrl: './pawn-form-customer.component.html',
@@ -28,7 +29,7 @@ export class PawnFormCustomerComponent implements OnInit {
         Validators.minLength(7), Validators.maxLength(254)]),
       phone: new FormControl('', [ Validators.required, Validators.pattern(this.regexPhone)]),
       address: new FormControl('',  [Validators.required, Validators.pattern(this.regexAddress),
-        Validators.minLength(30), Validators.maxLength(200)]),
+        Validators.minLength(20), Validators.maxLength(200)]),
       note: new FormControl(''),
       customerName: new FormControl('', [ Validators.required,
         Validators.minLength(5), Validators.maxLength(50),
@@ -41,26 +42,16 @@ export class PawnFormCustomerComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.addNewCustomerReg.valid) {
-      // console.log(this.addNewCustomerReg.value);
-      // Swal.fire(
-      //   'Đăng ký thành công!!',
-      //   'Nhân viên của DANA88 sẽ liên hệ với bạn để sắp xếp lịch hẹn!!!'
-      // )
-      // this.router.navigateByUrl('/home', { skipLocationChange: true }).then(() => {
-      //   this.addNewCustomerReg.reset();
-      //   this.submitted=false;
-      // });
       this.customerService.saveCustomerReg(this.addNewCustomerReg.value).subscribe(next => {
         Swal.fire(
           'Đăng ký thành công!!',
           'Nhân viên của DANA88 sẽ liên hệ với bạn để sắp xếp lịch hẹn!!!'
-        )
+        );
         this.router.navigateByUrl('/home', { skipLocationChange: true }).then(() => {
           this.addNewCustomerReg.reset();
-          this.submitted=false;
+          this.submitted = false;
         });
       });
     }
-
   }
 }

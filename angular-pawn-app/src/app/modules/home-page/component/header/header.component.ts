@@ -8,7 +8,7 @@ import {NavigationEnd, Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(elementRef: ElementRef,
+  constructor(private elementRef: ElementRef,
               private router: Router) {
   }
 
