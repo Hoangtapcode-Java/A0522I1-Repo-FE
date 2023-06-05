@@ -9,10 +9,11 @@ import { UpdateComponent } from './update/update.component';
 import { DeleteComponent } from './delete/delete.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {NgxPaginationModule} from "ngx-pagination";
+import { ContractLiquidationComponent } from './contract-liquidation/contract-liquidation.component';
 
 
 @NgModule({
-  declarations: [ContractComponent, CreateComponent, ListComponent, UpdateComponent, DeleteComponent],
+  declarations: [ContractComponent, CreateComponent, ListComponent, UpdateComponent, DeleteComponent, ContractLiquidationComponent],
     imports: [
         CommonModule,
         ContractRoutingModule,

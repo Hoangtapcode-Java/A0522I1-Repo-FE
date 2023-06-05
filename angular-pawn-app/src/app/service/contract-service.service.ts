@@ -16,12 +16,12 @@ export class ContractServiceService {
   }
 
   updateContract(contract: Contract,idContract: number): Observable<any> {
-    return this.httpClient.put<any>('http://localhost:8080/api/contract/'+ idContract,contract);
+    return this.httpClient.put<any>('http://localhost:8080/api/contracts/liquidation/'+ idContract,contract);
   }
 
-  findContractById(id : number) : Observable<any>{
-   return this.httpClient.get("http://localhost:8080/api/contracts/"+id);
-  }
+  // findContractById(id : number) : Observable<any>{
+  //  return this.httpClient.get("http://localhost:8080/api/customer/"+id);
+  // }
 
 }
 interface GetReponse {

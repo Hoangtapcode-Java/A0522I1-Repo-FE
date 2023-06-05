@@ -23,7 +23,7 @@ export class CustomerServiceService {
     return this.httpClient.get<GetReponse>('http://localhost:8080/api/customers' + '?customer_name=' + name);
   }
   findCustomerById(id : number) : Observable<Customer>{
-    return this.httpClient.get<Customer>("http://localhost:8080/api/customers"+id);
+    return this.httpClient.get<Customer>("http://localhost:8080/api/customer/"+id);
   }
 }
 interface GetReponse {

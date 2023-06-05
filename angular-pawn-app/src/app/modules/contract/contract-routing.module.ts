@@ -5,6 +5,7 @@ import {ListComponent} from "./list/list.component";
 import {CreateComponent} from "./create/create.component";
 import {UpdateComponent} from "./update/update.component";
 import {DeleteComponent} from "./delete/delete.component";
+import {ContractLiquidationComponent} from "./contract-liquidation/contract-liquidation.component";
 
 
 const routes: Routes = [{path:'contract',component:ContractComponent,children:[
@@ -15,11 +16,13 @@ const routes: Routes = [{path:'contract',component:ContractComponent,children:[
       path: 'create', component: CreateComponent
     },
     {
-      path: 'contract/:idContract', component: ListComponent
+      path: 'update', component: ListComponent
     },
     {
       path:'delete',component:DeleteComponent
-    }
+    },{
+     path:'liquidation',component : ContractLiquidationComponent
+     }
   ]}];
 
 @NgModule({
