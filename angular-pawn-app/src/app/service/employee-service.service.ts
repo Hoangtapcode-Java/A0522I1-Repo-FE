@@ -12,19 +12,11 @@ export class EmployeeServiceService {
   }
 
   findByIdEmployee(): Observable<EmployeeInforDTO> {
-    return this.httpClient.get<EmployeeInforDTO>("http://localhost:8080/api/employee/id", {
-      headers: {
-        Authorization: "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDb25ndGFuMjEiLCJpYXQiOjE2ODU2NDI2MDAsImV4cCI6MTY4NTcyOTAwMH0.lhzGPiGitOHt2RotLFrSDci2lBSlVClOKUI8FaCyjYI8JJq3Svj_ZpnF0zj6wuijmWkrYnO08eTwuhm7jzzt-Q",
-      }
-    });
+    return this.httpClient.get<EmployeeInforDTO>("http://localhost:8080/api/employees/id");
   }
 
   updateEmployeeInfor(eployeeInfor: EmployeeInforDTO): Observable<any> {
-    return this.httpClient.put("http://localhost:8080/api/employee/save", eployeeInfor, {
-      headers: {
-        Authorization: "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDb25ndGFuMjEiLCJpYXQiOjE2ODU2NDI2MDAsImV4cCI6MTY4NTcyOTAwMH0.lhzGPiGitOHt2RotLFrSDci2lBSlVClOKUI8FaCyjYI8JJq3Svj_ZpnF0zj6wuijmWkrYnO08eTwuhm7jzzt-Q",
-      }
-      });
+    return this.httpClient.put("http://localhost:8080/api/employees/save", eployeeInfor);
   }
 
 }

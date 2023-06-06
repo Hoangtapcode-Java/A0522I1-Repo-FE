@@ -123,7 +123,7 @@ export class ReturnItemsComponent implements OnInit {
           }
         });
       });
-      this.showErrors = false;
+      // this.showErrors = false;
       console.log(this.showErrors);
       const Toast = Swal.mixin({
         toast: true,
@@ -141,7 +141,7 @@ export class ReturnItemsComponent implements OnInit {
         title: 'Thanh toán thành công! Vui lòng kiểm tra email'
       });
     } else {
-      this.showErrors = true;
+      // this.showErrors = true;
       Swal.fire({
         title: 'Lỗi!',
         text: 'Vui lòng chọn hợp đồng trước khi thanh toán',

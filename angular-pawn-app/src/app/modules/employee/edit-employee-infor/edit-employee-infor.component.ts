@@ -5,6 +5,8 @@ import {Router} from "@angular/router";
 import {formatDate} from "@angular/common";
 import {finalize} from "rxjs/operators";
 import {AngularFireStorage} from "@angular/fire/storage";
+import {Title} from "@angular/platform-browser";
+
 declare const Swal: any;
 
 @Component({
@@ -15,17 +17,17 @@ declare const Swal: any;
 export class EditEmployeeInforComponent implements OnInit {
   employeeInfor: FormGroup = new FormGroup({
     id: new FormControl(),
-    name: new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(50), Validators.pattern("^(?:[A-Z][a-zÀ-ỹ]*(?: [A-Z][a-zÀ-ỹ]*)+)$")]),
+    name: new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(50), Validators.pattern("^\\s*(?:[A-Zà-ỹ][a-zà-ỹ]*(?: [A-Zà-ỹ][a-zà-ỹ]*)*)\\s*$")]),
     dateOfBirth: new FormControl("", [Validators.required, this.isOver23, this.isOver50]),
-    phone: new FormControl("", [Validators.required, Validators.pattern("^(09|08)\\d{8}$")]),
-    email: new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(30), Validators.pattern("^[a-zA-Z0-9_.+-]+@gmail.com+$")]),
+    phone: new FormControl("", [Validators.required, Validators.pattern("^\\s*(09|08)\\d{8}\\s*$")]),
+    email: new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(30), Validators.pattern("^\\s*[a-zA-Z0-9_.+-]+@gmail.com+\\s*$")]),
     gender: new FormControl("", [Validators.required]),
-    address: new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(50), Validators.pattern("^[^!@#$%^&*()_+<>?'\"{}\\`~|/\\\\]+$")]),
-    idCard: new FormControl("", [Validators.required, Validators.pattern("^\\d{12}$")]),
+    address: new FormControl("", [Validators.required, Validators.minLength(5), Validators.maxLength(50), Validators.pattern("^\\s*(?:[A-ZÀ-ỹ0-9,.][a-zÀ-ỹ0-9,.]*(?: [A-ZÀ-ỹ0-9,.][a-zÀ-ỹ0-9,.]*)*)\\s*$")]),
+    idCard: new FormControl("", [Validators.required, Validators.pattern("^\\s*\\d{12}\\s*$")]),
     avatar: new FormControl(),
     userName: new FormControl(),
-    password: new FormControl("", [ Validators.maxLength(30), Validators.minLength(10), Validators.pattern("^(?=.*[A-Z])(?=.*\\d)(?=.*[a-zA-Z0-9])[\\w!@#$%^&*()-=_+<>?'\"{}`~/|]*\\d?$")]),
-    confirmPassword: new FormControl("", [])
+    password: new FormControl(null, [Validators.maxLength(30), Validators.minLength(10), Validators.pattern("^(?=.*[A-Z])(?=.*\\d)(?=.*[a-zA-Z0-9])[\\w!@#$%^&*()-=_+<>?'\"{}`~/|]*\\d?$")]),
+    confirmPassword: new FormControl(null)
   }, [this.comparePassword]);
   inputImage: any = null;
   oldAvatarLink: any = null;
@@ -34,7 +36,10 @@ export class EditEmployeeInforComponent implements OnInit {
   checkIdCard: boolean = false;
   maxSize: boolean = false;
 
-  constructor(private employeeService: EmployeeServiceService, private route: Router, private storage: AngularFireStorage) {
+  constructor(private employeeService: EmployeeServiceService,
+              private route: Router,
+              private storage: AngularFireStorage,
+              private title: Title) {
     this.employeeService.findByIdEmployee().subscribe(now => {
       this.employeeInfor.patchValue(now);
       this.oldAvatarLink = now.avatar;
@@ -42,13 +47,29 @@ export class EditEmployeeInforComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.title.setTitle("Thông tin cá nhân");
+  }
+
+  trimFormGroupValues(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(key => {
+      const control = formGroup.controls[key];
+      if (control.value && typeof control.value === 'string') {
+        control.setValue(control.value.trim());
+      }
+    });
   }
 
   submit(employeeInfor: FormGroup) {
+    if (employeeInfor.value.password==""){
+      employeeInfor.value.password=null;
+      employeeInfor.value.confirmPassword=null;
+    }
     if (this.employeeInfor.valid) {
-      if (this.inputImage == null&&this.maxSize!=true) {
+      this.trimFormGroupValues(employeeInfor);
+      if (this.inputImage == null) {
         this.employeeService.updateEmployeeInfor(employeeInfor.value).subscribe(next => {
         }, error => {
+          console.log(error)
           if (error.error.duplicateEmail) {
             this.checkEmail = true;
           } else this.checkEmail = false;
@@ -59,10 +80,11 @@ export class EditEmployeeInforComponent implements OnInit {
             this.checkIdCard = true;
           } else this.checkIdCard = false;
         }, () => {
-          this.route.navigateByUrl("employee/edit-employee-infor");
-          Swal.fire('Sửa thành công');
+          Swal.fire('','Sửa thành công','success').finally(() => {
+            window.location.reload();
+          });
         });
-      } else {
+      } else if (this.inputImage != null && this.maxSize != true) {
         const nameImg = formatDate(new Date(), 'dd-MM-yyyy_hh:mm:ss:a_', 'en-US') + this.inputImage.name;
         const fileRef = this.storage.ref(nameImg);
 
@@ -85,9 +107,13 @@ export class EditEmployeeInforComponent implements OnInit {
                 this.employeeService.updateEmployeeInfor(employeeInfor.value).subscribe();
               });
             })
-          ).subscribe();
-          this.route.navigateByUrl("employee/edit-employee-infor" );
-          Swal.fire('Sửa thành công');
+          ).subscribe(() => {
+          }, error => {
+          }, () => {
+            Swal.fire('','Sửa thành công','success').finally(() => {
+              window.location.reload();
+            });
+          });
         });
       }
     }
@@ -99,7 +125,7 @@ export class EditEmployeeInforComponent implements OnInit {
 
   selectImg(event: any) {
     this.inputImage = event.target.files[0];
-    if (this.inputImage.size > 1048576 && this.inputImage) {
+    if (this.inputImage.size > 1048576 && this.inputImage != null) {
       this.maxSize = true;
       event.target.value = null;
       this.oldAvatarLink = null;
@@ -112,6 +138,8 @@ export class EditEmployeeInforComponent implements OnInit {
         this.oldAvatarLink = e.target.result;
       };
     }
+
+
   }
 
   comparePassword(form: any) {

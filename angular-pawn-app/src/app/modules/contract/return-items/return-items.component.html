@@ -8,10 +8,6 @@
         <div class="d-flex align-items-center">
           <input type="button" value="Chọn hợp đồng" class="my-btn-3" id="inputHD" data-bs-toggle="modal"
                  data-bs-target="#exampleModal" (click)="reset()">
-<!--          <span style="color: red; margin-left: 20px" class="error" *ngIf="showErrors && reactiveForm.controls.contractCode.hasError('required') && reactiveForm.controls.beginDate.hasError('required')-->
-<!--                     && reactiveForm.controls.endDate.hasError('required') && reactiveForm.controls.customer.hasError('required') && reactiveForm.controls.interest.hasError('required')-->
-<!--                     && reactiveForm.controls.product.hasError('required')">Vui lòng chọn hợp đồng-->
-<!--          </span>-->
         </div>
       </div>
       <div class="row mb-3">
@@ -105,19 +101,18 @@
               </button>
             </div>
             <div class="form-search" [ngClass]="{active: isSearchFormActive}">
-              <!--              <form (ngSubmit)="getSearch(nameProduct.value,nameCustomer.value,dateBegin.value,contractCode.value)">-->
               <form>
                 <div class="row">
                   <label for="nameCustomer" class="col-md-3 col-form-label">Tên khách hàng</label>
                   <div class="col-md-6 select-form">
-                    <input type="text" class="form-control" id="nameCustomer" #nameCustomer maxlength="256">
+                    <input type="text" class="form-control" id="nameCustomer" #nameCustomer maxlength="30">
                   </div>
                 </div>
 
                 <div class="row">
                   <label for="nameProduct" class="col-md-3 col-form-label date-text">Đồ cầm</label>
                   <div class="col-md-6 form-group">
-                    <input type="text" class="form-control" id="nameProduct" #nameProduct maxlength="256">
+                    <input type="text" class="form-control" id="nameProduct" #nameProduct maxlength="30">
                   </div>
                 </div>
 
@@ -175,7 +170,7 @@
               </td>
             </tr>
             <tr style="text-align: center" *ngIf="contract.length == 0">
-               <td colspan="7">Không có dữ liệu</td>
+               <td colspan="7">Không tìm thấy dữ liệu</td>
             </tr>
             </tbody>
           </table>
