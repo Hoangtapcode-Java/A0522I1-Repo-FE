@@ -65,7 +65,7 @@ export class ContractLiquidationComponent implements OnInit {
 
   constructor(private contractServiceService: ContractServiceService, private customerServiceService: CustomerServiceService,
               private productServiceService: ProductServiceService) {
-    customerServiceService.getAllCustomer(this.page, this.id, this.name, this.identityCard).subscribe(next => {
+    customerServiceService.getAllCustomer(0, this.id, this.name, this.identityCard).subscribe(next => {
       if (next.content != null) {
         this.customers = next.content;
         this.totalPage = next.totalPages;
@@ -78,7 +78,6 @@ export class ContractLiquidationComponent implements OnInit {
 
 
   ngOnInit(): void {
-
   }
 
   update() {
@@ -128,6 +127,7 @@ export class ContractLiquidationComponent implements OnInit {
     this.productServiceService.getProductByCustomer(customer.id).subscribe(next => {
       console.log(next)
       this.products = next;
+      this.accessPage(this.page);
     });
     const dateField = document.getElementById('ngay-thanh-ly') as HTMLInputElement;
     const defaultDate = new Date(Date.now());
@@ -218,7 +218,6 @@ export class ContractLiquidationComponent implements OnInit {
 
   resetForm() {
     this.selectedName = '';
-    this.customers = [];
     this.selectedNames = [];
     this.products = [];
     this.totalPrice = 0;
@@ -226,10 +225,9 @@ export class ContractLiquidationComponent implements OnInit {
     this.check = false;
   }
   resetFormUpdate(){
-    this.customers = [];
     this.selectedNames = [];
     this.totalPrice = 0;
-
+    this.page = 0;
   }
 
 

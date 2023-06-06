@@ -16,11 +16,11 @@ export class CustomerServiceService {
   //   return this.httpClient.get<GetReponse>("http://localhost:8080/api/customers")
   // }
   getAllCustomer(page: number, id: number, name: string, identityCard: string): Observable<any> {
-    return this.httpClient.get<GetReponse>('http://localhost:8080/api/customers' + '?page=' + page + '&id=' +
+    return this.httpClient.get<GetReponse>('http://localhost:8080/api/customers/liquidation' + '?page=' + page + '&id=' +
       id + '&name=' + name + '&identityCard=' + identityCard);
   }
   getSearch(name: string): Observable<any> {
-    return this.httpClient.get<GetReponse>('http://localhost:8080/api/customers' + '?customer_name=' + name);
+    return this.httpClient.get<GetReponse>('http://localhost:8080/api/customers/liquidation' + '?customer_name=' + name);
   }
   findCustomerById(id : number) : Observable<Customer>{
     return this.httpClient.get<Customer>("http://localhost:8080/api/customer/"+id);

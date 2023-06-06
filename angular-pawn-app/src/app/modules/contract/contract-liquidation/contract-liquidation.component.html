@@ -64,14 +64,13 @@
                               </td>
                             </tr>
                             <tr *ngIf="customers.length == 0">
-                              <td colspan="4">Không Có Dữ Liệu</td>
+                            <td colspan="4">Không Có Dữ Liệu</td>
                             </tr>
-
                             </tbody>
                           </table>
                           <div class="pagination">
                             <a *ngIf="page > 0" (click)="previousPage()" class="text1">«</a>
-                            <a [ngClass]="currentPage === page ? 'active' : ''" (click)="accessPage(page)" *ngFor="let page of totalPages">{{page + 1}}</a>
+                            <a [class.active]="page===currentPage" (click)="accessPage(page)" *ngFor="let page of totalPages">{{page + 1}}</a>
                             <a *ngIf="page < totalPage - 1" (click)="nextPage()" class="text1">»</a>
                           </div>
                         </div>
