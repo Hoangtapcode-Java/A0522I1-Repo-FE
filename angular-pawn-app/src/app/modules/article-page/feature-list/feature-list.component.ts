@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Article} from "../../../models/article/Article";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ArticleServiceService} from "../../../service/article-service.service";
+import {Article} from '../../../models/article/Article';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ArticleServiceService} from '../../../service/article-service.service';
 
 
 @Component({
@@ -13,10 +13,10 @@ import {ArticleServiceService} from "../../../service/article-service.service";
 export class FeatureListComponent implements OnInit {
   article: Article = {};
   featureArticles: Article[] = [];
-  nameF: string = '';
+  nameF = '';
   totalPagination: number;
-  indexPagination: number = 1;
-  p : number =1;
+  indexPagination = 1;
+  p = 1;
 
 
   constructor(private route: Router,
@@ -28,10 +28,10 @@ export class FeatureListComponent implements OnInit {
   }
 
   getListFeature() {
-    this.articleService.getFeature().toPromise().then(r=>{
+    this.articleService.getFeature().toPromise().then(r => {
       this.featureArticles = r;
       console.log(r);
-    })
+    });
 
   }
 

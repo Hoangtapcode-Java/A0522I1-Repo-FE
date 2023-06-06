@@ -37,7 +37,7 @@
       <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
         <form class="php-email-form" [formGroup]="addNewCustomerReg" (ngSubmit)="onSubmit()">
           <div class="row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 mt-3 mt-md-0">
               <label for="name">Họ Và Tên
                 <span class="error-message-form" style="color: red" *ngIf="addNewCustomerReg.controls.customerName.invalid && (submitted || addNewCustomerReg.controls['customerName'].dirty || addNewCustomerReg.controls['customerName'].touched)">
                 <span *ngIf="addNewCustomerReg.controls.customerName.hasError('required')">Bạn cần nhập tên</span>
@@ -45,20 +45,26 @@
                 <span *ngIf="addNewCustomerReg.controls.customerName.hasError('maxlength')">Tên bạn nhập quá dài</span>
                 <span *ngIf="addNewCustomerReg.controls.customerName.hasError('pattern')">Tên của bạn không đúng</span>
               </span></label>
-
               <input type="text" name="name" class="form-control" id="name" placeholder="Họ và tên" formControlName="customerName">
-
             </div>
             <div class="form-group col-md-6 mt-3 mt-md-0">
               <label for="phone">Số điện thoại
                 <span class="error-message-form" style="color: red" *ngIf="(submitted || addNewCustomerReg.get('phone').dirty || addNewCustomerReg.get('phone').touched) && addNewCustomerReg.get('phone').invalid">
                 <span *ngIf="addNewCustomerReg.get('phone').hasError('required')">Bạn cần nhập số điện thoại</span>
-                <span *ngIf="addNewCustomerReg.get('phone').hasError('pattern')">Số điện thoại bị sai</span>
+                <span *ngIf="addNewCustomerReg.get('phone').hasError('pattern')">Số điện thoại không đúng</span>
               </span>
               </label>
               <input type="phone" class="form-control" name="email" id="phone" placeholder="Số điện thoại"  formControlName="phone">
-
             </div>
+          </div>
+          <div class="form-group mt-3">
+            <label for="idCard">CCCD
+              <span class="error-message-form" style="color: red" *ngIf="addNewCustomerReg.controls.idCardCustomer.invalid && (submitted || addNewCustomerReg.controls['idCardCustomer'].dirty || addNewCustomerReg.controls['idCardCustomer'].touched)">
+              <span *ngIf="addNewCustomerReg.controls.idCardCustomer.hasError('required')">Nhập CCCD của bạn</span>
+              <span *ngIf="addNewCustomerReg.controls.idCardCustomer.hasError('pattern')">CCCD không đúng</span>
+            </span>
+            </label>
+            <input type="text" class="form-control" name="idCard" id="idCard" placeholder="Căn cước công dân" formControlName="idCardCustomer">
           </div>
           <div class="form-group mt-3">
             <label for="email">Email
@@ -70,7 +76,6 @@
             </span>
             </label>
             <input type="text" class="form-control" name="email" id="email" placeholder="Email" formControlName="email">
-
           </div>
           <div class="form-group mt-3">
             <label for="address">Địa chỉ
@@ -85,7 +90,11 @@
 
           </div>
           <div class="form-group mt-3">
-            <label for="note">Ghi chú</label>
+            <label for="note">Ghi chú
+              <span class="error-message-form" style="color: red" *ngIf="addNewCustomerReg.controls.note.invalid && ( submitted ||addNewCustomerReg.controls['note'].dirty || addNewCustomerReg.controls['note'].touched)">
+                <span *ngIf="addNewCustomerReg.controls.note.hasError('maxlength')">Nội dung quá dài</span>
+              </span>
+            </label>
             <textarea class="form-control" id="note" name="message" rows="10" formControlName="note"></textarea>
           </div>
           <div class="text-center"><button type="submit">Đăng kí ngay</button></div>

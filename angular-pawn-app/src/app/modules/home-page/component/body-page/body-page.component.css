@@ -403,7 +403,7 @@ section {
 }
 
 .portfolio .portfolio-wrap .portfolio-info h4 {
-  font-size: 45px;
+  font-size: 30px;
   color: white;
   font-weight: 600;
   background-color: #ea541d;
@@ -651,6 +651,45 @@ section {
 .team .member:hover .social {
   left: 0;
   transition: left ease-in-out 0.3s;
+}
+
+/*!*--------------------------------------------------------------*/
+/*# About*/
+/*  --------------------------------------------------------------*!*/
+.about h3 {
+  font-weight: 700;
+  font-size: 34px;
+  color: #4e4039;
+}
+
+.about h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 5px;
+  color: #7a6960;
+}
+
+.about i {
+  font-size: 48px;
+  margin-top: 15px;
+  color: #f39e7a;
+}
+
+.about p {
+  font-size: 15px;
+  color: #5a6570;
+}
+
+@media (max-width: 991px) {
+  .about .about-img img {
+    max-width: 70%;
+  }
+}
+
+@media (max-width: 767px) {
+  .about .about-img img {
+    max-width: 90%;
+  }
 }
 
 /*!*--------------------------------------------------------------*/
