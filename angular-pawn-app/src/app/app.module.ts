@@ -2,6 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
+
 import {ArticleModule} from "./modules/article/article.module";
 import {CategoryModule} from "./modules/category/category.module";
 import {ContractModule} from "./modules/contract/contract.module";
@@ -20,6 +21,7 @@ import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
+
 import {FormsModule} from '@angular/forms';
 import { AuthInterceptor } from './service/auth/auth.interceptor';
 import { HomeComponent } from './modules/home/home.component';
