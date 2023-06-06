@@ -1,8 +1,10 @@
 import {Customer} from '../customer/Customer';
 import {Status} from '../status/Status';
-import {Employee} from '../employee/Employee';
-import {Product} from '../product/Product';
+import {Category} from "../category/Category";
+import {Product} from "../product/Product";
+import {Employee} from "../employee/Employee";
 
+// ThuongVTH
 export interface Contract {
   id?: number;
   contractCode?: string;

@@ -1,3 +1,4 @@
+// ThuongVTH
 export interface Customer {
   id: number;
   name?: string;
@@ -11,4 +12,8 @@ export interface Customer {
   status?:string,
   note?:string,
   isFlag?:boolean
+
+  customer_name?: string;
+  identityCard?:string;
+  customer_code?:string;
 }

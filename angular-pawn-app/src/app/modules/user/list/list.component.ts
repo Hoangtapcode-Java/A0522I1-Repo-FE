@@ -25,8 +25,10 @@ export class ListComponent implements OnInit {
 
   getEmployee() {
     this.httpClient.get('http://localhost:8080/api/customer').subscribe(data => {
+    this.httpClient.get('http://localhost:8080/api/employee/test').subscribe(data => {
       console.log('http client');
       console.log(data);
+      });
     });
   }
 }

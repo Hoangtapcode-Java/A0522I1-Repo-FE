@@ -65,6 +65,4 @@ export class AuthClientService {
     localStorage.removeItem('createdTime');
 
   }
-
-
 }

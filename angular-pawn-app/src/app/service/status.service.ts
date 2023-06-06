@@ -12,10 +12,10 @@ export class StatusService {
   }
 
   findAll(): Observable<Status[]> {
-    return this.httpClient.get<Status[]>("http://localhost:8080/api/status");
+    return this.httpClient.get<Status[]>("http://localhost:8080/api/statuses");
   }
 
   findById(id: any): Observable<Status> {
-    return this.httpClient.get<Status>('http://localhost:8080/api/status/' + id);
+    return this.httpClient.get<Status>('http://localhost:8080/api/statuses/' + id);
   }
 }

@@ -7,7 +7,6 @@ import {Category} from '../models/category/Category';
   providedIn: 'root'
 })
 export class CategoryServiceService {
-
   constructor(private httpClient: HttpClient) {
   }
 
