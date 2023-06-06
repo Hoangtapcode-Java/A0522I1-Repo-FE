@@ -1,16 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {StatusService} from "../../../service/status.service";
-import {ContractService} from "../../../service/contract.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {Contract} from "../../../models/contract/Contract";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Status} from "../../../models/status/Status";
-import {Customer} from "../../../models/customer/Customer";
-import {Category} from "../../../models/category/Category";
-import {Product} from "../../../models/product/Product";
-import {CategoryServiceService} from "../../../service/category-service.service";
-import {ProductServiceService} from "../../../service/product-service.service";
-import {CustomerServiceService} from "../../../service/customer-service.service";
+import {StatusService} from '../../../service/status.service';
+import {ContractService} from '../../../service/contract.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Status} from '../../../models/status/Status';
+import {Category} from '../../../models/category/Category';
+import {CategoryServiceService} from '../../../service/category-service.service';
+import {ProductServiceService} from '../../../service/product-service.service';
+import {CustomerServiceService} from '../../../service/customer-service.service';
+import {ContractEditDto} from "../../../dto/ContractEditDto";
 
 @Component({
   selector: 'app-update',
@@ -18,32 +16,31 @@ import {CustomerServiceService} from "../../../service/customer-service.service"
   styleUrls: ['./update.component.css']
 })
 export class UpdateComponent implements OnInit {
-  contract: Contract;
-  contractEdit: Contract;
+  regexName: string = "^[a-zA-ZÀ-ỹ]+([ ][a-zA-ZÀ-ỹ]+)*$";
+  contract: ContractEditDto;
+  contractEdit: ContractEditDto;
   editContractForm: FormGroup;
   statuses: Status[] = [];
-  customers: Customer[] = [];
   categories: Category[] = [];
-  products: Product[] = [];
 
   constructor(private statusService: StatusService, private contractService: ContractService,
               private categoryService: CategoryServiceService, private productService: ProductServiceService,
               private customerService: CustomerServiceService, private activatedRoute: ActivatedRoute, private router: Router ) {
-    this.activatedRoute.paramMap.subscribe(next=> {
+    this.activatedRoute.paramMap.subscribe(next => {
       const id = next.get('id');
       if (id != null) {
-        this.contractService.findById(parseInt(id)).subscribe(next=> {
-            this.contract = next;
-            this.getFormEdit();
-        })
+        this.contractService.findById(parseInt(id)).subscribe(next => {
+          this.contract = next;
+        },error => {},() => {
+
+          this.getFormEdit();
+        });
       }
-    })
+    });
   }
 
   ngOnInit(): void {
-    this.findAllCustomer();
     this.findAllCategory();
-    this.findAllProduct();
     this.findAllStatus();
   }
 
@@ -56,44 +53,47 @@ export class UpdateComponent implements OnInit {
     this.editContractForm = new FormGroup({
       id: new FormControl(this.contract.id),
       contractCode: new FormControl(this.contract.contractCode),
+      customerName: new FormControl(this.contract.customerName, [Validators.required, Validators.minLength(3), Validators.pattern(this.regexName)]),
+      customerId: new FormControl(this.contract.customerId),
+      productName: new FormControl(this.contract.productName, [Validators.required]),
+      productId: new FormControl(this.contract.productId),
+      category: new FormControl(this.contract.category),
       beginDate: new FormControl(this.contract.beginDate, [Validators.required]),
       endDate: new FormControl(this.contract.endDate, [Validators.required]),
-      customer: new FormControl(this.contract.customer, [Validators.required]),
-      employee: new FormControl(this.contract.employee),
-      status: new FormControl(this.contract.status, [Validators.required]),
-      interest: new FormControl(this.contract.interest),
-      product: new FormControl(this.contract.product, [Validators.required]),
-      isFlag: new FormControl((false))
-    });
+      status: new FormControl(this.contract.status)
+    }, [ this.checkEndDate]);
   }
+
+
 
   editContract() {
-    this.contractEdit = this.editContractForm.value;
-    console.log("Start edit")
-    console.log(this.contractEdit);
-    this.contractService.editContract(this.contractEdit).subscribe(next => {
-      this.router.navigateByUrl('/contract');
-      console.log("Success")
-    }, error => {
-      console.log(error);
-    });
-  }
-
-  private findAllCustomer() {
-
+    if (this.editContractForm.valid) {
+      this.contractEdit = this.editContractForm.value;
+      this.contractService.editContract(this.contractEdit).subscribe(next => {
+        this.router.navigateByUrl('/contract');
+      }, error => {
+        console.log(error);
+      });
+    } else {
+      console.log("Invalid")
+    }
   }
 
   private findAllCategory() {
-
-  }
-
-  private findAllProduct() {
-
+    this.categoryService.findAll().subscribe(next => {
+      this.categories = next;
+    });
   }
 
   private findAllStatus() {
     this.statusService.findAll().subscribe(next => {
       this.statuses = next;
-    })
+    });
+  }
+
+  checkEndDate(control: any): any {
+    let beginDate = control.controls.beginDate.value;
+    let endDate = control.controls.endDate.value;
+    return endDate > beginDate ? null : {endDateInvalid: true}
   }
 }

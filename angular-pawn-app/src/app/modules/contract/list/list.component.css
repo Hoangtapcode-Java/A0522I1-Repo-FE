@@ -229,13 +229,13 @@ tbody td {
 }
 
 .form-submit .btn-submit {
-   padding: 6px 14px;
-   border-radius: 6px;
-   border: none;
-   color: #fff;
-   white-space: nowrap;
-   background: #ee4d2d;
- }
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  white-space: nowrap;
+  background: #ee4d2d;
+}
 
 .form-submit .btn-submit:hover {
   opacity: .85;
@@ -504,4 +504,45 @@ select.form-select option {
   display: flex;
   gap: 5px;
   border-radius: 6px;
+}
+
+/*Phân trang*/
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+}
+.pagination .text {
+  font-size: 16px;
+}
+.pagination .text1 {
+  font-size: 16px;
+}
+.pagination a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+.pagination a:hover {
+  background: #EE4D2D !important;
+  color: #fff;
+  opacity: .8;
+}
+.pagination a.disabled {
+  pointer-events: none;
+  color: var(--nc-primary), white, 50;
+}
+/* thiết lập style cho class active */
+.pagination a.active {
+  background: var(--nc-primary-gradient);
+  color: #fff;
+}
+/* thêm màu nền khi người dùng hover vào class không active */
+.pagination a:hover:not(.active) {
+  background-color: var(--nc-primary-bg);
+  opacity: 0.8;
 }

@@ -1,16 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { ContractRoutingModule } from './contract-routing.module';
-import { ContractComponent } from './contract.component';
-import { CreateComponent } from './create/create.component';
-import { ListComponent } from './list/list.component';
-import { UpdateComponent } from './update/update.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ContractRoutingModule} from './contract-routing.module';
+import {ContractComponent} from './contract.component';
+import {CreateComponent} from './create/create.component';
+import {ListComponent} from './list/list.component';
+import {UpdateComponent} from './update/update.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ReturnItemsComponent} from './return-items/return-items.component';
+import {NgModule} from "@angular/core";
+import {CommonModule} from "@angular/common";
 
 
 @NgModule({
-    declarations: [ContractComponent, CreateComponent, ListComponent, UpdateComponent],
+    declarations: [ContractComponent, CreateComponent, ListComponent, UpdateComponent,ReturnItemsComponent],
     exports: [
         ContractComponent
     ],
@@ -21,4 +21,5 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
         ReactiveFormsModule
     ]
 })
-export class ContractModule { }
+export class ContractModule {
+}
