@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap");
+
 :root {
   --nc-primary: #ee4d2d;
   --nc-primary-bg: #fef6f5;
@@ -12,6 +13,8 @@
 
 * {
   font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 #color-bg {
@@ -19,16 +22,50 @@
   color: #fff;
 }
 
+.table {
+  margin-bottom: 0;
+}
+
 .table-responsive {
   max-height: 400px;
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   border-radius: 5px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.175);
+  scroll-behavior: smooth;
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 5px !important; /* Độ cao của thanh cuộn */
+  transition: height 1s;
+}
+
+.table-responsive:hover::-webkit-scrollbar {
+  height: 8px !important;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background-color: #888; /* Màu sắc của thanh cuộn */
+  border-radius: 6px;
+  border: none !important; /* Loại bỏ viền của thanh cuộn */
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Màu sắc của phần đường bao quanh thanh cuộn */
 }
 
 .table > :not(caption) > * > * {
   padding: 0.5rem 1.5rem;
 }
+
+thead th,
+tbody td {
+  max-width: 200px; /* thiết lập chiều rộng tối đa cho mỗi cột */
+  white-space: nowrap !important; /* không cho phép chữ bị xuống dòng */
+  overflow: hidden; /* ẩn phần vượt quá chiều rộng tối đa */
+  text-overflow: ellipsis; /* hiển thị dấu ba chấm (...) cho phần vượt quá chiều rộng tối đa */
+}
+
 
 thead th,
 tbody td {
@@ -98,6 +135,7 @@ tbody td {
   background: var(--nc-primary-gradient);
   box-shadow: none;
 }
+
 /*---------------------------  Search box --------------------------- */
 .memu-search {
   position: relative;
@@ -243,6 +281,7 @@ tbody td {
 .form-submit .btn-submit:hover {
   opacity: .85;
 }
+
 .form-submit .btn-search:hover {
   border: none;
   color: #fff;
@@ -345,12 +384,14 @@ select.form-select option {
 .search__field::placeholder {
   font-size: 16px;
 }
+
 .search__field:focus {
   border-bottom-color: #ccc;
   width: 250px;
   color: #2b2b2b;
   cursor: default;
 }
+
 .search__field:focus ~ .search__icon {
   background-color: transparent !important;
   cursor: pointer;
@@ -372,6 +413,7 @@ select.form-select option {
   display: inline-block;
   transition: background-color 0.2s ease-in-out;
 }
+
 .search__field::-webkit-input-placeholder {
   position: relative;
   top: 0;
@@ -384,6 +426,7 @@ select.form-select option {
   backface-visibility: hidden;
 
 }
+
 .search__field:-moz-placeholder {
   position: relative;
   top: 0;
@@ -396,6 +439,7 @@ select.form-select option {
   backface-visibility: hidden;
 
 }
+
 .search__field::-moz-placeholder {
   position: relative;
   top: 0;
@@ -408,6 +452,7 @@ select.form-select option {
   backface-visibility: hidden;
 
 }
+
 .search__field:-ms-input-placeholder {
   position: relative;
   top: 0;
@@ -420,6 +465,7 @@ select.form-select option {
   backface-visibility: hidden;
 
 }
+
 .search__field::-webkit-input-placeholder[style*="hidden"] {
   color: #83b0c1;
   font-size: 0.65em;
@@ -428,6 +474,7 @@ select.form-select option {
   opacity: 1;
   visibility: visible !important;
 }
+
 .search__field:-moz-placeholder[style*="hidden"] {
   color: #83b0c1;
   font-size: 0.65em;
@@ -436,6 +483,7 @@ select.form-select option {
   opacity: 1;
   visibility: visible !important;
 }
+
 .search__field::-moz-placeholder[style*="hidden"] {
   color: #83b0c1;
   font-size: 0.65em;
@@ -444,6 +492,7 @@ select.form-select option {
   opacity: 1;
   visibility: visible !important;
 }
+
 .search__field:-ms-input-placeholder[style*="hidden"] {
   color: #83b0c1;
   font-size: 0.65em;
@@ -460,13 +509,16 @@ select.form-select option {
   align-items: center;
   margin: 15px 0;
 }
+
 .pagination .text {
   font-size: 16px;
 
 }
+
 .pagination .text1 {
   font-size: 16px;
 }
+
 .pagination a {
   color: black;
   padding: 8px 16px;
@@ -481,6 +533,7 @@ select.form-select option {
   color: #fff;
   opacity: .8;
 }
+
 /*.pagination a.disabled {*/
 /*  pointer-events: none;*/
 /*  color: var(--nc-primary), white, 50%;*/
@@ -490,6 +543,7 @@ a.paginationItem.active {
   background: #ee4d2d !important;
   color: #fff;
 }
+
 /* thêm màu nền khi người dùng hover vào class không active */
 .pagination a:hover:not(.active) {
   background: #ee4d2d !important;
@@ -500,7 +554,8 @@ a.paginationItem.active {
   .memu-search .searchBox {
     width: 400px;
   }
-  .lds-ring{
+
+  .lds-ring {
     margin: 0 100px;
   }
 

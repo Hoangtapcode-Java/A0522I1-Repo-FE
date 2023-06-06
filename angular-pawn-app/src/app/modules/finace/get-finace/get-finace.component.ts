@@ -15,14 +15,13 @@ export class GetFinaceComponent implements OnInit {
   constructor(private financeService : FinaceService) {
     this.showFinance();
   }
-
   ngOnInit(): void {
 
   }
-
   showFinance(){
     this.financeService.getFinace().subscribe(next=>{
       this.finance = next
     })
   }
+
 }

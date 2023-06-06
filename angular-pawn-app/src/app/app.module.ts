@@ -24,6 +24,7 @@ import {AngularFireModule} from '@angular/fire';
 import {environment} from "../environments/environment";
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
+import { AdminPageComponent } from './models/admin-page/admin-page.component';
 
 
 
@@ -31,7 +32,8 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AdminPageComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,7 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
