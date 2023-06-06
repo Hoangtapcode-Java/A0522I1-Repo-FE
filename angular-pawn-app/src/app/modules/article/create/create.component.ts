@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
-import {ArticleServiceService} from "../../../service/article-service.service";
-import {AngularFireStorage} from "@angular/fire/storage";
-import {formatDate} from "@angular/common";
-import {finalize} from "rxjs/operators";
-import {Router} from "@angular/router";
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ArticleServiceService} from '../../../service/article-service.service';
+import {AngularFireStorage} from '@angular/fire/storage';
+import {formatDate} from '@angular/common';
+import {finalize} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 declare const Swal: any;
 import Quill from 'quill';
@@ -15,7 +15,7 @@ import Quill from 'quill';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  flag: boolean = false;
+  flag = false;
   currentDate: string;
   inputImage: any = null;
   articleDTO: FormGroup;
@@ -24,7 +24,7 @@ export class CreateComponent implements OnInit {
   text: any = null;
 
   imgLink: any = null;
-  maxSize: boolean = false;
+  maxSize = false;
 
   constructor(private articleService: ArticleServiceService,
               private storage: AngularFireStorage,
@@ -33,10 +33,10 @@ export class CreateComponent implements OnInit {
 
 
     this.articleDTO = new FormGroup({
-      id: new FormControl(""),
-      title: new FormControl("", [Validators.required, Validators.maxLength(100), Validators.minLength(5)]),
-      img: new FormControl("", [Validators.required]),
-      content: new FormControl("", [Validators.required, Validators.maxLength(50000), Validators.minLength(50)]),
+      id: new FormControl(''),
+      title: new FormControl('', [Validators.required, Validators.maxLength(100), Validators.minLength(5)]),
+      img: new FormControl('', [Validators.required]),
+      content: new FormControl('', [Validators.required, Validators.maxLength(50000), Validators.minLength(50)]),
       publicDate: new FormControl(this.currentDate),
       isFeature: new FormControl(false),
       isFlag: new FormControl(false),
@@ -77,9 +77,9 @@ export class CreateComponent implements OnInit {
       }, error => {
       }, () => {
         // Swal.fire('Thêm tin thành công');
-      })
+      });
       Swal.fire('Done', 'Thêm tin thành công!', 'success');
-      this.route.navigateByUrl("/article");
+      this.route.navigateByUrl('/article');
     }
   }
 
@@ -102,14 +102,14 @@ export class CreateComponent implements OnInit {
   }
 
   back() {
-    this.route.navigateByUrl("/article");
+    this.route.navigateByUrl('/article');
   }
 
   checkContent($event: any) {
     this.text = $event.target.innerHTML;
     this.text = this.text.toString().replace(/<[^>]+>/g, '');
     this.articleDTO.controls.content.setValue(this.text);
-    this.flag=false;
+    this.flag = false;
   }
 
 }

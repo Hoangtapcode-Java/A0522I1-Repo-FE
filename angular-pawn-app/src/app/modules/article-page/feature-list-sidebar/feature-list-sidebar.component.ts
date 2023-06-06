@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Article} from "../../../models/article/Article";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ArticleServiceService} from "../../../service/article-service.service";
+import {Article} from '../../../models/article/Article';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ArticleServiceService} from '../../../service/article-service.service';
 
 @Component({
   selector: 'app-feature-list-sidebar',
@@ -13,7 +13,7 @@ export class FeatureListSidebarComponent implements OnInit {
   article: Article = {};
   featureArticles: Article[] = [];
 
-  p : number =1;
+  p = 1;
 
   constructor(private route: Router,
               private activatedRoute: ActivatedRoute,
@@ -25,10 +25,10 @@ export class FeatureListSidebarComponent implements OnInit {
 
 
   getListFeature() {
-    this.articleService.getFeature().toPromise().then(r=>{
+    this.articleService.getFeature().toPromise().then(r => {
       this.featureArticles = r;
       console.log(r);
-    })
+    });
   }
 
 }
