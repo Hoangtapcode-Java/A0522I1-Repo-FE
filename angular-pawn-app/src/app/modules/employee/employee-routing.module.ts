@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {EmployeeComponent} from "./employee.component";
-import {ListComponent} from "./list/list.component";
-import {CreateComponent} from "./create/create.component";
-import {UpdateComponent} from "./update/update.component";
-import {DeleteComponent} from "./delete/delete.component";
+import {EmployeeComponent} from './employee.component';
+import {ListComponent} from './list/list.component';
+import {CreateComponent} from './create/create.component';
+import {UpdateComponent} from './update/update.component';
+import {DeleteComponent} from './delete/delete.component';
 
 
-const routes: Routes = [{path:'employee',component:EmployeeComponent,children:[
+const routes: Routes = [{path: 'employee', component: EmployeeComponent, children: [
     {
       path: '', component: ListComponent
     },
@@ -18,7 +18,7 @@ const routes: Routes = [{path:'employee',component:EmployeeComponent,children:[
       path: 'update', component: UpdateComponent
     },
     {
-      path:'delete',component:DeleteComponent
+      path: 'delete', component: DeleteComponent
     }
   ]}];
 
