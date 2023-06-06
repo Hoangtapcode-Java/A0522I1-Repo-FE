@@ -13,7 +13,6 @@ import {ProductModule} from "./modules/product/product.module";
 import {RoleModule} from "./modules/role/role.module";
 import {StatusModule} from "./modules/status/status.module";
 import {UserModule} from "./modules/user/user.module";
-import {UserHasRoleModule} from "./modules/user-has-role/user-has-role.module";
 import {FinaceModule} from "./modules/finace/finace.module";
 import {HomePageModule} from "./modules/home-page/home-page.module";
 import {ArticlePageModule} from "./modules/article-page/article-page.module";
@@ -41,7 +40,6 @@ import {AuthInterceptor} from './service/auth/auth.interceptor';
     RoleModule,
     StatusModule,
     UserModule,
-    UserHasRoleModule,
     FinaceModule,
     HomePageModule,
     ArticlePageModule,
