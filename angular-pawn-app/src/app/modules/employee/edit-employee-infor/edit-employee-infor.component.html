@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row justify-content-center mt-4">
     <div class="col-lg-12">
@@ -46,9 +45,7 @@
         <div class="form-group col-md-6">
           <label for="confirmPass">Nhập lại mật khẩu:</label>
           <span
-            *ngIf="employeeInfor.controls.confirmPassword.hasError('required')&&employeeInfor.controls.confirmPassword.dirty">(Không trùng khớp)</span>
-          <span
-            *ngIf="employeeInfor.hasError('failPass')&&employeeInfor.controls.confirmPassword.dirty&&!employeeInfor.controls.confirmPassword.hasError('required') ">(Không trùng khớp)</span>
+            *ngIf="(employeeInfor.hasError('failPass')&&employeeInfor.controls.confirmPassword.dirty&&!employeeInfor.controls.password.hasError('required')&&employeeInfor.controls.confirmPassword.value!='')||(employeeInfor.hasError('failPass'))">(Không trùng khớp)</span>
           <input type="password" class="form-control" formControlName="confirmPassword" id="confirmPass">
         </div>
         <div class="form-group col-md-6">
@@ -101,12 +98,17 @@
         <div class="form-group ">
           <label for="avatar">Hình đại diện:</label>
           <span *ngIf="maxSize==true">(Ảnh phải bé hơn 1MB)</span>
-          <input type="file" class="form-control" id="avatar" (change)="selectImg($event)" accept=".jpg,.jpeg,.png,/image/*">
+          <input type="file" class="form-control" id="avatar" (change)="selectImg($event)"
+                 accept=".jpg,.jpeg,.png,/image/*">
           <img id="img-preview" *ngIf="oldAvatarLink!=null" src="{{oldAvatarLink}}">
         </div>
         <div class="form-group">
-          <button *ngIf="employeeInfor.invalid||checkEmail==true||checkPhone==true||checkIdCard==true;else elseBlock" [attr.disabled]="true" class="btn btn-primary mx-2 ">Sửa</button>
-          <ng-template #elseBlock><button type="submit" class="btn btn-primary mx-2 ">Sửa</button></ng-template>
+          <button *ngIf="employeeInfor.invalid||checkEmail==true||checkPhone==true||checkIdCard==true;else elseBlock"
+                  [attr.disabled]="true" class="btn btn-primary mx-2 ">Sửa
+          </button>
+          <ng-template #elseBlock>
+            <button type="submit" class="btn btn-primary mx-2 ">Sửa</button>
+          </ng-template>
           <button type="reset" (click)="back()" class="btn btn-secondary">Hủy</button>
         </div>
       </form>

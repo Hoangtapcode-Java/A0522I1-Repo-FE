@@ -4,7 +4,7 @@
       <form class="row" [formGroup]="articleDTO" (ngSubmit)="submit(articleDTO)">
         <div class="form-group" style="margin-top: 5px">
           <label for="title">Tiêu đề: </label><span *ngIf="flag==false">*</span>
-          <span *ngIf="articleDTO.controls.title.hasError('required')&&flag==true">(Vui lòng nhập tiêu đề)</span>
+          <span *ngIf="articleDTO.controls.title.hasError('required')&&flag==true||articleDTO.controls.title.hasError('required')&&!articleDTO.controls.content.hasError('required')">(Vui lòng nhập tiêu đề)</span>
           <span *ngIf="articleDTO.controls.title.hasError('minlength')&&articleDTO.controls.title.touched">(Tiêu đề chứa ít nhất 5 kí tự)</span>
           <span *ngIf="articleDTO.controls.title.hasError('maxlength')&&articleDTO.controls.title.touched">(Tiêu đề chứa tối đa 100 kí tự)</span>
           <input type="text" class="form-control" id="title" formControlName="title" placeholder="Nhập tiêu đề">
@@ -16,7 +16,7 @@
         <div class="form-group" style="margin-top: 5px">
           <label for="image" >Hình ảnh:</label><span *ngIf="flag==false">*</span>
           <span *ngIf="maxSize==true">(Ảnh phải bé hơn 1MB)</span>
-          <span *ngIf="articleDTO.controls.img.hasError('required')&&flag==true||articleDTO.value.img==null&&maxSize==false" >(Vui lòng chọn ảnh)</span>
+          <span *ngIf="articleDTO.controls.img.hasError('required')&&flag==true||articleDTO.value.img==null&&maxSize==false||inputImage==null&&flag==true&&maxSize==false||inputImage==null&&!articleDTO.controls.content.hasError('required')&&maxSize==false" >(Vui lòng chọn ảnh)</span>
           <input type="file" class="form-control" id="image"  accept=".jpg,.jpeg,.png"  formControlName="img" (change)="selectImage($event)">
           <img  id="img-preview" *ngIf="imgLink" src="{{imgLink}}" >
         </div>

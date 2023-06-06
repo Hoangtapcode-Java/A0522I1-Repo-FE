@@ -77,8 +77,11 @@ export class CreateComponent implements OnInit {
       })
       Swal.fire('Xong', 'Thêm tin thành công', 'success');
       this.route.navigateByUrl("/article");
-    }else if (this.articleDTO.invalid) {
-      Swal.fire('Lỗi', 'Thêm tin thất bại', 'error');
+    }else {
+      if (this.articleDTO.invalid||this.inputImage==null) {
+
+            Swal.fire('Lỗi', 'Thêm tin thất bại', 'error');
+          }
     }
   }
 

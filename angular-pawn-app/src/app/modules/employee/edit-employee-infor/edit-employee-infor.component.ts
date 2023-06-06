@@ -60,11 +60,16 @@ export class EditEmployeeInforComponent implements OnInit {
   }
 
   submit(employeeInfor: FormGroup) {
+    if (employeeInfor.value.password==""){
+      employeeInfor.value.password=null;
+      employeeInfor.value.confirmPassword=null;
+    }
     if (this.employeeInfor.valid) {
       this.trimFormGroupValues(employeeInfor);
       if (this.inputImage == null) {
         this.employeeService.updateEmployeeInfor(employeeInfor.value).subscribe(next => {
         }, error => {
+          console.log(error)
           if (error.error.duplicateEmail) {
             this.checkEmail = true;
           } else this.checkEmail = false;
@@ -75,7 +80,7 @@ export class EditEmployeeInforComponent implements OnInit {
             this.checkIdCard = true;
           } else this.checkIdCard = false;
         }, () => {
-          Swal.fire('Sửa thành công').finally(() => {
+          Swal.fire('','Sửa thành công','success').finally(() => {
             window.location.reload();
           });
         });
@@ -105,7 +110,7 @@ export class EditEmployeeInforComponent implements OnInit {
           ).subscribe(() => {
           }, error => {
           }, () => {
-            Swal.fire('Sửa thành công').finally(() => {
+            Swal.fire('','Sửa thành công','success').finally(() => {
               window.location.reload();
             });
           });
