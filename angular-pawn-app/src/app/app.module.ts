@@ -1,6 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ArticleModule} from "./modules/article/article.module";
@@ -13,7 +12,6 @@ import {ProductModule} from "./modules/product/product.module";
 import {RoleModule} from "./modules/role/role.module";
 import {StatusModule} from "./modules/status/status.module";
 import {UserModule} from "./modules/user/user.module";
-import {UserHasRoleModule} from "./modules/user-has-role/user-has-role.module";
 import {FinaceModule} from "./modules/finace/finace.module";
 import {HomePageModule} from "./modules/home-page/home-page.module";
 import {ArticlePageModule} from "./modules/article-page/article-page.module";
@@ -23,12 +21,15 @@ import {environment} from "../environments/environment";
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {FormsModule} from '@angular/forms';
-// import { QuillModule } from 'ngx-quill';
+import { AuthInterceptor } from './service/auth/auth.interceptor';
+import { HomeComponent } from './modules/home/home.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +44,6 @@ import {FormsModule} from '@angular/forms';
     RoleModule,
     StatusModule,
     UserModule,
-    UserHasRoleModule,
     FinaceModule,
     HomePageModule,
     ArticlePageModule,
@@ -52,9 +52,15 @@ import {FormsModule} from '@angular/forms';
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FinaceModule
+
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

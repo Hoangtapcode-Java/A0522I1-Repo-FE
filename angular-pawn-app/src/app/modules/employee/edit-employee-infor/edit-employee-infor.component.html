@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Thông tin cá nhân</title>
-</head>
-<body>
 <div class="container">
-  <div class="row justify-content-center mt-4" >
+  <div class="row justify-content-center mt-4">
     <div class="col-lg-12">
       <form class="row" [formGroup]="employeeInfor" (ngSubmit)="submit(employeeInfor)">
         <div class="form-group col-md-6" style="margin-top: 10px">
@@ -18,7 +11,8 @@
           <span *ngIf="employeeInfor.controls.name.hasError('required')&&employeeInfor.controls.name.dirty">(Vui lòng nhập họ tên)</span>
           <span *ngIf="employeeInfor.controls.name.hasError('minlength')&&employeeInfor.controls.name.dirty">(Chứa ít nhất 5 kí tự)</span>
           <span *ngIf="employeeInfor.controls.name.hasError('maxlength')&&employeeInfor.controls.name.dirty">(Chứa tối đa 50 kí tự)</span>
-          <span *ngIf="employeeInfor.controls.name.hasError('pattern')&&employeeInfor.controls.name.dirty&&!employeeInfor.controls.name.hasError('minlength')&&!employeeInfor.controls.name.hasError('maxlength')">(Họ và tên chưa đúng định dạng)</span>
+          <span
+            *ngIf="employeeInfor.controls.name.hasError('pattern')&&employeeInfor.controls.name.dirty&&!employeeInfor.controls.name.hasError('minlength')&&!employeeInfor.controls.name.hasError('maxlength')">(Họ và tên chưa đúng định dạng)</span>
           <input type="text" class="form-control" id="hoTen" formControlName="name">
         </div>
         <div class="form-group col-md-6">
@@ -26,7 +20,8 @@
           <span *ngIf="employeeInfor.controls.password.hasError('required')&&employeeInfor.controls.password.dirty">(Vui lòng nhập mật khẩu)</span>
           <span *ngIf="employeeInfor.controls.password.hasError('minlength')&&employeeInfor.controls.password.dirty">(Chứa ít nhất 10 kí tự)</span>
           <span *ngIf="employeeInfor.controls.password.hasError('maxlength')&&employeeInfor.controls.password.dirty">(Chứa tối đa 30 kí tự)</span>
-          <span *ngIf="employeeInfor.controls.password.hasError('pattern')&&employeeInfor.controls.password.dirty&&!employeeInfor.controls.password.hasError('minlength')&&!employeeInfor.controls.password.hasError('maxlength')">(Mật khẩu phải chứa kí tự viết hoa, số và kí tự đặt biệt)</span>
+          <span
+            *ngIf="employeeInfor.controls.password.hasError('pattern')&&employeeInfor.controls.password.dirty&&!employeeInfor.controls.password.hasError('minlength')&&!employeeInfor.controls.password.hasError('maxlength')">(Mật khẩu phải chứa kí tự viết hoa, số và kí tự đặt biệt)</span>
           <input type="password" class="form-control" id="password" formControlName="password">
         </div>
         <div class="form-group col-md-6">
@@ -49,64 +44,78 @@
         </div>
         <div class="form-group col-md-6">
           <label for="confirmPass">Nhập lại mật khẩu:</label>
-          <span *ngIf="employeeInfor.controls.confirmPassword.hasError('required')&&employeeInfor.controls.confirmPassword.dirty">(Không trùng khớp)</span>
-          <span *ngIf="employeeInfor.hasError('failPass')&&employeeInfor.controls.confirmPassword.dirty&&!employeeInfor.controls.confirmPassword.hasError('required') ">(Không trùng khớp)</span>
+          <span
+            *ngIf="(employeeInfor.hasError('failPass')&&employeeInfor.controls.confirmPassword.dirty&&!employeeInfor.controls.password.hasError('required')&&employeeInfor.controls.confirmPassword.value!='')||(employeeInfor.hasError('failPass'))">(Không trùng khớp)</span>
           <input type="password" class="form-control" formControlName="confirmPassword" id="confirmPass">
         </div>
         <div class="form-group col-md-6">
           <label for="ngaySinh">Ngày sinh:</label>
-          <span *ngIf="employeeInfor.controls.dateOfBirth.hasError('required')&&employeeInfor.controls.dateOfBirth.dirty">(Vui lòng chọn ngày sinh)</span>
-          <span *ngIf="employeeInfor.controls.dateOfBirth.hasError('isOver23')&&employeeInfor.controls.dateOfBirth.dirty">(Phải lớn hơn hoặc bằng 23 tuổi)</span>
-          <span *ngIf="employeeInfor.controls.dateOfBirth.hasError('isOver50')&&employeeInfor.controls.dateOfBirth.dirty">(Không được lớn hơn 50 tuổi)</span>
+          <span
+            *ngIf="employeeInfor.controls.dateOfBirth.hasError('required')&&employeeInfor.controls.dateOfBirth.dirty">(Vui lòng chọn ngày sinh)</span>
+          <span
+            *ngIf="employeeInfor.controls.dateOfBirth.hasError('isOver23')&&employeeInfor.controls.dateOfBirth.dirty">(Phải lớn hơn hoặc bằng 23 tuổi)</span>
+          <span
+            *ngIf="employeeInfor.controls.dateOfBirth.hasError('isOver50')&&employeeInfor.controls.dateOfBirth.dirty">(Không được lớn hơn 50 tuổi)</span>
           <input type="date" class="form-control" formControlName="dateOfBirth" id="ngaySinh">
         </div>
         <div class="form-group col-md-6">
           <label for="sdt">Số điện thoại</label>
           <span *ngIf="employeeInfor.controls.phone.hasError('required')&&employeeInfor.controls.phone.dirty">(Vui lòng nhập số điện thoại)</span>
           <span *ngIf="employeeInfor.controls.phone.hasError('pattern')&&employeeInfor.controls.phone.dirty">(Chỉ được phép chứa 10 số và bắt đầu 09 hoặc 08)</span>
-          <span *ngIf="checkPhone==true&&!employeeInfor.controls.phone.hasError('pattern')&&!employeeInfor.controls.phone.hasError('required')">(Số điện thoại đã được đăng kí)</span>
-          <input type="tel" class="form-control" formControlName="phone" id="sdt" (input)="setFlagPhone()" >
+          <span
+            *ngIf="checkPhone==true&&!employeeInfor.controls.phone.hasError('pattern')&&!employeeInfor.controls.phone.hasError('required')">(Số điện thoại đã được đăng kí)</span>
+          <input type="tel" class="form-control" formControlName="phone" id="sdt" (input)="setFlagPhone()">
         </div>
         <div class="form-group col-md-6">
           <label for="cmnd">CMND/Hộ chiếu</label>
           <span *ngIf="employeeInfor.controls.idCard.hasError('required')&&employeeInfor.controls.idCard.dirty">(Vui lòng nhập hộ chiếu/CMND)</span>
           <span *ngIf="employeeInfor.controls.idCard.hasError('pattern')&&employeeInfor.controls.idCard.dirty">(Chỉ được phép chứa 12)</span>
-          <span *ngIf="checkIdCard==true&&!employeeInfor.controls.idCard.hasError('required')&&!employeeInfor.controls.idCard.hasError('pattern')">(Hộ chiếu/CMND đã được đăng kí)</span>
-          <input type="text" class="form-control" formControlName="idCard" id="cmnd" (input)="setFlagIdCard()" >
+          <span
+            *ngIf="checkIdCard==true&&!employeeInfor.controls.idCard.hasError('required')&&!employeeInfor.controls.idCard.hasError('pattern')">(Hộ chiếu/CMND đã được đăng kí)</span>
+          <input type="text" class="form-control" formControlName="idCard" id="cmnd" (input)="setFlagIdCard()">
         </div>
         <div class="form-group col-md-6">
           <label for="email">Email:</label>
           <span *ngIf="employeeInfor.controls.email.hasError('required')&&employeeInfor.controls.email.dirty">(Vui lòng nhập email)</span>
           <span *ngIf="employeeInfor.controls.email.hasError('minlength')&&employeeInfor.controls.email.dirty">(Chứa ít nhất 6 kí tự)</span>
           <span *ngIf="employeeInfor.controls.email.hasError('maxlength')&&employeeInfor.controls.email.dirty">(Chứa tối đa 30 kí tự)</span>
-          <span *ngIf="employeeInfor.controls.email.hasError('pattern')&&employeeInfor.controls.email.dirty&&!employeeInfor.controls.email.hasError('minlength')&&!employeeInfor.controls.email.hasError('maxlength')">(Email chưa đúng định dạng)</span>
-          <span *ngIf="checkEmail==true&&!employeeInfor.controls.email.hasError('required')&&!employeeInfor.controls.email.hasError('minlength')&&!employeeInfor.controls.email.hasError('pattern')&&!employeeInfor.controls.email.hasError('maxlength')">(Email đã được đăng kí)</span>
-          <input type="text" class="form-control" id="email" formControlName="email" name="email" (input)="setFlagEmail()">
+          <span
+            *ngIf="employeeInfor.controls.email.hasError('pattern')&&employeeInfor.controls.email.dirty&&!employeeInfor.controls.email.hasError('minlength')&&!employeeInfor.controls.email.hasError('maxlength')">(Email chưa đúng định dạng)</span>
+          <span
+            *ngIf="checkEmail==true&&!employeeInfor.controls.email.hasError('required')&&!employeeInfor.controls.email.hasError('minlength')&&!employeeInfor.controls.email.hasError('pattern')&&!employeeInfor.controls.email.hasError('maxlength')">(Email đã được đăng kí)</span>
+          <input type="text" class="form-control" id="email" formControlName="email" name="email"
+                 (input)="setFlagEmail()">
         </div>
         <div class="form-group col-md-6">
           <label for="daiChi">Địa chỉ:</label>
           <span *ngIf="employeeInfor.controls.address.hasError('required')&&employeeInfor.controls.address.dirty">(Vui lòng nhập địa chỉ)</span>
           <span *ngIf="employeeInfor.controls.address.hasError('minlength')&&employeeInfor.controls.address.dirty">(Chứa ít nhất 5 kí tự)</span>
           <span *ngIf="employeeInfor.controls.address.hasError('maxlength')&&employeeInfor.controls.address.dirty">(Chứa tối đa 50 kí tự)</span>
-          <span *ngIf="employeeInfor.controls.address.hasError('pattern')&&employeeInfor.controls.address.dirty&&!employeeInfor.controls.email.hasError('minlength')&&!employeeInfor.controls.address.hasError('maxlength')">(Địa chỉ không được chứa các kí tự đặc biệt)</span>
+          <span
+            *ngIf="employeeInfor.controls.address.hasError('pattern')&&employeeInfor.controls.address.dirty&&!employeeInfor.controls.email.hasError('minlength')&&!employeeInfor.controls.address.hasError('maxlength')">(Địa chỉ không được chứa các kí tự đặc biệt)</span>
           <input type="tel" class="form-control" id="daiChi" formControlName="address">
         </div>
         <div class="form-group ">
           <label for="avatar">Hình đại diện:</label>
           <span *ngIf="maxSize==true">(Ảnh phải bé hơn 1MB)</span>
-          <input type="file" class="form-control" id="avatar" (change)="selectImg($event)" accept=".jpg,.jpeg,.png">
+          <input type="file" class="form-control" id="avatar" (change)="selectImg($event)"
+                 accept=".jpg,.jpeg,.png,/image/*">
           <img id="img-preview" *ngIf="oldAvatarLink!=null" src="{{oldAvatarLink}}">
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-primary mx-2 ">Sửa</button>
+          <button *ngIf="employeeInfor.invalid||checkEmail==true||checkPhone==true||checkIdCard==true;else elseBlock"
+                  [attr.disabled]="true" class="btn btn-primary mx-2 ">Sửa
+          </button>
+          <ng-template #elseBlock>
+            <button type="submit" class="btn btn-primary mx-2 ">Sửa</button>
+          </ng-template>
           <button type="reset" (click)="back()" class="btn btn-secondary">Hủy</button>
         </div>
       </form>
     </div>
   </div>
 </div>
-</body>
-</html>
+
 
 
 
