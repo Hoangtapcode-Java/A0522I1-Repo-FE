@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {ProductComponent} from "./product.component";
 import {ListComponent} from "./list/list.component";
 import {CreateComponent} from "./create/create.component";
@@ -8,7 +8,8 @@ import {DeleteComponent} from "./delete/delete.component";
 import {DetailComponent} from "./detail/detail.component";
 
 
-const routes: Routes = [{path:'product',component:ProductComponent,children:[
+const routes: Routes = [{
+  path: 'product', component: ProductComponent, children: [
     {
       path: '', component: ListComponent
     },
@@ -19,15 +20,18 @@ const routes: Routes = [{path:'product',component:ProductComponent,children:[
       path: 'update', component: UpdateComponent
     },
     {
-      path:'delete',component:DeleteComponent
+      path: 'delete', component: DeleteComponent
     },
     {
-      path:'detail',component:DetailComponent
+      path: 'detail/:id', component: DetailComponent
+
     }
-  ]}];
+  ]
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProductRoutingModule { }
+export class ProductRoutingModule {
+}
