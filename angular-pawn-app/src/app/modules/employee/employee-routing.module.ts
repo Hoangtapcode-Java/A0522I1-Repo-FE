@@ -5,6 +5,7 @@ import {ListComponent} from "./list/list.component";
 import {CreateComponent} from "./create/create.component";
 import {UpdateComponent} from "./update/update.component";
 import {DeleteComponent} from "./delete/delete.component";
+import {EditEmployeeInforComponent} from "./edit-employee-infor/edit-employee-infor.component";
 
 
 const routes: Routes = [{path:'employee',component:EmployeeComponent,children:[
@@ -19,6 +20,9 @@ const routes: Routes = [{path:'employee',component:EmployeeComponent,children:[
     },
     {
       path:'delete',component:DeleteComponent
+    },
+    {
+      path:'edit-employee-infor',component:EditEmployeeInforComponent
     }
   ]}];
 

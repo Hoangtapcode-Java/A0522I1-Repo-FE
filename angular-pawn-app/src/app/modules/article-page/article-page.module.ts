@@ -9,6 +9,7 @@ import { HeaderForArticleComponent } from './header-for-article/header-for-artic
 import { FooterForArticleComponent } from './footer-for-article/footer-for-article.component';
 import { FeatureListComponent } from './feature-list/feature-list.component';
 import { FeatureListSidebarComponent } from './feature-list-sidebar/feature-list-sidebar.component';
+import { TruncatePipe } from './list/truncate.pipe';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { FeatureListSidebarComponent } from './feature-list-sidebar/feature-list
         HeaderForArticleComponent,
         FooterForArticleComponent,
         FeatureListComponent,
-        FeatureListSidebarComponent],
+        FeatureListSidebarComponent,
+        TruncatePipe],
   exports: [
     HeaderForArticleComponent,
     FooterForArticleComponent,

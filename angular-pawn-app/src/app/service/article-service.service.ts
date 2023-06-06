@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Article} from "../models/article/Article";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {ArticleDTO} from "../models/article/ArticleDTO";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -42,6 +43,14 @@ export class ArticleServiceService {
   }
 
   searchArticleByName(name: any, pageNumber: number = 5): Observable<any> {
-    return this.httpClient.get<any>('http://localhost:8080/api/search-article?name='+ name + '&page=' + pageNumber);
+    return this.httpClient.get<any>('http://localhost:8080/api/search-article?name=' + name + '&page=' + pageNumber);
+  }
+
+  saveArticle(article: ArticleDTO): Observable<any> {
+    return this.httpClient.post('http://localhost:8080/api/article/save', article, {
+      headers: {
+        Authorization: "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBQkMxMjMiLCJpYXQiOjE2ODU5NjQ0NzgsImV4cCI6MTY4NjA1MDg3OH0.LGP_yX5JIdtxhoVhtCVIPHe-1Ifz7JHtagnbDtA9m9QU2587ZkspefzlwACgb1RCripvlMJ8uUbM8zZFFyjlWw",
+      }
+    });
   }
 }

@@ -20,9 +20,11 @@ import {FeatureListComponent} from '../article-page/feature-list/feature-list.co
 
 const routes: Routes = [
   {
-    path: 'home', component: HomePageComponent, children: [
+    path: 'home'  , component: HomePageComponent, children: [
       {
         path: '', component: BodyPageComponent
+      },{
+        path: '', component: FeatureListComponent
       },
       {
         path: '', component: FeatureListComponent
