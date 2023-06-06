@@ -24,6 +24,7 @@
     "firebase": "^7.24.0",
     "jsonwebtoken": "^9.0.0",
     "ngx-spinner": "^9.0.2",
+    "ngx-pagination": "^3.0.1",
     "rxjs": "~6.5.4",
     "sweetalert2": "^11.7.8",
     "tslib": "^1.14.1",

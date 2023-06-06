@@ -1,4 +1,3 @@
-
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {UserComponent} from './user.component';
@@ -19,7 +18,7 @@ const routes: Routes = [{
       path: '', component: ListComponent, canActivate: [AuthGuardService]
     },
     {
-      path: 'create', component: CreateComponent, canActivate: [AuthGuardService], data: { roles: [UserRole.Admin] }
+      path: 'create', component: CreateComponent, canActivate: [AuthGuardService], data: {roles: [UserRole.Admin]}
     },
     {
       path: 'update', component: UpdateComponent, canActivate: [AuthGuardService]
@@ -37,8 +36,8 @@ const routes: Routes = [{
       path: 'error', component: ErrorComponent
     }
   ]
-}
-];
+
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
