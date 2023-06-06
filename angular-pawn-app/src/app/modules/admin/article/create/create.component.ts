@@ -1,12 +1,10 @@
 
 import {Component, OnInit, Renderer2} from '@angular/core';
 import { FormControl, FormGroup, Validators} from "@angular/forms";
-
 import {AngularFireStorage} from "@angular/fire/storage";
 import {formatDate} from "@angular/common";
 import {finalize} from "rxjs/operators";
 import {Router} from "@angular/router";
-
 declare const Swal: any;
 import Quill from 'quill';
 import {Title} from "@angular/platform-browser";

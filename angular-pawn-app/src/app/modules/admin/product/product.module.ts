@@ -11,16 +11,18 @@ import {AngularFireModule} from "@angular/fire";
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {environment} from "../../../../environments/environment";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
   declarations: [ CreateComponent, ListComponent, UpdateComponent, DeleteComponent, DetailComponent],
-  imports: [
-    CommonModule,
-    ProductRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule,
-    AngularFireDatabaseModule
-  ]
+    imports: [
+        CommonModule,
+        ProductRoutingModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireStorageModule,
+        AngularFireDatabaseModule,
+        FormsModule
+    ]
 })
 export class ProductModule { }

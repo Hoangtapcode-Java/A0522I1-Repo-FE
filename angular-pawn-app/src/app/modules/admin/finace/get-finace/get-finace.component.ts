@@ -1,4 +1,9 @@
+// @ts-ignore
 import { Component, OnInit } from '@angular/core';
+import {Finace} from "../../../../models/finace/Finace";
+import {FinaceService} from "../../../../service/finace.service";
+
+
 
 @Component({
   selector: 'app-get-finace',
@@ -6,10 +11,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./get-finace.component.css']
 })
 export class GetFinaceComponent implements OnInit {
-
-  constructor() { }
-
+  finance : Finace
+  constructor(private financeService : FinaceService) {
+    this.showFinance();
+  }
   ngOnInit(): void {
+
+  }
+  showFinance(){
+    this.financeService.getFinace().subscribe(next=>{
+      this.finance = next
+    })
   }
 
 }

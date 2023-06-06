@@ -40,12 +40,12 @@ export class LoginComponent implements OnInit {
     const container: HTMLElement | null = document.getElementById('container');
 
     if (signUpButton && signInButton && container) {
-      signUpButton.addEventListener('click', () => {
-        container.classList.add('right-panel-active');
-        console.log('da them cn 1');
+      signUpButton.addEventListener("click", () => {
+        container.classList.add("right-panel-active");
+        console.log("da them cn 1");
       });
 
-      signInButton.addEventListener('click', () => {
+        signInButton.addEventListener('click', () => {
         container.classList.remove('right-panel-active');
         console.log('Da them chuc nang');
       });
