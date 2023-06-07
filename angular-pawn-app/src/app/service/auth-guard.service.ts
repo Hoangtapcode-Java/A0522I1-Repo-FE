@@ -4,6 +4,8 @@ import {Observable} from 'rxjs/internal/Observable';
 import {AuthClientService} from './auth-client.service';
 import {UserRole} from '../models/UserRole';
 import {JwtService} from './jwt.service';
+
+// @ts-ignore
 import Swal from 'sweetalert2'
 import {log} from "util";
 

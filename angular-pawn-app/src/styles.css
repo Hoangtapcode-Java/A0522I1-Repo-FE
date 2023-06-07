@@ -1,12 +1,5 @@
 
 /* You can add global styles to this file, and also import other style files */
-:root{
-  --nc-primary: #EE4D2D;
-  --nc-primary-bg: #FEF6F5;
-  --nc-primary-gradient: linear-gradient(#EE4D2D,#FF7337);
-  --nc-text-primary: rgba(0, 0, 0, 0.87);
-}
-
 .swal2-actions {
   display: flex !important;
   gap: 10px !important;
