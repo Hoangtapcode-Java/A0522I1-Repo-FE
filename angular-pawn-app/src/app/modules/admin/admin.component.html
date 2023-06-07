@@ -59,23 +59,22 @@
       </li>
       <li class="divider" data-text="table and forms">Thông tin cửa hàng</li>
       <li (click)="toggleActive($event)">
-        <a>
+        <a routerLink="finace">
           <i class="bx bx-table icon"></i>
           <span class="nav-text">Tài chính</span>
         </a>
       </li>
       <li (click)="toggleDropdown($event)">
-        <a>
+        <a routerLink="product">
           <i class="bx bxs-notepad icon"></i>
           <span class="nav-text">Kho đồ</span>
-          <i class="bx bx-chevron-right icon-right"></i
-          ></a>
-        <ul class="side-dropdown">
-          <li><a>Basic</a></li>
+        </a>
+        <!-- <ul class="side-dropdown">
+          <li><a></a></li>
           <li><a>Select</a></li>
           <li><a>Checkbox</a></li>
           <li><a>Radio</a></li>
-        </ul>
+        </ul> -->
       </li>
     </ul>
   </section>
