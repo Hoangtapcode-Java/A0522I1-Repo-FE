@@ -47,7 +47,9 @@ export class AuthClientService {
           icon: 'error',
           confirmButtonText: 'OK'
         });
-      }));
+      }),() => {
+        this.router.navigateByUrl("/admin/employee/edit-employee-infor");
+      });
     } catch (e) {
       console.log('login fail');
     }

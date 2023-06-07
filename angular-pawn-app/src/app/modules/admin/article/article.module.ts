@@ -7,19 +7,21 @@ import {AngularFireModule} from "@angular/fire";
 
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {environment} from "../../../../environments/environment";
+import { ListComponent } from './list/list.component';
 
 
 @NgModule({
-  declarations: [ CreateComponent],
+  declarations: [ CreateComponent, ListComponent],
     imports: [
         CommonModule,
         ArticleRoutingModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireStorageModule,
         AngularFireDatabaseModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+      FormsModule
     ]
 })
 export class ArticleModule { }

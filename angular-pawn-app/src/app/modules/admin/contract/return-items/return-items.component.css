@@ -2,12 +2,7 @@ label {
   font-weight: bold;
 }
 
-:root{
-  --nc-primary: #EE4D2D;
-  --nc-primary-bg: #FEF6F5;
-  --nc-primary-gradient: linear-gradient(#EE4D2D,#FF7337);
-  --nc-text-primary: rgba(0, 0, 0, 0.87);
-}
+
 .my-btn {
   background-color: #808080;
   color: #fff;
@@ -90,8 +85,8 @@ label {
 }
 /* thiết lập style cho class active */
 .pagination a.active {
-  background: var(--nc-primary-gradient);
-  color: #fff;
+  background: linear-gradient(#EE4D2D,#FF7337);
+  color: black;
 }
 /* thêm màu nền khi người dùng hover vào class không active */
 .pagination a:hover:not(.active) {

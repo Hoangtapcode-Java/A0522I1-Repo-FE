@@ -73,7 +73,7 @@ export class UpdateComponent implements OnInit {
     console.log('Start edit');
     console.log(this.contractEdit);
     this.contractService.editContract(this.contractEdit).subscribe(next => {
-      this.router.navigateByUrl('/contract');
+      this.router.navigateByUrl('/admin/contract');
       console.log('Success');
     }, error => {
       console.log(error);

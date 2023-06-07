@@ -3,7 +3,6 @@ import {Contract} from "../../../../models/contract/Contract";
 import {Status} from "../../../../models/status/Status";
 import {ContractService} from "../../../../service/contract.service";
 import {StatusService} from "../../../../service/status.service";
-import {Title} from "@angular/platform-browser";
 
 declare const Swal: any;
 
@@ -48,14 +47,13 @@ export class ListComponent implements OnInit {
   contracts: Contract[];
   statuses: Status[];
 
-  constructor(private contractService: ContractService, private statusService: StatusService,private title:Title) {
+  constructor(private contractService: ContractService, private statusService: StatusService) {
 
   }
 
   ngOnInit(): void {
     this.findAllContract();
     this.findAllStatus();
-    this.title.setTitle("Danh sách hợp đồng")
   }
 
   findAllContract() {

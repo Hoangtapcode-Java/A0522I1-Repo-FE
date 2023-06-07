@@ -229,13 +229,13 @@ tbody td {
 }
 
 .form-submit .btn-submit {
-   padding: 6px 14px;
-   border-radius: 6px;
-   border: none;
-   color: #fff;
-   white-space: nowrap;
-   background: #ee4d2d;
- }
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  color: #fff;
+  white-space: nowrap;
+  background: #ee4d2d;
+}
 
 .form-submit .btn-submit:hover {
   opacity: .85;

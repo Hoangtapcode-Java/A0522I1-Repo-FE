@@ -105,7 +105,7 @@ export class CreateComponent implements OnInit {
   }
 
   back() {
-    this.route.navigateByUrl("/article");
+    this.route.navigateByUrl("/admin/article");
   }
 
   checkContent($event: any) {

@@ -121,7 +121,7 @@ export class EditEmployeeInforComponent implements OnInit {
   }
 
   back() {
-    this.route.navigateByUrl("/");
+    window.location.reload();
   }
 
   selectImg(event: any) {

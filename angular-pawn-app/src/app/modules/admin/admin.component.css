@@ -1,3 +1,6 @@
+section {
+  padding: 0 !important;
+}
 a {
   text-decoration: none;
 }
@@ -12,7 +15,6 @@ ul {
 .container-admin {
   width: 100%;
   height: auto;
-  overflow-x: hidden !important;
 }
 /* SIDEBAR */
 #sidebar {
@@ -186,6 +188,7 @@ ul {
 #sidebar .side-menu > li.active > a .icon-right {
   transform: rotateZ(90deg);
 }
+
 #sidebar .divider {
   margin-top: 24px;
   font-size: 16px;
@@ -764,6 +767,7 @@ nav .profile .profile-link a:hover {
 main {
   width: 100%;
   padding: 10px;
+  margin-top: 30px;
 }
 
 .main-content .test {
@@ -778,6 +782,7 @@ main {
     left: 0;
     transition: all 0.5s;
   }
+
   .nav-control .hamburger {
     left: calc(30% + 10px);
   }
@@ -846,7 +851,7 @@ main {
     left: calc(30% + 110px);
   }
 
-  .nav-notification{
+  .nav-notification {
     padding: 0;
     gap: 10px;
   }
@@ -867,7 +872,7 @@ main {
     left: calc(30% + 120px);
   }
 
-  .nav-notification{
+  .nav-notification {
     display: none;
   }
   .main-content .test {

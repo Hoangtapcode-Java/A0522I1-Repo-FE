@@ -1,0 +1,149 @@
+a {
+  color: #eb5d1e;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ef7f4d;
+  text-decoration: none;
+}
+
+.customlink {
+  color: #eb5d1e;
+  text-decoration: none;
+}
+
+.customlink:hover{
+  color: #ef7f4d;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-primary {
+  font-family: "Roboto", sans-serif;
+}
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-bg {
+  background-color: #fef8f5;
+}
+
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 24px;
+  font-weight: 700;
+  padding-bottom: 0;
+  line-height: 1px;
+  margin-bottom: 15px;
+  color: #c2b7b1;
+}
+
+.section-title p {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  position: relative;
+  font-size: 32px;
+  font-weight: 700;
+  color: #eb5d1e;
+  text-transform: capitalize;
+}
+
+.section-title p::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 60px;
+  height: 2px;
+  background: #eb5d1e;
+  bottom: 0;
+  left: calc(50% - 30px);
+}
+
+#about .btn-see-more {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 3px;
+  transition: 0.5s;
+  margin-top: 10px;
+  color: #fff;
+  background: #eb5d1e;
+  border-radius: 1.25rem;
+}
+
+#about .btn-see-more:hover {
+  background: #ef7f4d;
+}
+/* Animation */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-250px * 7))}
+}
+
+
+/*  Styling  */
+#logos-home-page .slider {
+  height: auto;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+#logos-home-page .slider:before,#logos-home-page .slider:after {
+  background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+  content: "";
+  height: 100px;
+  position: absolute;
+  width: 200px;
+  z-index: 2;
+}
+
+#logos-home-page .slider:after {
+  right: 0;
+  top: 0;
+  transform: rotateZ(180deg);
+}
+
+#logos-home-page .slider:before {
+  left: 0;
+  top: 0;
+}
+#logos-home-page .slide-track {
+  animation: scroll 10s linear infinite;
+  display: flex;
+  width: calc(250px * 14);
+}
+
+#logos-home-page div.slide {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

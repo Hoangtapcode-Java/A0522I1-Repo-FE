@@ -1,0 +1,168 @@
+<ng-container
+  *ngIf="customerDetailState$ | async as state"
+  [ngSwitch]="state.appState"
+>
+  <ng-container *ngSwitchCase="'APP_ERROR'">{{
+    state.error | json
+    }}</ng-container>
+  <ng-container *ngSwitchCase="'APP_LOADING'">
+    <div class="d-flex justify-content-center mt-4">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngSwitchCase="'APP_LOADED'">
+    <div class="container">
+      <!--=============== NAVIGATION MENU ===============-->
+      <div class="menu">
+        <a href="#welcome-section"><i class="menu-icon uil uil-home"></i></a>
+        <a href="#about"><i class="menu-icon uil uil-user"></i></a>
+        <a href="#projects"
+        ><i class="menu-icon uil uil-expand-arrows-alt"></i
+        ></a>
+        <a href="#experience"
+        ><i class="menu-icon uil uil-briefcase-alt"></i
+        ></a>
+        <a href="#contact"><i class="menu-icon uil uil-envelope"></i></a>
+      </div>
+      <!--=============== MAIN "WINDOW" ===============-->
+      <div class="portfolio">
+        <!--=============== HEADER SECTION ===============-->
+        <section class="header">
+          <img
+            class="header-img"
+            *ngIf="state?.appData?.data?.content?.avatar; else defaultImage"
+            [src]="state?.appData?.data?.content?.avatar"
+            alt="Ảnh đại diện"
+          />
+          <ng-template #defaultImage>
+            <img
+              class="header-img"
+              src="https://images.pexels.com/photos/2389349/pexels-photo-2389349.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="Ảnh đại diện mặc định"
+            />
+          </ng-template>
+          <h1>{{ state?.appData?.data?.content?.name }}</h1>
+          <div class="header-extra">
+            <h2>khách vãng lai</h2>
+            <p>
+              <ng-container [ngSwitch]="state?.appData?.data?.content?.gender">
+                <span *ngSwitchCase="0"
+                ><i class="fa-solid fa-mars icon"></i
+                ></span>
+                <span *ngSwitchCase="1"
+                ><i class="fa-solid fa-venus icon"></i
+                ></span>
+                <span *ngSwitchDefault
+                ><i class="fa-solid fa-mercury icon"></i
+                ></span>
+              </ng-container>
+            </p>
+          </div>
+          <div class="socials">
+            <a
+              href="#"
+              target="_blank"
+              class="uil uil-linkedin"
+              id="profile-link"
+            ></a>
+            <a href="#" target="_blank" class="uil uil-github"></a>
+            <a href="#" target="_blank" class="uil uil-facebook"></a>
+          </div>
+          <a routerLink="/admin/customer" class="cta">Trang khách hàng</a>
+        </section>
+        <!--=============== CONTENT SECTION ===============-->
+        <div class="content">
+          <!--=============== HOME ===============-->
+          <section class="content-card home" id="welcome-section">
+            <h1>Thông tin cơ bản</h1>
+            <div class="box-flex">
+              <div class="dbox">
+                <div class="icon">
+                  <i class="uil uil-italic"></i>
+                </div>
+                <div class="text">
+                  <p>
+                    Mã khách hàng:
+                    {{ state?.appData?.data?.content?.customerCode }}
+                  </p>
+                </div>
+              </div>
+              <div class="dbox">
+                <div class="icon">
+                  <i class="uil uil-postcard"></i>
+                </div>
+                <div class="text">
+                  <p>
+                    Chứng minh thư:
+                    {{ state?.appData?.data?.content?.identityCard }}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="box-flex">
+              <div class="dbox">
+                <div class="icon">
+                  <i class="uil uil-clipboard-notes"></i>
+                </div>
+                <div class="text">
+                  <p>
+                    Số lượng hợp đồng:
+                    {{ state?.appData?.data?.content?.contractQuantity }}
+                  </p>
+                </div>
+              </div>
+              <div class="dbox">
+                <div class="icon">
+                  <i class="uil uil-calendar-alt"></i>
+                </div>
+                <div class="text">
+                  <p>
+                    Ngày sinh:
+                    {{ state?.appData?.data?.content?.dateOfBirth | date }}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="box-flex-2">
+              <div class="dbox-2">
+                <div class="icon">
+                  <i class="uil uil-map-marker"></i>
+                </div>
+                <div class="text">
+                  <p>Địa chỉ: {{ state?.appData?.data?.content?.address }}</p>
+                </div>
+              </div>
+            </div>
+
+            <h1>Liên hệ</h1>
+            <div class="box-flex">
+              <div class="dbox">
+                <div class="icon">
+                  <i class="uil uil-phone"></i>
+                </div>
+                <div class="text">
+                  <p>
+                    Số điện thoại:
+                    {{ state?.appData?.data?.content?.phone }}
+                  </p>
+                </div>
+              </div>
+              <div class="dbox">
+                <div class="icon">
+                  <i class="uil uil-envelope"></i>
+                </div>
+                <div class="text">
+                  <p>Email: {{ state?.appData?.data?.content?.email }}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
