@@ -5,7 +5,7 @@
       <div class="searchBox">
         <form (ngSubmit)="searchContract(customerName.value, productName.value, beforeDate.value, afterDate.value, status.value,0)">
           <i class="uil uil-search navToggle"></i>
-          <input [defaultValue]="" type="text" #customerName placeholder="Enter name customer"/>
+          <input [defaultValue]="" type="text" #customerName placeholder="Nhập tên khách hàng"/>
           <div class="form-search" [ngClass]="{ active: isSearchFormActive }">
             <div class="row">
               <label for="productName" class="col-md-3 col-form-label" style="margin-right: 10px;">Tên đồ</label>
