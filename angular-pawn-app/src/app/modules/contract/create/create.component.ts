@@ -59,7 +59,6 @@ export class CreateComponent implements OnInit {
   goToPage(page: number = 0, nameCustomer: string = ''): void {
     this.customerService.getAll(page, nameCustomer).subscribe(next => { this.page = next; this.totalPages = this.page.totalPages; console.log(this.page) })
     this.currentPage = page;
-    console.log(nameCustomer)
   }
 
   ngOnInit(): void {
@@ -82,15 +81,79 @@ export class CreateComponent implements OnInit {
   }, [this.validateDateRange]);
 
 
+  // onFileChange($event) {
+  //   this.file = $event.target.files[0];
+  //   if (this.file != null) {
+  //     this.checkImg = true;
+  //   }
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(this.file);
+  //   reader.onload = (e: any) => {
+  //     this.filePath = e.target.result;
+  //   }
+  // }
+
+  // onFileChange($event) {
+  //   this.file = $event.target.files[0];
+  //   if (this.file != null) {
+  //     // Kiểm tra dung lượng tệp tin
+  //     const fileSizeInMB = this.file.size / (1024 * 1024);
+  //     const maxFileSizeInMB = 5; // Giới hạn dung lượng ảnh là 5MB
+  //     if (fileSizeInMB > maxFileSizeInMB) {
+  //       Swal.fire({
+  //         icon: 'Lỗi!!',
+  //         title: 'Oops...',
+  //         text: 'Dung lượng ảnh vượt quá giới hạn cho phép.',
+  //       })
+  //       return;
+  //     }
+      
+  //     this.checkImg = true;
+  
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(this.file);
+  //     reader.onload = (e: any) => {
+  //       this.filePath = e.target.result;
+  //     }
+  //   }
+  // }
+
   onFileChange($event) {
     this.file = $event.target.files[0];
     if (this.file != null) {
+      // Kiểm tra dung lượng tệp tin
+      const fileSizeInMB = this.file.size / (1024 * 1024);
+      const maxFileSizeInMB = 5; // Giới hạn dung lượng ảnh là 5MB
+      if (fileSizeInMB > maxFileSizeInMB) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Dung lượng ảnh vượt quá giới hạn cho phép.',
+        });
+        this.file = null;
+        return;
+      }
+  
+      // Kiểm tra phần mở rộng của tệp tin
+      const allowedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+      const fileExtension = this.file.name.toLowerCase().substring(this.file.name.lastIndexOf('.'));
+      if (!allowedExtensions.includes(fileExtension)) {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Tệp tin không phải là ảnh.',
+        });
+        this.file = null;
+        return;
+      }
+  
       this.checkImg = true;
-    }
-    const reader = new FileReader();
-    reader.readAsDataURL(this.file);
-    reader.onload = (e: any) => {
-      this.filePath = e.target.result;
+  
+      const reader = new FileReader();
+      reader.readAsDataURL(this.file);
+      reader.onload = (e: any) => {
+        this.filePath = e.target.result;
+      };
     }
   }
 
@@ -177,6 +240,6 @@ export class CreateComponent implements OnInit {
   }
 
   setInterestValue(value: any) {
-    this.interest = value * 0.1;
+    this.interest = (value * 0.1).toFixed(1);
   }
 }
