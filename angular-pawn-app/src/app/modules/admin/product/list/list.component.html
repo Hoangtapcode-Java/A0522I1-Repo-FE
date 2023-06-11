@@ -71,7 +71,7 @@
             <a [routerLink]="['/admin/product/detail/',contract.id]" type="button" class="icon">
               <i class="uil uil-eye"></i>
             </a>
-            <a type="button" class="icon" *ngIf="contract.status.id==2;else #billBlock" readonly style="color: coral;">
+            <a type="button" class="icon" *ngIf="contract.status.id==2; else billBlock" readonly style="color: coral;">
               <i class="uil uil-bill"></i>
             </a>
             <a #billBlock> <i class="uil uil-bill"></i></a>

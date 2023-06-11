@@ -1,16 +1,15 @@
-
 import {Component, OnInit, Renderer2} from '@angular/core';
-import { FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
-import {AngularFireStorage} from "@angular/fire/storage";
-import {formatDate} from "@angular/common";
-import {finalize} from "rxjs/operators";
-import {Router} from "@angular/router";
+import {AngularFireStorage} from '@angular/fire/storage';
+import {formatDate} from '@angular/common';
+import {finalize} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 declare const Swal: any;
 import Quill from 'quill';
-import {Title} from "@angular/platform-browser";
-import {ArticleServiceService} from "../../../../service/article-service.service";
+import {Title} from '@angular/platform-browser';
+import {ArticleServiceService} from '../../../../service/article-service.service';
 
 @Component({
   selector: 'app-create',
@@ -29,12 +28,12 @@ export class CreateComponent implements OnInit {
   constructor(private articleService: ArticleServiceService,
               private storage: AngularFireStorage,
               private route: Router,
-              private title:Title) {
+              private title: Title) {
     this.articleDTO = new FormGroup({
-      id: new FormControl(""),
-      title: new FormControl("", [Validators.required, Validators.maxLength(100), Validators.minLength(5)]),
-      img: new FormControl("", [Validators.required]),
-      content: new FormControl("", [Validators.required, Validators.maxLength(50000), Validators.minLength(50)]),
+      id: new FormControl(''),
+      title: new FormControl('', [Validators.required, Validators.maxLength(100), Validators.minLength(5)]),
+      img: new FormControl('', [Validators.required]),
+      content: new FormControl('', [Validators.required, Validators.maxLength(50000), Validators.minLength(50)]),
       publicDate: new FormControl(this.currentDate),
       isFeature: new FormControl(false),
       isFlag: new FormControl(false),
@@ -46,7 +45,7 @@ export class CreateComponent implements OnInit {
     const editor = new Quill('#editor', {
       theme: 'snow'
     });
-    this.title.setTitle("Thêm mới tin tức")
+    this.title.setTitle('Thêm mới tin tức');
   }
 
 
@@ -75,20 +74,20 @@ export class CreateComponent implements OnInit {
       }, error => {
       }, () => {
         // Swal.fire('Thêm tin thành công');
-      })
+      });
       Swal.fire('Xong', 'Thêm tin thành công', 'success');
-      this.route.navigateByUrl("/article");
-    }else {
-      if (this.articleDTO.invalid||this.inputImage==null) {
+      this.route.navigateByUrl('/article');
+    } else {
+      if (this.articleDTO.invalid || this.inputImage == null) {
 
-            Swal.fire('Lỗi', 'Thêm tin thất bại', 'error');
-          }
+        Swal.fire('Lỗi', 'Thêm tin thất bại', 'error');
+      }
     }
   }
 
   selectImage(event: any) {
     this.inputImage = event.target.files[0];
-    if (this.inputImage.size > 1048576 && this.inputImage!=null) {
+    if (this.inputImage.size > 1048576 && this.inputImage != null) {
       this.maxSize = true;
       event.target.value = null;
       this.articleDTO.value.img = null;
@@ -105,14 +104,14 @@ export class CreateComponent implements OnInit {
   }
 
   back() {
-    this.route.navigateByUrl("/admin/article");
+    this.route.navigateByUrl('/admin/article');
   }
 
   checkContent($event: any) {
     this.text = $event.target.innerHTML;
     this.text = this.text.toString().replace(/<[^>]+>/g, '');
     this.articleDTO.controls.content.setValue(this.text);
-    this.flag=false;
+    this.flag = false;
   }
 
 

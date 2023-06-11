@@ -24,12 +24,6 @@ const routes: Routes = [
       {
         path: '', component: BodyPageComponent
       },
-      // {
-      //   path: '', component: FeatureListComponent
-      // },
-      // {
-      //   path: '', component: FeatureListComponent
-      // },
       {
         path: 'appliance', component: ApplianceComponent
       },
