@@ -1,12 +1,14 @@
-import {Employee} from "../employee/Employee";
+import {Employee} from '../employee/Employee';
 
 export interface Article {
-  id?:number,
-  title?:string,
-  img?:string,
-  content?:string,
-  publicDate?:string,
-  employee?: Employee,
-  isFlag?:boolean,
-  isFeature?:boolean
+  id?: number,
+  title?: string,
+  image?: string,
+  content?: string,
+  datePublic?: string;
+  employeeId?: Employee;
+  isFlag?: boolean;
+  employee?: Employee;
+  img?: string;
+  publicDate?: string
 }

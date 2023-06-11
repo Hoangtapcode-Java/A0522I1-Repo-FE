@@ -49,11 +49,11 @@ import {ArticlePageModule} from "../article-page/article-page.module";
     exports: [
         HomePageComponent
     ],
-    imports: [
-        CommonModule,
-        HomePageRoutingModule,
-        ReactiveFormsModule,
-        ArticlePageModule
-    ]
+  imports: [
+    CommonModule,
+    HomePageRoutingModule,
+    ReactiveFormsModule,
+    ArticlePageModule
+  ]
 })
 export class HomePageModule { }

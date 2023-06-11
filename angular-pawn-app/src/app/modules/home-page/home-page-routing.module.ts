@@ -14,7 +14,7 @@ import {GoldComponent} from './component/category-pawn/gold/gold.component';
 import {ApplianceComponent} from './component/category-pawn/appliance/appliance.component';
 import {ArtComponent} from './component/category-pawn/art/art.component';
 import {BodyPageComponent} from './component/body-page/body-page.component';
-import {FeatureListComponent} from '../article-page/feature-list/feature-list.component';
+
 
 
 
@@ -23,11 +23,6 @@ const routes: Routes = [
     path: 'home'  , component: HomePageComponent, children: [
       {
         path: '', component: BodyPageComponent
-      },{
-        path: '', component: FeatureListComponent
-      },
-      {
-        path: '', component: FeatureListComponent
       },
       {
         path: 'appliance', component: ApplianceComponent

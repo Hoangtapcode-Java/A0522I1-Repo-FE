@@ -1,0 +1,205 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-7 space">
+      <div class="card border-0 shadow-lg">
+        <div class="card-body">
+          <div class="form-group row">
+            <label class="text-muted col-sm-4 col-form-label">
+              <b>Khách Hàng:</b>
+            </label>
+            <div class="col-sm-8">
+              <div class="row">
+                <div class="col-6">
+                  <!-- MODAL CHỌN KHÁCH HÀNG -->
+                  <div class="col-6 namTan">
+                    <button style="background:linear-gradient(#EE4D2D,#FF7337);color:white " type="button"
+                            class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#khachHang">
+                      <i class="bi bi-person-fill me-1"></i>Chọn Khách Hàng
+                    </button>
+                  </div>
+                  <div *ngIf="customers" class="modal fade" id="khachHang" tabindex="-1" aria-labelledby="exampleModalLabel1"
+                       aria-hidden="true">
+                    <div class="modal-dialog modal-xl">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 style="color: #EE4D2D " class="modal-title" id="exampleModalLabel1">Chọn khách hàng</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="memu-search">
+                            <div class="searchBox">
+                              <!--                              <form class="form-group" id="myForm">-->
+                              <i class="uil uil-search navToggle"></i>
+                              <input type="text" placeholder="Searching..." #name maxlength="256"
+                                     (keydown.enter)="getSearch(name.value) "
+                                     #customer/>
+                            </div>
+                            <div class="form-search" [ngClass]="{active: isSearchFormActive}">
+                            </div>
+                          </div>
+
+                          <table class="responstable text-center">
+                            <thead>
+                            <tr>
+                              <th class="col-md-3" style="background: linear-gradient(#EE4D2D,#FF7337)"
+                                  data-th="Driver details"><span>Mã khách hàng</span></th>
+                              <th class="col-md-3" style="background: linear-gradient(#EE4D2D,#FF7337)">Tên khách hàng
+                              </th>
+                              <th class="col-md-3" style="background: linear-gradient(#EE4D2D,#FF7337)">CCCD</th>
+                              <th class="col-md-3" style="background: linear-gradient(#EE4D2D,#FF7337)"></th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr *ngFor="let customer of customers, index as i">
+                              <td>{{customer.id}}</td>
+                              <td>{{customer.name}}</td>
+                              <td>{{customer.identityCard}}</td>
+                              <td>
+                                <button
+                                  style="background:linear-gradient(#EE4D2D,#FF7337);margin-left: 100px ;color: white"
+                                  type="button" class="btn btn-dark d-flex align-item-" data-bs-dismiss="modal"
+                                  (click)="selectItem(customer)">Chọn
+                                </button>
+                              </td>
+                            </tr>
+                            <tr *ngIf="customers.length == 0">
+                              <td colspan="4">Không Có Dữ Liệu</td>
+                            </tr>
+                            </tbody>
+                          </table>
+                          <div class="pagination">
+                            <a *ngIf="page > 0" (click)="previousPage()" class="text1">«</a>
+                            <a [class.active]="page===currentPage" (click)="accessPage(page)" *ngFor="let page of totalPages">{{page + 1}}</a>
+                            <a *ngIf="page < totalPage - 1" (click)="nextPage()" class="text1">»</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p style="font-size: 25px" class="btn_namTan" id="id">{{selectedName}}</p>
+                </div>
+                <div class="col-6">
+                  <button style="background : linear-gradient(#EE4D2D,#FF7337);color:white "
+                          class="btn btn-outline-primary" type="button">
+                    <i class="bi bi-person-plus-fill me-1"></i> Thêm Khách Hàng
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <div class="dtl_nam">
+              <label class="text-muted col-sm-4 col-form-label"><b>Đồ Thanh Lý:</b></label>
+              <!--MODAL ĐỒ Thanh Lý-->
+              <div class="form-group row dtl_namTan">
+                <div class="col-sm-8 col-xs-12 dtl_namTan2">
+                  <button style="background : linear-gradient(#EE4D2D,#FF7337)  ;color:white " type="button"
+                          class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#doThanhLy"><i
+                    class="bi bi-cart3 me-1"  ></i>Chọn Đồ Thanh Lý
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="modal fade" id="doThanhLy" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 style="color: #EE4D2D "  class="modal-title" id="exampleModalLabel">Chọn Đồ Thanh Lý</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" aria-hidden="true" ></button>
+                  </div>
+                  <div class="modal-body" >
+                    <div class="memu-search">
+
+                      <div class="container">
+                        <div class="manbay" *ngIf="!check">
+                          <p>* Vui lòng chọn khách hàng</p>
+                        </div>
+                        <table *ngIf="check" class="responstable  text-center">
+                          <thead>
+                          <tr>
+                            <th class="col-md-3" style="background: linear-gradient(#EE4D2D,#FF7337);color: white">Tên Đồ
+                            </th>
+                            <th class="col-md-3" style="background: linear-gradient(#EE4D2D,#FF7337);color: white">Loại Đồ
+                            </th>
+                            <th class="col-md-3" style="background: linear-gradient(#EE4D2D,#FF7337);color: white">Giá</th>
+                            <th class="col-md-3" style="background: linear-gradient(#EE4D2D,#FF7337);color: white"></th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr class="bg-white"
+                              *ngFor="let product of products ">
+                            <td>{{product.name}}</td>
+                            <td>{{product.category.nameCategory}}</td>
+                            <td>{{product.price + "  VNĐ"}}</td>
+                            <td>
+                              <button (click)="toggleName(product.name, product.id)"
+                                      [ngClass]="{'active': selectedNames.includes(product.name)}"
+                                      style="background: linear-gradient(#EE4D2D, #FF7337); color: white"
+                                      class="btn btn-outline-primary">Chọn
+                                <i class="bi bi-plus"></i>
+                              </button>
+                              <a class="checkbox-icon-nam" *ngIf="selectedNames.includes(product.name)">&#10003;</a>
+                            </td>
+                          </tr>
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Hiển thị các tên đã chọn -->
+            <div class="ncd123">
+              <div class="ncd">
+
+              </div>
+              <div colspan="4" class="td-namTan">
+                <div class="selectedNames">
+                  <button class="checkbox-icon" *ngFor="let selectedName of selectedNames">
+                    &#10003;{{selectedName}}</button>
+                </div>
+              </div>
+            </div>
+            <!-- Hiển thị tổng tiền -->
+            <div class="nt">
+              <tr>
+                <td colspan="4" class="nt">
+                  <div>
+                    <label class="text-muted"><b>Tổng Tiền: </b></label>
+                  </div>
+                  <div>
+                    <p style="color: red" text class="tt-ncd"  disabled>* {{ calculateTotal() }}  VNĐ </p>
+                  </div>
+                </td>
+              </tr>
+            </div>
+
+            <div class="form-group row">
+              <label for="ngay-thanh-ly" class="text-muted col-sm-4 col-form-label "><b>Ngày Thanh Lý:</b></label>
+              <div style="padding-left: 0 !important;" class="col-sm-6">
+                <input type="date" id="ngay-thanh-ly" class="form-control nt1" aria-describedby="ngay-thanh-ly-help"
+                       placeholder="Ngày Thanh Lý" aria-label="Ngày Thanh Lý" disabled>
+              </div>
+            </div>
+            <div class="form-group row" style="margin-right: 50px !important;">
+              <div class="col-sm-12 text-end">
+                <button (click)="resetForm()" class="my-btn me-2">Huỷ</button>
+                <button class="my-btn me-2" style="background : linear-gradient(#EE4D2D,#FF7337)  ;color:white "
+                        type="button" (click)="update()">Thêm Hợp Đồng
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
-import {Article} from "../models/article/Article";
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ArticleDTO} from "../models/article/ArticleDTO";
 import {Observable} from "rxjs";
+import {Article} from "../models/article/Article";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleServiceService {
+
   articles: Article[] = [];
   page: number = 1;
 
@@ -47,7 +48,6 @@ export class ArticleServiceService {
   }
 
   saveArticle(article: ArticleDTO): Observable<any> {
-
     return this.httpClient.post("http://localhost:8080/api/articles/save", article);
   }
 }
