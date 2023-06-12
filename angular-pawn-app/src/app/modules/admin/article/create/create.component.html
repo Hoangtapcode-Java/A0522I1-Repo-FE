@@ -28,7 +28,9 @@
               <span *ngIf="articleDTO.controls.content.hasError('required')&&flag==true">(Vui lòng nhập nội dung)</span>
               <span *ngIf="articleDTO.controls.content.hasError('minlength')&&flag==true">(Nội dung phải có tối thiểu 50 kí tự)</span>
               <span *ngIf="articleDTO.controls.content.hasError('maxlength')&&flag==true">(Nội dung chỉ được phép tối đa 50000 kí tự)</span>
+
               <div id="editor" class="form-control" (input)="checkContent()" ></div>
+
             </div>
             <div class="form-group" style="margin-top: 65px">
               <button type="submit" class="btn btn-primary mx-2">Thêm</button>

@@ -1,8 +1,15 @@
 <!-- ThuongVTH -->
+<<<<<<< HEAD
 <div class="bg-img" style="display: flex; justify-content: center; align-items: center; background-image: url(https://www.vietmoney.vn/wp-content/themes/vietmoney/assets/images/cam-do/background.jpg)">
   <form [formGroup]="contractForm"  style="width: 600px; background-color: rgba(0, 0, 0, 0.4);" class="m-5  border: 0px; p-3 rounded">
     <div>
       <h1 class="text-center" style="color: white;">Hợp đồng cầm đồ</h1>
+=======
+<div class="bg-img" style="display: flex; justify-content: center; align-items: center;">
+  <form [formGroup]="contractForm" style="width: 600px; box-shadow: 0px 0px 10px #aaa;" class="m-5  border: 5px; p-3 rounded" >
+    <div>
+      <h1 class="text-center" style="color: black; margin-bottom: 25px;">Hợp đồng cầm đồ</h1>
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
       <div style="margin-bottom: 10px;">
 
         <!-- Button trigger modal -->
@@ -22,10 +29,17 @@
                         aria-label="Close"></button>
               </div>
               <div class="modal-body">
+<<<<<<< HEAD
                 <button data-bs-dismiss="modal" routerLink="/admin/customer/create" style="margin-bottom: 15px; color: #EE4D2D; background-color: #ffffff; border-color: #EE4D2D; stroke-width: 2px;"
                         class="btn btn-warning">Thêm khách hàng</button>
                 <div>
                   <input class="form-control me-2" #input style="width: 200px; float: left;" type="search"
+=======
+                <button routerLink="/admin/customer/create" style="margin-bottom: 15px; color: #EE4D2D; background-color: #ffffff; border-color: #EE4D2D; stroke-width: 2px;"
+                        class="btn btn-warning">Thêm khách hàng</button>
+                <div>
+                  <input class="form-control me-2" #input style="width: 220px; float: left;" type="search"
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
                          placeholder="Nhập tên khách hàng" aria-label="Search">
                   <button class="btn btn-outline-success" type="submit" (click)="goToPage(0, input.value)">Tìm kiếm</button>
                 </div>
@@ -49,11 +63,18 @@
                     }
                   </style>
 
+<<<<<<< HEAD
                   <tr *ngFor="let customer of page?.content; index as i">
                     <td class="row-number">{{i + 1}}</td>
                     <td class="text-center">KH-{{customer.id}}</td>
                     <td>{{customer.customer_name}}</td>
                     <!-- <td>{{customer.gender}}</td> -->
+=======
+                  <tr *ngFor="let customer of page?.content">
+                    <td class="row-number"></td>
+                    <td class="text-center">KH-{{customer.id}}</td>
+                    <td>{{customer.customer_name}}</td>
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
                     <td>
                       <ng-container *ngIf="customer.gender === 1; else female">
                         Nam
@@ -62,7 +83,11 @@
                         Nữ
                       </ng-template>
                     </td>
+<<<<<<< HEAD
                     <td>{{customer.phone}}</td>
+=======
+                    <td>{{customer.phone_number}}</td>
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
                     <td>{{customer.id_card}}</td>
                     <td><button (click)="selectCustomer(customer)" class="square-button" data-bs-dismiss="modal"
                     ><span class="plus-sign">+</span></button></td>
@@ -82,21 +107,33 @@
         <button routerLink="/admin/customer/create" style="margin-left: 15px; color: #EE4D2D; background-color: #ffffff; border-color: #EE4D2D; stroke-width: 2px;" type="button" class="btn btn-warning" >Thêm khách hàng</button>
       </div>
       <div *ngIf="checkCustomer == false">
+<<<<<<< HEAD
         <p style="color: #ffc107;">*Chưa có khách hàng nào được chọn</p>
       </div>
       <div *ngIf="checkCustomer == true">
         <p style="color: #ffc107;">[{{customer.customer_name}}], [{{customer.phone}}]</p>
+=======
+        <p style="color: red;">*Chưa có khách hàng nào được chọn</p>
+      </div>
+      <div *ngIf="checkCustomer == true">
+        <p style="color: red;">[{{customer.customer_name}}], [{{customer.phone}}]</p>
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
       </div>
     </div>
 
     <div class="row">
       <div class="col">
+<<<<<<< HEAD
         <label for="nameProduct" style="color: white;">Đồ cầm:
+=======
+        <label for="nameProduct" style="color: black;">Đồ cầm:
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
           <input style="width: 300px;" class="form-control" type="text" id="nameProduct" formControlName="nameProduct">
         </label>
       </div>
 
       <div class="col">
+<<<<<<< HEAD
         <label for="typeProduct" style="color: white;">Loại đồ:
           <select style="width: 150px;" class="form-select" formControlName="category" id="typeProduct">
             <option *ngFor="let category of categories" [ngValue]="category">{{category.nameCategory}}</option>
@@ -105,10 +142,24 @@
       </div>
     </div>
     <div style="color: red;" *ngIf="!contractForm.controls.nameProduct.valid && (contractForm.controls.nameProduct.dirty || contractForm.controls.nameProduct.touched)">
+=======
+        <label for="typeProduct" style="color: black;">Loại đồ:
+          <select style="width: 150px;" class="form-select" formControlName="category">
+            <option *ngFor="let category of categories" [ngValue]="category">{{category.nameCategory}}</option>
+          </select>
+        </label>
+        <div style="color: red; position: absolute" *ngIf="!contractForm.controls.category.valid && (contractForm.controls.category.dirty || contractForm.controls.category.touched)">
+          <div *ngIf="contractForm.controls.category.errors.required or contractForm.controls.nameProduct.errors.required"><p>*Vui lòng chọn loại sản phẩm</p></div>
+        </div>
+      </div>
+    </div>
+    <div style="color: red; position: absolute" *ngIf="!contractForm.controls.nameProduct.valid && (contractForm.controls.nameProduct.dirty || contractForm.controls.nameProduct.touched)">
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
       <div *ngIf="contractForm.controls.nameProduct.errors.required"><p>*Vui lòng nhập tên sản phẩm</p></div>
       <div *ngIf="contractForm.controls.nameProduct.errors.minlength"><p>*Tên sản phẩm phải lớn hơn 2 kí tự</p></div>
       <div *ngIf="contractForm.controls.nameProduct.errors.maxlength"><p>*Tên sản phẩm không được quá 100 kí tự</p></div>
     </div>
+<<<<<<< HEAD
     <div style="color: red;" *ngIf="!contractForm.controls.category.valid && (contractForm.controls.category.dirty || contractForm.controls.category.touched)">
       <div *ngIf="contractForm.controls.category.errors.required or contractForm.controls.nameProduct.errors.required"><p>*Vui lòng chọn loại sản phẩm</p></div>
     </div>
@@ -116,10 +167,17 @@
     <div>
       <label class="mt-3" for="status" style="color: white;">Trạng thái hợp đồng:
         <select style="width: 200px;" class="form-select" formControlName="status" id="status">
+=======
+
+    <div style="width: 300px; margin-top: 10px;">
+      <label class="mt-3" for="status" style="color: black;">Trạng thái hợp đồng:
+        <select style="width: 200px;" class="form-select" formControlName="status">
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
           <option *ngFor="let status of statuses" [ngValue]="status">{{status.name}}</option>
         </select>
       </label>
     </div>
+<<<<<<< HEAD
     <div style="color: red;" *ngIf="!contractForm.controls.status.valid && (contractForm.controls.status.dirty || contractForm.controls.status.touched)">
       <div *ngIf="contractForm.controls.status.errors.required"><p>*Vui lòng chọn trạng thái hợp đồng</p></div>
     </div>
@@ -127,23 +185,44 @@
     <div style="margin-top: 20px;">
       <label for="file" style="color: white;">Tình trạng đồ:</label>
       <input (change)="onFileChange($event)" accept=".png, .jpg, .jpeg, .gif" style="color: white;" type="file" id="file"><br>
+=======
+    <div style="color: red; position: absolute" *ngIf="!contractForm.controls.status.valid && (contractForm.controls.status.dirty || contractForm.controls.status.touched)">
+      <div *ngIf="contractForm.controls.status.errors.required"><p>*Vui lòng chọn trạng thái hợp đồng</p></div>
+    </div>
+
+    <div style="margin-top: 30px;">
+      <label for="file" style="color: black;">Tình trạng đồ:</label>
+      <input (change)="onFileChange($event)" accept=".png, .jpg, .jpeg, .gif" style="color: black; margin-left: 10px;" type="file" id="file"><br>
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
       <img *ngIf="filePath" src="{{filePath}}" width="200" height="150" alt="Image">
       <div *ngIf="checkImg == false" style="color: red;"><p>*Vui lòng upload ảnh</p></div>
     </div>
 
     <div class="row">
       <div class="col">
+<<<<<<< HEAD
         <label class="mt-3" for="loan" style="color: white;">Tiền cho vay:</label>
+=======
+        <label class="mt-3" for="loan" style="color: black;">Tiền cho vay:</label>
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
         <input formControlName="price" (input)="setInterestValue($event.target.value)" class="form-control " type="text" id="loan">
       </div>
 
       <div class="col">
+<<<<<<< HEAD
         <label class="mt-3" for="interest" style="color: white;">Tiền lãi:</label>
+=======
+        <label class="mt-3" for="interest" style="color: black;">Tiền lãi:</label>
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
         <input readonly formControlName="interest" class="form-control w-30" placeholder="{{interest}}" id="interest">
       </div>
     </div>
 
+<<<<<<< HEAD
     <div style="color: red;" *ngIf="!contractForm.controls.price.valid && (contractForm.controls.price.dirty || contractForm.controls.price.touched)">
+=======
+    <div style="color: red; position: absolute" *ngIf="!contractForm.controls.price.valid && (contractForm.controls.price.dirty || contractForm.controls.price.touched)">
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
       <div *ngIf="contractForm.controls.price.errors.required"><p>*Vui lòng nhập tiền cho vay</p></div>
       <div *ngIf="contractForm.controls.price.errors.min"><p>*Giá trị tối thiểu 500.000 VND</p></div>
       <div *ngIf="contractForm.controls.price.errors.max"><p>*Giá trị tối đa 1.000.000.000VND</p></div>
@@ -156,14 +235,24 @@
       <div *ngIf="contractForm.controls.interest.errors.pattern"><p>*Sai định dạng</p></div>
     </div>
 
+<<<<<<< HEAD
     <div class="row">
       <div class="col mt-3">
         <label for="beginDate" style="color: white;">Ngày bắt đầu:</label>
+=======
+    <div class="row" style="margin-top: 10px;">
+      <div class="col mt-3">
+        <label for="beginDate" style="color: black;">Ngày bắt đầu:</label>
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
         <input formControlName="beginDate" class="form-control w-100 mb-3" type="date" id="beginDate">
       </div>
 
       <div class="col mt-3">
+<<<<<<< HEAD
         <label style="color: white;" for="endDate">Ngày kết thúc:</label>
+=======
+        <label style="color: black;" for="endDate">Ngày kết thúc:</label>
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
         <input formControlName="endDate" class="form-control w-100 mb-3" type="date" id="endDate">
       </div>
     </div>
@@ -177,7 +266,11 @@
       <div *ngIf="contractForm.controls.endDate.hasError('pastDate')"><p>*Ngày kết thúc không chọn quá khứ</p></div>
     </div>
     <div style="color: red;" *ngIf="contractForm.hasError('dateRangeInvalid')">
+<<<<<<< HEAD
       <p>Ngày kết thúc không được nhỏ hơn ngày bắt đầu.</p>
+=======
+      <p>*Ngày kết thúc không được nhỏ hơn ngày bắt đầu.</p>
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
     </div>
 
     <div class="text-center ">
@@ -185,7 +278,11 @@
               style="margin-right: 15px; padding: 7px 7px; min-width: 100px;  background-image: linear-gradient(#EE4D2D,#FF7337); border: #e26c1a; stroke-width: 2px;"
               class="btn btn-primary" (click)="submit()" type="submit" id="submit_button">Thêm hợp đồng</button>
       <button
+<<<<<<< HEAD
         style="color: #EE4D2D; padding: 7px 7px; min-width: 100px; background-color: #ffffff; border: #ffffff; stroke-width: 2px;"
+=======
+        style="color: #EE4D2D; padding: 7px 7px; min-width: 100px; background-color: #ffffff; border-color: #EE4D2D; stroke-width: 2px;"
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
         class="btn btn-primary" type="reset">Đặt lại</button>
     </div>
   </form>

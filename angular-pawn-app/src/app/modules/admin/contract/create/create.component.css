@@ -43,7 +43,11 @@ If you like this solution, you might also want to check out the 1.0 version:
 .responstable th:nth-child(2):after {
   content: attr(data-th);
 }
+<<<<<<< HEAD
 @media (min-width: 480px) {
+=======
+@media (min-width: 0px) {
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
   .responstable th:nth-child(2) span {
     display: block;
   }
@@ -61,7 +65,11 @@ If you like this solution, you might also want to check out the 1.0 version:
   text-align: center;
   border-right: 1px solid #D9E4E6;
 }
+<<<<<<< HEAD
 @media (min-width: 480px) {
+=======
+@media (min-width: 0px) {
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
   .responstable td {
     border: 1px solid #D9E4E6;
   }
@@ -70,7 +78,11 @@ If you like this solution, you might also want to check out the 1.0 version:
   text-align: left;
   margin: .5em 1em;
 }
+<<<<<<< HEAD
 @media (min-width: 480px) {
+=======
+@media (min-width: 0px) {
+>>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
   .responstable th, .responstable td {
     display: table-cell;
     padding: 1em;

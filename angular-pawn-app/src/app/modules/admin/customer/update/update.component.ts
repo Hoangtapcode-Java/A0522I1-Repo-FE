@@ -58,9 +58,11 @@ export class UpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((params) => {
+
       this.id = +params.get('id'); // Lấy giá trị id từ URL và chuyển đổi thành số
       this.customerService.getCustomerById(this.id).subscribe((next) => {
         console.log(next);
+
         this.customer = next;
 
         this.oldAvatarLink = next.avatar; // Lưu trữ URL của avatar cũ
