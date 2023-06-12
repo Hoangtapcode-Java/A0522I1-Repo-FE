@@ -25,7 +25,7 @@
                 <button routerLink="/admin/customer/create" style="margin-bottom: 15px; color: #EE4D2D; background-color: #ffffff; border-color: #EE4D2D; stroke-width: 2px;"
                         class="btn btn-warning">Thêm khách hàng</button>
                 <div>
-                  <input class="form-control me-2" #input style="width: 200px; float: left;" type="search"
+                  <input class="form-control me-2" #input style="width: 220px; float: left;" type="search"
                          placeholder="Nhập tên khách hàng" aria-label="Search">
                   <button class="btn btn-outline-success" type="submit" (click)="goToPage(0, input.value)">Tìm kiếm</button>
                 </div>
@@ -61,7 +61,7 @@
                         Nữ
                       </ng-template>
                     </td>
-                    <td>{{customer.phone}}</td>
+                    <td>{{customer.phone_number}}</td>
                     <td>{{customer.id_card}}</td>
                     <td><button (click)="selectCustomer(customer)" class="square-button" data-bs-dismiss="modal"
                     ><span class="plus-sign">+</span></button></td>

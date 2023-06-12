@@ -15,4 +15,5 @@ export interface Customer {
   identityCard?:string;
   customer_code?:string;
   customerCode?:string;
+  phone_number?:string;
 }

@@ -215,7 +215,7 @@ export class CreateComponent implements OnInit {
             icon: 'success',
             title: 'Thêm mới thành công! Vui lòng kiểm tra email'
           });
-          this.router.navigateByUrl('/contract');
+          this.router.navigateByUrl('/admin/contract');
         }, err => {
           buttonLoad.innerHTML = 'Gửi';
         });
