@@ -22,7 +22,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <button style="margin-bottom: 15px; color: #EE4D2D; background-color: #ffffff; border-color: #EE4D2D; stroke-width: 2px;"
+                                <button routerLink="/admin/customer/create" style="margin-bottom: 15px; color: #EE4D2D; background-color: #ffffff; border-color: #EE4D2D; stroke-width: 2px;"
                                     class="btn btn-warning">Thêm khách hàng</button>
                                 <div>
                                     <input class="form-control me-2" #input style="width: 200px; float: left;" type="search"
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-                <button style="margin-left: 15px; color: #EE4D2D; background-color: #ffffff; border-color: #EE4D2D; stroke-width: 2px;" type="button" class="btn btn-warning" >Thêm khách hàng</button>
+                <button routerLink="/admin/customer/create" style="margin-left: 15px; color: #EE4D2D; background-color: #ffffff; border-color: #EE4D2D; stroke-width: 2px;" type="button" class="btn btn-warning" >Thêm khách hàng</button>
             </div>
             <div *ngIf="checkCustomer == false">
                 <p style="color: red;">*Chưa có khách hàng nào được chọn</p>
