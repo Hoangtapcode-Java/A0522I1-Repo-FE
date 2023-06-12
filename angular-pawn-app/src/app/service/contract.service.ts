@@ -65,8 +65,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Contract} from '../models/contract/Contract';
 import {Category} from '../models/category/Category';
-import {ContractCreateDto} from "../dto/ContracCreateDto";
-
+import {ContractCreateDto} from '../dto/ContracCreateDto';
 
 
 @Injectable({
@@ -78,7 +77,7 @@ export class ContractService {
   constructor(private httpClient: HttpClient) {
   }
 
-    getAll(page: number = 0, nameCustomer: string = '', nameProduct: string = '', dateBegin: string = '', contractCode: string = ''): Observable<any> {
+  getAll(page: number = 0, nameCustomer: string = '', nameProduct: string = '', dateBegin: string = '', contractCode: string = ''): Observable<any> {
     return this.httpClient.get<any>(this.baseUrl + '/listSelect' + '?page=' + page + '&contractCode=' +
       contractCode + '&nameCustomer=' + nameCustomer + '&nameProduct=' + nameProduct + '&beginDate=' + dateBegin);
   }
@@ -113,16 +112,16 @@ export class ContractService {
   }
 
   saveContract(contract: ContractCreateDto): Observable<any> {
-    return this.httpClient.post<any>("http://localhost:8080/api/contracts", contract);
+    return this.httpClient.post<any>('http://localhost:8080/api/contracts', contract);
   }
 
 
-  getAllContract(): Observable<any>{
-    return this.httpClient.get<GetResponse>("http://localhost:8080/api/contracts")
+  getAllContract(): Observable<any> {
+    return this.httpClient.get<GetResponse>('http://localhost:8080/api/contracts');
   }
 
-  updateContract(contract: Contract,idContract: number): Observable<any> {
-    return this.httpClient.put<any>('http://localhost:8080/api/contracts/liquidation/'+ idContract,contract);
+  updateContract(contract: Contract, idContract: number): Observable<any> {
+    return this.httpClient.put<any>('http://localhost:8080/api/contracts/liquidation/' + idContract, contract);
   }
 
 }
