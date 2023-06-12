@@ -79,7 +79,7 @@
           <td class="text-center">{{startIndex + i + 1}}</td>
         <td style="text-transform: uppercase">{{article.title}}</td>
         <td class="text-center">{{article.employee.name}}</td>
-        <td class="text-center">{{article.publicDate}}</td>
+        <td class="text-center">{{article.publicDate | dateFormat}}</td>
         <td>
           <span *ngIf="article.feature === true"><a type="button" class="iconchecked"><i class="uil uil-bolt"></i></a></span>
           <span *ngIf="article.feature === false"></span>

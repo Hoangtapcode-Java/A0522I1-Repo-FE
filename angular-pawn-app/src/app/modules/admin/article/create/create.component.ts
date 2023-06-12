@@ -11,7 +11,6 @@ import Quill from 'quill';
 import {Title} from "@angular/platform-browser";
 import {ArticleServiceService} from "../../../../service/article-service.service";
 
-
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -32,10 +31,10 @@ export class CreateComponent implements OnInit {
               private route: Router,
               private title: Title) {
     this.articleDTO = new FormGroup({
-      id: new FormControl(''),
-      title: new FormControl('', [Validators.required, Validators.maxLength(100), Validators.minLength(5)]),
-      img: new FormControl('', [Validators.required]),
-      content: new FormControl('', [Validators.required, Validators.maxLength(50000), Validators.minLength(50)]),
+      id: new FormControl(""),
+      title: new FormControl("", [Validators.required, Validators.maxLength(100), Validators.minLength(5)]),
+      img: new FormControl("", [Validators.required]),
+      content: new FormControl("", [Validators.required, Validators.maxLength(50000), Validators.minLength(50)]),
       publicDate: new FormControl(this.currentDate),
       isFeature: new FormControl(false),
       isFlag: new FormControl(false),
@@ -47,7 +46,7 @@ export class CreateComponent implements OnInit {
     const editor = new Quill('#editor', {
       theme: 'snow'
     });
-    this.title.setTitle('Thêm mới tin tức');
+    this.title.setTitle("Thêm mới tin tức")
   }
 
 
@@ -55,7 +54,7 @@ export class CreateComponent implements OnInit {
     const divData = document.getElementById('editor').innerHTML;
     this.flag = true;
     this.maxSize = false;
-    if (this.articleDTO.valid && this.inputImage != null && this.typeFile == true) {
+    if (this.articleDTO.valid && this.inputImage != null&&this.typeFile==true) {
       articleDTO.controls.content.setValue(divData);
       const today = new Date();
       const year = today.getFullYear();
@@ -76,12 +75,11 @@ export class CreateComponent implements OnInit {
       }, error => {
       }, () => {
         // Swal.fire('Thêm tin thành công');
-      });
+      })
       Swal.fire('Xong', 'Thêm tin thành công', 'success');
-
       this.route.navigateByUrl("/admin/article");
     } else {
-      if (this.articleDTO.invalid || this.inputImage == null || this.typeFile == false) {
+      if (this.articleDTO.invalid || this.inputImage == null||this.typeFile==false) {
 
         Swal.fire('Lỗi', 'Thêm tin thất bại', 'error');
       }
@@ -90,7 +88,6 @@ export class CreateComponent implements OnInit {
 
   selectImage(event: any) {
     this.inputImage = event.target.files[0];
-
     if (this.inputImage.type == "image/png" || this.inputImage.type == "image/jpeg" || this.inputImage.type == "image/gif") {
       this.typeFile = true;
       if (this.inputImage.size > 1048576 && this.inputImage != null) {

@@ -593,7 +593,7 @@ select.form-select option {
   }
 }
 
-@media (max-width: 590px) {
+@media (max-width: 760px) {
   .memu-search .searchBox {
     width: 300px;
   }

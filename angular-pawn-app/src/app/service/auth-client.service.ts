@@ -42,15 +42,13 @@ export class AuthClientService {
         // });
       }, ((error) => {
         Swal.fire({
-          title: 'Lỗi!',
-          text: 'Tên đăng nhập hoặc mật khẩu sai',
+          title: 'Error!',
+          text: 'Tài khoản hoặc mật khẩu sai',
           icon: 'error',
           confirmButtonText: 'OK'
         });
-
       }),() => {
         this.router.navigateByUrl("/admin/employee/edit-employee-infor");
-
       });
     } catch (e) {
       console.log('login fail');

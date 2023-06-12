@@ -10,6 +10,7 @@ import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {environment} from "../../../../environments/environment";
 import { ListComponent } from './list/list.component';
+import {ArticlePageModule} from "../../article-page/article-page.module";
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ListComponent } from './list/list.component';
         AngularFireStorageModule,
         AngularFireDatabaseModule,
         ReactiveFormsModule,
-      FormsModule
+        FormsModule,
+        ArticlePageModule
     ]
 })
 export class ArticleModule { }

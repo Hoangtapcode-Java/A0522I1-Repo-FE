@@ -10,6 +10,7 @@ import { FooterForArticleComponent } from './footer-for-article/footer-for-artic
 import { FeatureListComponent } from './feature-list/feature-list.component';
 import { FeatureListSidebarComponent } from './feature-list-sidebar/feature-list-sidebar.component';
 import { TruncatePipe } from './list/truncate.pipe';
+import { DateFormatPipe } from './date-format.pipe';
 
 
 @NgModule({
@@ -21,12 +22,14 @@ import { TruncatePipe } from './list/truncate.pipe';
         FooterForArticleComponent,
         FeatureListComponent,
         FeatureListSidebarComponent,
-        TruncatePipe],
-  exports: [
-    HeaderForArticleComponent,
-    FooterForArticleComponent,
-    FeatureListComponent
-  ],
+        TruncatePipe,
+        DateFormatPipe],
+    exports: [
+        HeaderForArticleComponent,
+        FooterForArticleComponent,
+        FeatureListComponent,
+        DateFormatPipe
+    ],
     imports: [
         CommonModule,
         ArticlePageRoutingModule

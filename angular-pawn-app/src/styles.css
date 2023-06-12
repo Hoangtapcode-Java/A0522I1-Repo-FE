@@ -24,6 +24,10 @@ body {
   overflow-x: hidden;
 }
 
+section {
+  padding: 0;
+}
+
 /* CSS cho switch alert */
 .swal2-actions {
   display: flex !important;

@@ -24,15 +24,12 @@ const routes: Routes = [
       {
         path: '', component: BodyPageComponent
       },
-<<<<<<< HEAD
       // {
       //   path: '', component: FeatureListComponent
       // },
       // {
       //   path: '', component: FeatureListComponent
       // },
-=======
->>>>>>> b5979ed4c7eb5a5525afe4fe39bfa86ce06bba02
       {
         path: 'appliance', component: ApplianceComponent
       },

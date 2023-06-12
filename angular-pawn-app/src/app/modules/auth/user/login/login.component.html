@@ -1,7 +1,7 @@
 <div class="container" id="container" style="margin-top: 5%">
   <div class="form-container sign-up-container">
     <form [formGroup]="emailForm" (ngSubmit)="loadForgot()">
-<!--      <span ></span>-->
+      <!--      <span ></span>-->
       <span id="loading_send"> Dùng email của bạn để lấy lại mật khẩu</span>
       <input type="email" placeholder="ngohoangnhan@gmail" formControlName="email" />
       <button [disabled]="isDisabledButton" type ="submit" id="submit_button">
@@ -16,13 +16,13 @@
          style="color: red">
         username từ 4-45 kí tự
       </p>
-      <input type="text" placeholder="Username" formControlName="username" />
+      <input type="text" placeholder="Tài khoản" formControlName="username" />
       <p class="log-error">loi</p>
       <p *ngIf="!loginForm.controls.password?.valid &&(loginForm.controls.password?.dirty || loginForm.controls.password?.touched)"
          style="color: red">
         password từ 4-100 kí tự
       </p>
-      <input type="password" placeholder="Password" formControlName="password" />
+      <input type="password" placeholder="Mật khẩu" formControlName="password" />
       <p  class="log-error">loi</p>
       <!--      <input type ="submit" value="Đăng nhập">-->
       <button type = submit [disabled]="!loginForm.valid">Đăng nhập</button>
@@ -43,4 +43,3 @@
     </div>
   </div>
 </div>
-

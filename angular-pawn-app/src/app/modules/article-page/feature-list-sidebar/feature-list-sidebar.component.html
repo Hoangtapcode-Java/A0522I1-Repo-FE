@@ -8,7 +8,7 @@
 
         <!-- Tin moi nhat -->
         <div class="post-entry-1 border-bottom">
-          <div class="post-meta"><span class="date">Tin tức</span> <span class="mx-1">-</span> <span>{{feature.publicDate}}</span></div>
+          <div class="post-meta"><span class="date">Tin tức</span> <span class="mx-1">-</span> <span>{{feature.publicDate | dateFormat}}</span></div>
           <h5 class="mb-2" style="text-transform: uppercase"><a [routerLink]="['/article-page/view',feature.id]" class="customlink text-break">{{feature.title}}</a></h5>
           <span class="author mb-3 d-block">{{feature.employee.name}}</span>
         </div>

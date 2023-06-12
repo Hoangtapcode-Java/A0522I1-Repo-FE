@@ -65,9 +65,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Contract} from '../models/contract/Contract';
 import {Category} from '../models/category/Category';
-
 import {ContractCreateDto} from "../dto/ContracCreateDto";
-
 
 
 
@@ -115,7 +113,6 @@ export class ContractService {
   }
 
   saveContract(contract: ContractCreateDto): Observable<any> {
-
     return this.httpClient.post<any>("http://localhost:8080/api/contracts", contract);
   }
 
@@ -126,7 +123,6 @@ export class ContractService {
 
   updateContract(contract: Contract,idContract: number): Observable<any> {
     return this.httpClient.put<any>('http://localhost:8080/api/contracts/liquidation/'+ idContract,contract);
-
   }
 
 }
