@@ -5,6 +5,7 @@ import {ListComponent} from "./list/list.component";
 import {CreateComponent} from "./create/create.component";
 import {UpdateComponent} from "./update/update.component";
 import {DeleteComponent} from "./delete/delete.component";
+import {DetailComponent} from "./detail/detail.component";
 
 
 const routes: Routes = [
@@ -15,10 +16,10 @@ const routes: Routes = [
       path: 'create', component: CreateComponent
     },
     {
-      path: 'update', component: UpdateComponent
+      path: 'update/:id', component: UpdateComponent
     },
     {
-      path:'delete',component:DeleteComponent
+      path:'detail/:id',component:DetailComponent
     }
   ];
 

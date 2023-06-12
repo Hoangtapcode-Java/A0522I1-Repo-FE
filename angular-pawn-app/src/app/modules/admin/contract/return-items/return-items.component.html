@@ -1,6 +1,6 @@
 <div class="my-container">
   <div class="form">
-    <h2 class="mb-3" style="text-align: center">Trả Đồ Cầm</h2>
+    <h2 class="mb-3" style="text-align: center; font-size: 20px">Trả Đồ Cầm</h2>
     <hr>
     <form class="form-group" id="myForm" [formGroup]="reactiveForm" *ngIf="reactiveForm" (ngSubmit)="update()">
       <div class="mb-3">
@@ -45,18 +45,18 @@
       <div class="row mb-3">
         <div class="col-sm-6">
           <label for="inputDateBegin" class="form-label">Ngày làm hợp đồng:</label>
-          <input type="text" class="form-control" id="inputDateBegin" formControlName="beginDate"
+          <input type="text" class="form-control" id="inputDateBegin"  [value]="beginDate"
                  [attr.disabled]="true">
         </div>
         <div class="col-sm-6">
           <label for="inputDateEnd" class="form-label">Ngày kết thúc:</label>
-          <input type="text" class="form-control" id="inputDateEnd" formControlName="endDate" [attr.disabled]="true">
+          <input type="text" class="form-control" id="inputDateEnd" [value]="endDate" [attr.disabled]="true">
         </div>
       </div>
       <div class="row mb-3">
         <div class="col-sm-6">
           <label for="inputDateReturn" class="form-label">Ngày trả đồ:</label>
-          <input type="date" class="form-control" id="inputDateReturn">
+          <input type="text" class="form-control" id="inputDateReturn" [disabled]="true" [value]="dateReset">
         </div>
         <div class="col-sm-6">
           <label for="inputPay" class="form-label">Số tiền thanh toán:</label>
@@ -88,7 +88,7 @@
             <div class="searchBox">
               <form>
                 <i class="uil uil-search navToggle"></i>
-                <input type="text" placeholder="Searching...VD:HD-001" maxlength="256"
+                <input type="text" placeholder="Tìm kiếm....VD:HD-001" maxlength="256"
                        (keydown.enter)="getSearch(nameProduct.value,nameCustomer.value,dateBegin.value,contractCode.value)"
                        #contractCode/>
               </form>
@@ -158,31 +158,31 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let c of contract">
-              <td>{{c.id}}</td>
+            <tr *ngFor="let c of contract ; index as i ">
+              <td>{{i+1}}</td>
               <td>{{c.contractCode}}</td>
               <td>{{c.customer.name}}</td>
               <td>{{c.product.name}}</td>
-              <td>{{c.beginDate | date : 'MMM d, y'}}</td>
-              <td>{{c.endDate | date : 'MMM d, y'}}</td>
+              <td>{{c.beginDate | date : 'dd/MM/yyyy'}}</td>
+              <td>{{c.endDate | date : 'dd/MM/yyyy'}}</td>
               <td class="actions" style="text-align: center">
                 <a class="my-btn-2" (click)="selectContract(c.id)" data-bs-dismiss="modal">Chọn</a>
               </td>
             </tr>
             <tr style="text-align: center" *ngIf="contract.length == 0">
-               <td colspan="7">Không tìm thấy dữ liệu</td>
+              <td colspan="7">Không tìm thấy dữ liệu</td>
             </tr>
             </tbody>
           </table>
 
           <div class="pagination">
-<!--            *ngIf="page > 0"-->
+            <!--            *ngIf="page > 0"-->
             <a  (click)="goToNextOrPreviousPage(nameProduct.value, nameCustomer.value, dateBegin.value, contractCode.value, 'forward')" *ngIf="currentPage > 0" class="text1">«</a>
 
-            <a class="text" (click)="getSearch(nameProduct.value, nameCustomer.value, dateBegin.value, contractCode.value, i)" *ngFor="let page of [].constructor(totalPage), index as i ">{{ i+1 }}</a>
+            <a [ngClass]="i === currentPage ? 'active' : ''" class="text" (click)="getSearch(nameProduct.value, nameCustomer.value, dateBegin.value, contractCode.value, i)" *ngFor="let page of [].constructor(totalPage), index as i ">{{ i+1 }}</a>
 
             <a  (click)="goToNextOrPreviousPage(nameProduct.value, nameCustomer.value, dateBegin.value, contractCode.value, 'backward')" *ngIf="currentPage < totalPage - 1" class="text1">»</a>
-<!--            *ngIf="page < totalPage - 1"-->
+            <!--            *ngIf="page < totalPage - 1"-->
           </div>
         </div>
       </div>

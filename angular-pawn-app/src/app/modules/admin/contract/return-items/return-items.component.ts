@@ -1,8 +1,9 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import { Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Contract} from "../../../../models/contract/Contract";
-import {ContractService} from "../../../../service/contract.service";
+import {ContractService} from '../../../../service/contract.service';
+import {Contract} from '../../../../models/contract/Contract';
+
 
 
 declare const Swal: any;
@@ -23,9 +24,11 @@ export class ReturnItemsComponent implements OnInit {
   nameProduct = '';
   contractCode = '';
   dateBegin = '';
-  showErrors = false;
   reactiveForm: FormGroup;
   currentPage: number;
+  dateReset: string;
+  beginDate = '';
+  endDate = '';
 
   toggleFormSearch(event: MouseEvent): void {
     event.stopPropagation();
@@ -73,6 +76,19 @@ export class ReturnItemsComponent implements OnInit {
       }
     });
   }
+  formatDate(date: any): string {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const formattedDate = `${day}/${month}/${year}`;
+    return formattedDate.toString();
+  }
+  convertDate(date: any): string {
+    const array: [] = date.split('-');
+    // @ts-ignore
+    const dateConvert = array[2] + '/' + array[1] + '/' + array[0];
+    return dateConvert;
+  }
 
   selectContract(id: number) {
     this.contractService.getById(id).subscribe(next => {
@@ -81,14 +97,11 @@ export class ReturnItemsComponent implements OnInit {
       if (this.contracts.status.id !== 3) {
         this.payment = this.contracts.product.price * this.contracts.interest;
         this.price = this.contracts.product.price;
-        const dateField = document.getElementById('inputDateReturn') as HTMLInputElement;
         const defaultDate = new Date(Date.now());
-        const year = defaultDate.getFullYear();
-        const month = String(defaultDate.getMonth() + 1).padStart(2, '0');
-        const day = String(defaultDate.getDate()).padStart(2, '0');
-        const formattedDate = `${year}-${month}-${day}`;
-        dateField.value = formattedDate;
+        this.dateReset = this.formatDate(defaultDate);
         this.getForm();
+        this.beginDate = this.convertDate(this.contracts.beginDate);
+        this.endDate = this.convertDate(this.contracts.endDate);
       } else {
         Swal.fire({
           title: 'Lỗi!',
@@ -102,17 +115,10 @@ export class ReturnItemsComponent implements OnInit {
   }
 
   update() {
-    console.log(this.reactiveForm.value);
-    console.log(this.reactiveForm.valid);
+    // console.log(this.reactiveForm.value);
+    // console.log(this.reactiveForm.valid);
     if (this.reactiveForm.valid) {
       this.contractService.updateById(this.reactiveForm.value, this.reactiveForm.value.id).subscribe(next => {
-        const dateField = document.getElementById('inputDateReturn') as HTMLInputElement;
-        const defaultDate = new Date('');
-        const year = defaultDate.getFullYear();
-        const month = String(defaultDate.getMonth() + 1).padStart(2, '0');
-        const day = String(defaultDate.getDate()).padStart(2, '0');
-        const formattedDate = `${year}-${month}-${day}`;
-        dateField.value = formattedDate;
         this.getNewForm();
         // tslint:disable-next-line:max-line-length
         this.contractService.getAll(this.currentPage, this.nameCustomer, this.nameProduct, this.dateBegin, this.contractCode).subscribe(next => {
@@ -121,8 +127,6 @@ export class ReturnItemsComponent implements OnInit {
           }
         });
       });
-      // this.showErrors = false;
-      console.log(this.showErrors);
       const Toast = Swal.mixin({
         toast: true,
         position: 'top-end',
@@ -139,7 +143,6 @@ export class ReturnItemsComponent implements OnInit {
         title: 'Thanh toán thành công! Vui lòng kiểm tra email'
       });
     } else {
-      // this.showErrors = true;
       Swal.fire({
         title: 'Lỗi!',
         text: 'Vui lòng chọn hợp đồng trước khi thanh toán',
@@ -147,7 +150,6 @@ export class ReturnItemsComponent implements OnInit {
         confirmButtonText: 'Đồng ý'
       });
       this.ngOnInit();
-      console.log(this.showErrors);
     }
   }
 
@@ -155,8 +157,8 @@ export class ReturnItemsComponent implements OnInit {
     this.reactiveForm = new FormGroup({
       id: new FormControl(this.contracts.id),
       contractCode: new FormControl(this.contracts.contractCode),
-      beginDate: new FormControl(this.contracts.beginDate),
-      endDate: new FormControl(this.contracts.endDate),
+      // beginDate: new FormControl(this.contracts.beginDate),
+      // endDate: new FormControl(this.contracts.endDate),
       customer: new FormControl(this.contracts.customer.name),
       interest: new FormControl(this.contracts.interest),
       product: new FormControl(this.contracts.product.name)
@@ -167,14 +169,17 @@ export class ReturnItemsComponent implements OnInit {
     this.reactiveForm = new FormGroup({
       id: new FormControl(),
       contractCode: new FormControl('', [Validators.required]),
-      beginDate: new FormControl('', [Validators.required]),
-      endDate: new FormControl('', [Validators.required]),
+      // beginDate: new FormControl('', [Validators.required]),
+      // endDate: new FormControl('', [Validators.required]),
       customer: new FormControl('', [Validators.required]),
       interest: new FormControl('', [Validators.required]),
       product: new FormControl('', [Validators.required])
     });
     this.price = null;
     this.payment = null;
+    this.dateReset = '';
+    this.endDate = '';
+    this.beginDate = '';
   }
 
   goToNextOrPreviousPage(

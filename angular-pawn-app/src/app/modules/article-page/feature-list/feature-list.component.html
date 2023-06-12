@@ -1,0 +1,67 @@
+<section id="about" class="portfolio">
+  <div class=" section-title">
+    <p>Tin tức - Ưu đãi</p>
+
+  </div>
+
+  <!--      <section id="feature-slider" class="feature-slider">-->
+  <div class="container-md" data-aos="fade-up">
+    <div class="row">
+      <div class="col-12">
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+
+              <div class="carousel-item active" *ngFor="let article of featureArticles, let i = index" [class.active]="i === 0">
+                <a [routerLink]="['/article-page/view',article.id]">
+                <img [src]="article.img" class="" alt="Slide Image">
+                </a>
+              </div>
+
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+<!--        <div class="swiper sliderFeaturedPosts">-->
+<!--          <div class="swiper-wrapper" *ngFor="let article of featureArticles">-->
+
+<!--            <div class="swiper-slide">-->
+<!--&lt;!&ndash;              <a [routerLink]="['/article-page/view',article.id]">&ndash;&gt;-->
+<!--&lt;!&ndash;                <img [src]="article.img" alt="Slide Image" class="img-bg d-flex align-items-end">&ndash;&gt;-->
+<!--&lt;!&ndash;              </a>&ndash;&gt;-->
+<!--              <a [routerLink]="['/article-page/view',article.id]" class="img-bg d-flex align-items-end" [style.background-image]="'url(' + article.img + ')'"></a>-->
+
+<!--            </div>-->
+
+<!--          </div>-->
+
+<!--          <div class="custom-swiper-button-next">-->
+<!--            <span class="bi-chevron-right"></span>-->
+<!--          </div>-->
+<!--          <div class="custom-swiper-button-prev">-->
+<!--            <span class="bi-chevron-left"></span>-->
+<!--          </div>-->
+
+<!--          <div class="swiper-pagination"></div>-->
+
+<!--        </div>-->
+      </div>
+    </div>
+  </div>
+    <div  style="display: flex; justify-content: center; align-items: center; height: 10vh;" data-aos="fade-up">
+      <a [routerLink]="['/article-page']" class="btn-see-more scrollto customlink">Xem thêm tin tức</a>
+    </div>
+  <!--      </section>&lt;!&ndash; End Hero Slider Section &ndash;&gt;-->
+
+</section><!-- End About Section -->

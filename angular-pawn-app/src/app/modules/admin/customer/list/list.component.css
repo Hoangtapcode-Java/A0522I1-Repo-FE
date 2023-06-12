@@ -1,0 +1,849 @@
+:root {
+  --nc-primary: #ee4d2d;
+  --nc-primary-bg: #fef6f5;
+  --nc-primary-gradient: linear-gradient(#ee4d2d, #ff7337);
+  --nc-text-primary: rgba(0, 0, 0, 0.87);
+  --button: #7eb7aa;
+  --box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+#color-bg {
+  background: var(--nc-primary-gradient);
+  color: #fff;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.table-responsive {
+  max-height: 400px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.175);
+  scroll-behavior: smooth;
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 5px !important; /* Độ cao của thanh cuộn */
+  transition: height 1s;
+}
+
+.table-responsive:hover::-webkit-scrollbar {
+  height: 8px !important;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background-color: #888; /* Màu sắc của thanh cuộn */
+  border-radius: 6px;
+  border: none !important; /* Loại bỏ viền của thanh cuộn */
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Màu sắc của phần đường bao quanh thanh cuộn */
+}
+
+.table > :not(caption) > * > * {
+  padding: 0.5rem 1.5rem;
+}
+
+thead th,
+tbody td {
+  max-width: 200px; /* thiết lập chiều rộng tối đa cho mỗi cột */
+  white-space: nowrap !important; /* không cho phép chữ bị xuống dòng */
+  /* ẩn phần vượt quá chiều rộng tối đa  */
+  /* overflow: hidden; */
+  /* hiển thị dấu ba chấm (...) cho phần vượt quá chiều rộng tối đa   */
+  /* text-overflow: ellipsis; */
+}
+
+.content-text-tr {
+  vertical-align: middle;
+}
+
+.actions {
+  display: flex;
+  gap: 3px;
+}
+
+.actions i {
+  font-size: 26px;
+}
+
+.actions a:focus {
+  outline: none;
+}
+
+.actions a:nth-child(1) i {
+  color: var(--nc-primary);
+}
+
+.actions a:nth-child(2) i {
+  color: var(--nc-primary);
+}
+
+.actions a:nth-child(3) i {
+  color: var(--nc-primary);
+}
+
+.actions .icon {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0 18px 0;
+}
+
+.color {
+  background: var(--nc-primary-gradient);
+  color: #fff;
+  outline: none;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.3333333;
+  border-radius: 6px;
+}
+
+.color:hover {
+  color: #fff;
+  opacity: 0.8;
+}
+
+.color:focus,
+.color:active {
+  color: #fff;
+  outline: none !important;
+  border: none;
+  background: var(--nc-primary-gradient);
+  box-shadow: none;
+}
+/*---------------------------  Search box --------------------------- */
+.memu-search {
+  position: relative;
+}
+
+.memu-search .searchBox {
+  height: 46px;
+  width: 550px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 24px;
+  padding: 0 6px;
+  white-space: nowrap;
+  background: #edf2fc;
+  border: 1px solid transparent;
+  overflow: hidden;
+  --webkit-user-select: none;
+}
+
+.memu-search .searchBox form {
+  width: 450px;
+}
+
+.searchBox input {
+  width: 100%;
+  height: 100%;
+  margin-right: 80px;
+  font-size: 16px;
+  border: none;
+  background: transparent;
+  color: var(--nc-text-primary);
+}
+
+.searchBox input:focus,
+.searchBox input:focus-within {
+  border: none;
+  outline: none;
+}
+
+.searchBox i {
+  font-size: 22px;
+  padding: 0 12px;
+}
+
+.searchBox .button-search {
+  padding: 10px 10px;
+  cursor: pointer;
+  outline: none;
+  line-height: 0;
+  border: none;
+  border-radius: 50%;
+  background: none;
+}
+
+.searchBox .button-search:hover {
+  background: var(--nc-primary-bg);
+  opacity: 0.5s;
+}
+
+.form-search {
+  display: none;
+  width: 96%;
+  position: absolute;
+  top: 52px;
+  left: 10px;
+  padding: 0;
+  margin-bottom: 12px;
+  color: #000;
+  border-radius: 8px;
+  border: solid 1px transparent;
+  box-shadow: var(--box-shadow), 0 1px 3px 0 rgba(60, 64, 67, 0.3),
+  0 4px 8px 3px rgba(60, 64, 67, 0.15);
+  background-color: #fff;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  transition: opacity 0.5s linear;
+  z-index: 99;
+}
+
+.form-search.active {
+  display: block;
+}
+
+.form-search form {
+  padding: 15px;
+}
+
+.form-search .row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-search label {
+  padding-top: 7px;
+}
+
+.form-search .form-submit {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.form-submit .btn-search {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: var(--nc-primary);
+  color: #fff;
+  white-space: nowrap;
+}
+
+.form-submit .btn-reset {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  color: var(--nc-primary);
+  white-space: nowrap;
+  background: transparent;
+  margin-right: 10px;
+}
+
+.form-submit .btn-search:hover {
+  border: none;
+  color: #fff;
+  opacity: 0.85;
+}
+
+.form-search input {
+  padding: 8px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form-search .form-select {
+  width: 250px;
+  padding-right: 50px; /* khoảng cách cho dấu mũi tên */
+  border-radius: 5px;
+  padding: 8px;
+  box-shadow: none;
+}
+
+select.form-select option {
+  width: 100%; /* thiết lập chiều rộng cho các tùy chọn */
+  box-sizing: border-box; /* đảm bảo chiều rộng bao gồm cả padding và border */
+  padding: 0.5rem; /* thêm padding cho các tùy chọn */
+}
+
+/* Thay đổi màu nền của các option */
+.select-form .form-select option {
+  background-color: white;
+}
+
+/* Thay đổi border của select option */
+.select-form .form-select:focus {
+  border-color: var(--nc-primary);
+  outline: 0;
+  box-shadow: none;
+}
+
+.form-search .date-text {
+  white-space: nowrap;
+}
+
+.form-search .form-group input[type="date"] {
+  width: 325px;
+  border-radius: 5px;
+}
+
+.form-search .form-group input[type="date"]:focus {
+  border-color: var(--nc-primary);
+  outline: 0;
+  box-shadow: none;
+}
+
+.form-search .wrapper-radio {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.wrapper-radio .card-radio {
+  position: relative;
+  width: 100px;
+  height: 50px;
+  background: var(--nc-primary-bg);
+  border-radius: 10px;
+  transition: all 0.3s;
+}
+
+.wrapper-radio .card-radio:hover {
+  transform: scale(1.05);
+}
+
+.wrapper-radio .card-radio .input {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  appearance: none;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px #aaaa -1px -1px 10px #ffff;
+  z-index: 10;
+}
+
+.wrapper-radio .card-radio .input + .check::before {
+  content: "";
+  position: absolute;
+  top: 17px;
+  right: 8px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #d0d0d0;
+  border-radius: 50%;
+  background-color: #e8e8e8;
+}
+
+.wrapper-radio .card-radio .input:checked + .check::after {
+  content: "";
+  position: absolute;
+  top: 19px;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  background: var(--nc-primary);
+  border-radius: 50%;
+}
+
+.wrapper-radio .card-radio label {
+  color: #333;
+  position: absolute;
+  top: -6px;
+  left: -8px;
+  z-index: 0;
+}
+
+.wrapper-radio .card-radio label .title {
+  margin: 15px 0 0 15px;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+}
+
+/*--------------------------- End - Search box --------------------------- */
+
+/*--------------------------- tooltip --------------------------- */
+.top-child {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.top-child .icon-tooltip {
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+  flex-direction: column;
+  transition: 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 2;
+}
+
+.top-child .icon-tooltip:nth-child(1) .tooltip {
+  position: absolute;
+  top: -50px;
+  left: -8px;
+  white-space: nowrap;
+  background: var(--nc-primary);
+  color: #fff;
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 18px;
+  pointer-events: none;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+  transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  opacity: 0;
+  z-index: 1;
+}
+
+.top-child .icon-tooltip:nth-child(2) .tooltip {
+  position: absolute;
+  top: -50px;
+  left: -18px;
+  white-space: nowrap;
+  background: var(--nc-primary);
+  color: #fff;
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 18px;
+  pointer-events: none;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+  transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  opacity: 0;
+  z-index: 1;
+}
+
+.top-child .icon-tooltip:hover .tooltip {
+  /* top: -20px; */
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.icon-tooltip .tooltip:before {
+  position: absolute;
+  content: "";
+  height: 10px;
+  width: 10px;
+  background: var(--nc-primary);
+  left: 50%;
+  bottom: -4px;
+  transform: translateX(-50%) rotate(45deg);
+  transition: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.top-child .icon-tooltip:hover button,
+.top-child .icon-tooltip:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
+}
+/*---------------------------  End - tooltip --------------------------- */
+
+/*---------------------------  pagination --------------------------- */
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.pagination .text {
+  font-size: 16px;
+}
+
+.pagination .text1 {
+  font-size: 16px;
+}
+.pagination a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s;
+}
+
+.pagination a.disabled {
+  pointer-events: none;
+  color: rgba(238, 77, 45, 0.5);
+}
+
+/* thiết lập style cho class active */
+.pagination a.active {
+  background: var(--nc-primary-gradient);
+  color: #fff;
+}
+/* thêm màu nền khi người dùng hover vào class không active */
+.pagination a:hover:not(.active) {
+  background-color: var(--nc-primary-bg);
+  opacity: 0.9s;
+}
+
+/*---------------------------  Restore --------------------------- */
+.center-icon {
+  text-align: center;
+  margin-left: 14px;
+}
+
+.modal-header {
+  padding: 1.2rem 1rem !important;
+  border-bottom: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header .btn-close {
+  outline: none;
+  box-shadow: none;
+}
+
+.modal-header .btn-close {
+  outline: none;
+  box-shadow: none;
+}
+
+.modal-header .btn-close:hover {
+  color: var(--nc-primary);
+}
+
+#largeModalLabel {
+  color: var(--nc-primary);
+}
+
+.modal-empty {
+  display: block;
+  text-align: center;
+  background: linear-gradient(
+    -45deg,
+    #ee4d2d,
+    #ee4d2d,
+    #2b0413,
+    #2b0413,
+    #ff7337,
+    #ff7337
+  );
+  background-size: 300%;
+  font-weight: 900;
+  font-size: 30px;
+  letter-spacing: 2px;
+  margin: 6px 12px;
+  text-transform: uppercase;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animation_text 6s ease-in-out infinite;
+  -moz-animation: animation_text 6s ease-in-out infinite;
+  -webkit-animation: animation_text 6s ease-in-out infinite;
+}
+@keyframes animation_text {
+  0% {
+    background-position: 0px 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0px 50%;
+  }
+}
+/*---------------------------  END - Restore --------------------------- */
+
+/*---------------------------  End - pagination --------------------------- */
+@media (max-width: 995px) {
+  .modal-lg,
+  .modal-xl {
+    max-width: 900px !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  .memu-search .searchBox {
+    width: 400px;
+  }
+  .form-search .form-group input[type="date"] {
+    width: 225px;
+  }
+
+  .wrapper-radio {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .wrapper-radio > .col-md-3 {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .form-search .form-group input[type="date"] {
+    width: 320px;
+  }
+}
+
+@media (max-width: 590px) {
+  .memu-search .searchBox {
+    width: 300px;
+  }
+
+  .form-search .form-group input[type="date"] {
+    width: 208px;
+  }
+
+  .wrapper-radio .card-radio {
+    width: 100px !important;
+    height: 40px !important;
+  }
+
+  .wrapper-radio .card-radio input + .check::before {
+    top: 14px !important;
+    right: 4px !important;
+  }
+
+  .wrapper-radio .card-radio input:checked + .check::after {
+    top: 16px !important;
+    right: 6px !important;
+  }
+
+  .wrapper-radio .card-radio label {
+    top: -8px !important;
+    left: -8px !important;
+  }
+
+  .wrapper-radio .card-radio label .title {
+    font-size: 10px !important;
+  }
+
+  .form-submit .btn-search {
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+  }
+
+  .form-submit .btn-reset {
+    font-size: 12px !important;
+    padding: 4px 8px !important;
+  }
+}
+
+@media (max-width: 495px) {
+  .memu-search .searchBox {
+    width: 250px;
+  }
+  .form-search .form-select {
+    width: 208px;
+  }
+  .form-search .form-group input[type="date"] {
+    width: 208px;
+  }
+  .form-search .date-text {
+    font-size: 14px;
+  }
+  .color {
+    font-size: 14px;
+  }
+
+  .top-child .icon-tooltip:nth-child(2) .tooltip {
+    position: absolute;
+    left: -22px;
+  }
+
+  .pagination {
+    width: 350px !important;
+  }
+
+  .pagination a {
+    padding: 6px 14px;
+  }
+
+  .wrapper-radio .card-radio {
+    height: 35px !important;
+  }
+
+  .wrapper-radio .card-radio input + .check::before {
+    top: 12px !important;
+    right: 4px !important;
+
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .wrapper-radio .card-radio input:checked + .check::after {
+    top: 14px !important;
+    right: 6px !important;
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  .wrapper-radio .card-radio label {
+    top: -10px !important;
+    left: -10px !important;
+  }
+
+  .wrapper-radio .card-radio label .title {
+    font-size: 9px !important;
+  }
+}
+
+@media (max-width: 495px) {
+  .memu-search .searchBox {
+    width: 250px;
+  }
+  .form-search .form-select {
+    width: 208px;
+  }
+  .form-search .form-group input[type="date"] {
+    width: 208px;
+  }
+  .form-search .date-text {
+    font-size: 14px;
+  }
+  .color {
+    font-size: 14px;
+  }
+
+  .top-child .icon-tooltip:nth-child(2) .tooltip {
+    position: absolute;
+    left: -22px;
+  }
+
+  .pagination {
+    width: 350px !important;
+  }
+
+  .pagination a {
+    padding: 6px 14px;
+  }
+
+  .wrapper-radio .card-radio {
+    height: 35px !important;
+  }
+
+  .wrapper-radio .card-radio input + .check::before {
+    top: 12px !important;
+    right: 4px !important;
+
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .wrapper-radio .card-radio input:checked + .check::after {
+    top: 14px !important;
+    right: 6px !important;
+    width: 8px !important;
+    height: 8px !important;
+  }
+
+  .wrapper-radio .card-radio label {
+    top: -10px !important;
+    left: -10px !important;
+  }
+
+  .wrapper-radio .card-radio label .title {
+    font-size: 9px !important;
+  }
+}
+
+@media (max-width: 495px) {
+  .memu-search .searchBox {
+    width: 230px;
+  }
+  .form-search .form-select {
+    width: 208px;
+  }
+  .form-search .form-group input[type="date"] {
+    width: 190px;
+  }
+  .form-search .date-text {
+    font-size: 14px;
+  }
+  .color {
+    font-size: 14px;
+  }
+
+  .pagination {
+    width: 350px !important;
+  }
+
+  .pagination a {
+    padding: 6px 14px;
+  }
+}
+
+/*--------------------------- Loader --------------------------- */
+#preloader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #fff;
+}
+
+.sk-three-bounce {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: white;
+}
+
+.sk-three-bounce .sk-child {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: var(--nc-primary);
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-three-bounce 1.4s ease-in-out 0s infinite both;
+  animation: sk-three-bounce 1.4s ease-in-out 0s infinite both;
+}
+
+.sk-three-bounce .sk-bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.sk-three-bounce .sk-bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-three-bounce {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes sk-three-bounce {
+  0%,
+  80%,
+  100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+/*--------------------------- End - Loader --------------------------- */

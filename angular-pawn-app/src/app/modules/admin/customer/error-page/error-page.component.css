@@ -1,0 +1,175 @@
+* {
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+h1 {
+  font-size: 40px;
+  line-height: 50px;
+}
+span {
+  display: block;
+  font-size: 18px;
+  line-height: 20px;
+}
+.container {
+  width: 100%;
+  margin: auto;
+}
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+}
+
+.column1 {
+  width: max-content;
+}
+
+.px-spc-b-20 {
+  padding-bottom: 20px;
+}
+
+button.go-home {
+  padding: 10px 20px;
+  background: #ee4d2d;
+  border: transparent;
+  border-radius: 3px;
+  box-shadow: 0 0 2px rgb(0 0 0 / 30%);
+  cursor: pointer;
+  margin: 18px 0;
+  color: #fff;
+}
+
+button.go-home:hover {
+  opacity: 0.8;
+}
+
+button.go-home i {
+  color: #fff;
+}
+
+img {
+  display: block;
+  width: max-content;
+  height: 250px;
+}
+
+.colmun-right img {
+  display: block;
+  width: 100%;
+  height: 380px;
+  -webkit-animation: mover 2s infinite alternate;
+  animation: mover 2s infinite alternate;
+}
+
+@-webkit-keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-30px);
+  }
+}
+@keyframes mover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-30px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 90% !important;
+    margin: auto;
+  }
+
+  .colmun-right {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 995px) {
+  .container {
+    width: 100%;
+    margin: auto;
+  }
+
+  .colmun1 img {
+    width: 300px;
+    height: 210px;
+  }
+
+  .colmun1 h1 {
+    font-size: 28px;
+    line-height: 30px;
+  }
+
+  button.go-home {
+    margin: 10px 0;
+  }
+
+  .colmun-right img {
+    height: 300px !important;
+    width: 115% !important;
+  }
+}
+
+@media (max-width: 770px) {
+  .flex-row .colmun1 {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+  }
+
+  .colmun-right {
+    display: none !important;
+  }
+
+  .flex-row .colmun1 {
+    width: max-content !important;
+  }
+
+  .colmun1 img {
+    width: 340px;
+    margin: auto;
+  }
+
+  .colmun1 h1 {
+    text-align: center !important;
+  }
+  .colmun1 span {
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 580px) {
+  .colmun1 h1 {
+    font-size: 28px;
+    line-height: 35px;
+  }
+  .colmun1 span {
+    font-size: 16px;
+    line-height: 18px;
+    padding-bottom: 15px !important;
+  }
+
+  button.go-home {
+    margin: 12px 0;
+  }
+}

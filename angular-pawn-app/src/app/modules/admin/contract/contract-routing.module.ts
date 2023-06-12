@@ -6,6 +6,7 @@ import {UpdateComponent} from './update/update.component';
 import {ReturnItemsComponent} from './return-items/return-items.component';
 import {AuthGuardService} from "../../../service/auth-guard.service";
 import {UserRole} from "../../../models/UserRole";
+import {LiquidationComponent} from "./liquidation/liquidation.component";
 
 
 const routes: Routes = [
@@ -23,6 +24,10 @@ const routes: Routes = [
   },
   {
     path: 'update/:id', component: UpdateComponent, canActivate: [AuthGuardService], data: {roles: [UserRole.User]}
+  },
+
+  {
+    path: 'liquidation', component: LiquidationComponent, canActivate: [AuthGuardService], data: {roles: [UserRole.User]}
   }
 ]
 

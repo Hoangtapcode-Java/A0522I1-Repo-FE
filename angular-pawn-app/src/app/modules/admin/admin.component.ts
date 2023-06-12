@@ -1,4 +1,7 @@
-import {Component, OnInit, Renderer2} from '@angular/core';
+import {Component, HostListener, OnInit, Renderer2} from '@angular/core';
+import {AuthClientService} from "../../service/auth-client.service";
+import {Router} from "@angular/router";
+import {EmployeeServiceService} from "../../service/employee-service.service";
 
 @Component({
   selector: 'app-admin',
@@ -9,6 +12,9 @@ export class AdminComponent implements OnInit {
 
   isSidebarHidden: boolean = true;
   isDropdownBellOpen: boolean = false;
+  screenWidth: number;
+  img:string;
+  name:string
 
   toggleActive(event: Event) {
     const target = event.target as HTMLElement;
@@ -35,7 +41,10 @@ export class AdminComponent implements OnInit {
       dropdown.classList.add("show");
     }
   }
-
+  logout() {
+    this.authService.logout();
+    this.router.navigateByUrl('/user/login');
+  }
   toggleDropdown(event: Event) {
     const target = event.target as HTMLElement;
     const parentLi = target.closest("li");
@@ -75,10 +84,33 @@ export class AdminComponent implements OnInit {
   toggleSidebar() {
     this.isSidebarHidden = !this.isSidebarHidden;
   }
-
-  constructor(private renderer: Renderer2) {}
+// Đóng siderbar khi màn hình dưới 850
+  @HostListener("window:resize", ["$event"])
+  onResize(event) {
+    this.screenWidth = event.target.innerWidth;
+    this.checkScreenWidth();
+  }
+  checkScreenWidth() {
+    if (this.screenWidth <= 850) {
+      this.isSidebarHidden = false;
+    } else {
+      this.isSidebarHidden = true;
+    }
+  }
+  // Đóng siderbar khi màn hình dưới 850
+  constructor(private renderer: Renderer2,private authService: AuthClientService,private router: Router,private employeeService:EmployeeServiceService) {
+    this.employeeService.findByIdEmployee().subscribe(next=>{
+      this.img=next.avatar;
+      this.name=next.name;
+    })
+  }
 
   ngOnInit(): void {
+    // Đóng siderbar khi màn hình dưới 850
+    this.screenWidth = window.innerWidth;
+    this.checkScreenWidth();
+    // Đóng siderbar khi màn hình dưới 850
+
     // profile dropdown
     const profile = document.querySelector("nav .profile") as HTMLElement;
     const imgProfile = profile.querySelector("img") as HTMLElement;

@@ -8,10 +8,11 @@ import {ListComponent} from './list/list.component';
 import {UpdateComponent} from './update/update.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ReturnItemsComponent} from './return-items/return-items.component';
+import {LiquidationComponent} from "./liquidation/liquidation.component";
 
 
 @NgModule({
-  declarations: [CreateComponent, ListComponent, UpdateComponent, ReturnItemsComponent],
+  declarations: [CreateComponent, ListComponent, UpdateComponent, ReturnItemsComponent, LiquidationComponent],
   exports: [],
   imports: [
     CommonModule,

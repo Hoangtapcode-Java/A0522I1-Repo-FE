@@ -8,12 +8,13 @@ import {environment} from '../environments/environment';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthInterceptor} from './service/auth/auth.interceptor';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AdminModule} from "./modules/admin/admin.module";
 import {AuthModule} from "./modules/auth/auth.module";
-import {ClientModule} from "./modules/client/client.module";
+import {HomePageModule} from "./modules/home-page/home-page.module";
+import {ArticlePageModule} from "./modules/article-page/article-page.module";
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import {ClientModule} from "./modules/client/client.module";
     FormsModule,
     AdminModule,
     AuthModule,
-    ClientModule
+    HomePageModule,ArticlePageModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

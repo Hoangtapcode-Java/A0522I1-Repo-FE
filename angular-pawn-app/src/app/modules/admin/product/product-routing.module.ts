@@ -21,7 +21,7 @@ const routes: Routes = [
     path: 'delete', component: DeleteComponent
   },
   {
-    path: 'detail', component: DetailComponent
+    path: 'detail/:id', component: DetailComponent
   }];
 
 @NgModule({

@@ -1,6 +1,5 @@
-
 import {Component, OnInit, Renderer2} from '@angular/core';
-import { FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 import {AngularFireStorage} from "@angular/fire/storage";
 import {formatDate} from "@angular/common";
@@ -25,11 +24,12 @@ export class CreateComponent implements OnInit {
   text: any = null;
   imgLink: any = null;
   maxSize: boolean = false;
+  typeFile: boolean;
 
   constructor(private articleService: ArticleServiceService,
               private storage: AngularFireStorage,
               private route: Router,
-              private title:Title) {
+              private title: Title) {
     this.articleDTO = new FormGroup({
       id: new FormControl(""),
       title: new FormControl("", [Validators.required, Validators.maxLength(100), Validators.minLength(5)]),
@@ -54,7 +54,7 @@ export class CreateComponent implements OnInit {
     const divData = document.getElementById('editor').innerHTML;
     this.flag = true;
     this.maxSize = false;
-    if (this.articleDTO.valid && this.inputImage != null) {
+    if (this.articleDTO.valid && this.inputImage != null&&this.typeFile==true) {
       articleDTO.controls.content.setValue(divData);
       const today = new Date();
       const year = today.getFullYear();
@@ -77,42 +77,47 @@ export class CreateComponent implements OnInit {
         // Swal.fire('Thêm tin thành công');
       })
       Swal.fire('Xong', 'Thêm tin thành công', 'success');
-      this.route.navigateByUrl("/article");
-    }else {
-      if (this.articleDTO.invalid||this.inputImage==null) {
+      this.route.navigateByUrl("/admin/article");
+    } else {
+      if (this.articleDTO.invalid || this.inputImage == null||this.typeFile==false) {
 
-            Swal.fire('Lỗi', 'Thêm tin thất bại', 'error');
-          }
+        Swal.fire('Lỗi', 'Thêm tin thất bại', 'error');
+      }
     }
   }
 
   selectImage(event: any) {
     this.inputImage = event.target.files[0];
-    if (this.inputImage.size > 1048576 && this.inputImage!=null) {
-      this.maxSize = true;
-      event.target.value = null;
-      this.articleDTO.value.img = null;
-      this.inputImage = null;
-      this.imgLink = null;
-    } else if (this.inputImage) {
-      this.maxSize = false;
-      const reader = new FileReader();
-      reader.readAsDataURL(this.inputImage);
-      reader.onload = (e: any) => {
-        this.imgLink = e.target.result;
-      };
+    if (this.inputImage.type == "image/png" || this.inputImage.type == "image/jpeg" || this.inputImage.type == "image/gif") {
+      this.typeFile = true;
+      if (this.inputImage.size > 1048576 && this.inputImage != null) {
+        this.maxSize = true;
+        event.target.value = null;
+        this.articleDTO.value.img = null;
+        this.inputImage = null;
+        this.imgLink = null;
+      } else if (this.inputImage) {
+        this.maxSize = false;
+        const reader = new FileReader();
+        reader.readAsDataURL(this.inputImage);
+        reader.onload = (e: any) => {
+          this.imgLink = e.target.result;
+        };
+      }
+    } else {
+      this.typeFile = false;
     }
   }
 
   back() {
-    this.route.navigateByUrl("/article");
+    this.route.navigateByUrl("/admin/article");
   }
 
-  checkContent($event: any) {
-    this.text = $event.target.innerHTML;
-    this.text = this.text.toString().replace(/<[^>]+>/g, '');
+  checkContent() {
+    const text = document.getElementById('editor').innerHTML;
+    this.text = text.toString().replace(/<[^>]+>/g, '');
     this.articleDTO.controls.content.setValue(this.text);
-    this.flag=false;
+    this.flag = false;
   }
 
 

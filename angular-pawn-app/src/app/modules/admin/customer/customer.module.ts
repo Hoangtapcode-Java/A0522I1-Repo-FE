@@ -10,16 +10,21 @@ import {AngularFireModule} from "@angular/fire";
 import {AngularFireStorageModule} from "@angular/fire/storage";
 import {AngularFireDatabaseModule} from "@angular/fire/database";
 import {environment} from "../../../../environments/environment";
+import { DetailComponent } from './detail/detail.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
-  declarations: [ CreateComponent, ListComponent, UpdateComponent, DeleteComponent],
+  declarations: [ CreateComponent, ListComponent, UpdateComponent, DeleteComponent, DetailComponent, ErrorPageComponent],
   imports: [
     CommonModule,
     CustomerRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class CustomerModule { }
