@@ -12,13 +12,20 @@
   <div class="form-container sign-in-container">
     <form action="#" [formGroup]="loginForm" (ngSubmit)="login()">
       <h1>Đăng nhập</h1>
-
-      <input type="email" placeholder="Username" formControlName="username" />
+      <p *ngIf="!loginForm.controls.username?.valid &&(loginForm.controls.username?.dirty || loginForm.controls.username?.touched)"
+         style="color: red">
+        username từ 4-45 kí tự
+      </p>
+      <input type="text" placeholder="Username" formControlName="username" />
       <p class="log-error">loi</p>
+      <p *ngIf="!loginForm.controls.password?.valid &&(loginForm.controls.password?.dirty || loginForm.controls.password?.touched)"
+         style="color: red">
+        password từ 4-100 kí tự
+      </p>
       <input type="password" placeholder="Password" formControlName="password" />
       <p  class="log-error">loi</p>
-<!--      <input type ="submit" value="Đăng nhập">-->
-      <button type = submit>Đăng nhập</button>
+      <!--      <input type ="submit" value="Đăng nhập">-->
+      <button type = submit [disabled]="!loginForm.valid">Đăng nhập</button>
     </form>
   </div>
   <div class="overlay-container">
